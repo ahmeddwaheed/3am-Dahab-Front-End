@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-
 import './App.css';
 import { Link, Route } from 'react-router-dom';
-
+import Users from './Containers/UsersContainer'
+import UserCard from './Containers/UserCardContainer'
 import PoolsPage from './Pages/PoolsPage';
 import PoolForm from './Pages/PoolForm';
 import PoolDetails from './Pages/PoolDetails';
@@ -13,7 +12,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header style ={{backgroundColor:'yellow', margin:'10px', padding:'10px'}}>
+      <header style ={{backgroundColor:'yellow', margin:'10px', padding:'10px'}}>
+          <h1 className="App-title">3am-Dahab</h1>
+          <Users />
+          <UserCard />
           <p> Dahab</p>
         </header>
         <div>
