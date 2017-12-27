@@ -4,5 +4,12 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {BrowserRouter as Router} from 'react-router-dom';
+import {Provider} from 'react-redux';
+
+import createStore from './store';
+const store = createStore();
+
+
+ReactDOM.render(<Provider store = {store}><Router><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();
