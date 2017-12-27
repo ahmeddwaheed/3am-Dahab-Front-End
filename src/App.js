@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import Users from './Containers/UsersContainer'
-import UserDeatils from './Containers/UserDetailsContainer'
+import UserCard from './Containers/UserCardContainer'
 
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
           <div className="App-container">
           </div>
           <Users />
-          <UserDeatils />
+          <UserCard />
       </div>
     );
   }

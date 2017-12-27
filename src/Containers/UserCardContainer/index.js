@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import UserDetails from '../../Components/UserDetails';
-import {getUserLoading, getUser, getUserSuccess, getUserFailure} from '../../Actions/UserDetails';
+import UserCard from '../../Components/UserCard';
+import {getUserLoading, getUser, getUserSuccess, getUserFailure} from '../../Actions/UserCard';
 
 const mapStateToProps = (state) => {
     return {
         loading: state.loading,
         error: state.error,
-        user: state.userDetails.user
+        user: state.userCard.user
     }
 }
 
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(UserCard);

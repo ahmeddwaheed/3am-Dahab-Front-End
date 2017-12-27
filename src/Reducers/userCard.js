@@ -1,6 +1,6 @@
 import {
     GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE
-} from '../Actions/UserDetails';
+} from '../Actions/UserCard';
 
 const INITIAL_STATE = {
     loading: false,

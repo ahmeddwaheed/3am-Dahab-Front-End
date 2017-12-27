@@ -3,8 +3,12 @@ import { Spin, Alert} from 'antd';
 import 'antd/lib/grid/style/index.css';
 import 'antd/lib/spin/style/index.css';
 import 'antd/lib/alert/style/index.css';
+import { Card, Icon, Avatar } from 'antd';
+const { Meta } = Card;
+// import './style.css';
 
-export default class UserDetails extends Component {
+
+export default class UserCard extends Component {
     componentWillMount(){
         this.props.getUser(35);
     }
@@ -25,12 +29,15 @@ export default class UserDetails extends Component {
         }
         else{
             return (
-                <div>
-                    <h1> Hello user card </h1>
-                    <p> {user.username} </p>
-                    <p> {user.email} </p>                    
-                </div>
-            )
+                <Card bordered hoverable className="user-card"
+                  cover={<img alt="picture" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
+                >
+                  <Meta
+                    title={user.username}
+                    description="This is the description"
+                  />
+                </Card>
+              )
         }
     }
 }
