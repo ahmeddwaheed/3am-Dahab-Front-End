@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+
 import './App.css';
+import { Link, Route } from 'react-router-dom';
+
+import PoolsPage from './Pages/PoolsPage';
+import PoolForm from './Pages/PoolForm';
+import PoolDetails from './Pages/PoolDetails';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+        <header style ={{backgroundColor:'yellow', margin:'10px', padding:'10px'}}>
+          <p> Dahab</p>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+          <Link to="/pools"><h2> pools </h2></Link>
+          <Route path="/pools" exact component={PoolsPage} />
+
+          <Link to="/form">
+            <h2> add pool </h2>
+          </Link>
+          <Route path="/form" component={PoolForm} />
+
+
+          <Route path={"/pools/:id"} component={PoolDetails} />
+
+        </div>
       </div>
     );
   }
