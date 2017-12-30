@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { poolsApi, PoolApi, editPoolApi } from '../api';
+import { poolsApi, PoolApi, editPoolApi } from '../../api';
 
 
 // Action Types
@@ -49,8 +49,6 @@ export const getPoolsLoading = () =>{
 }
 export const getPools = () => {
   const payload = Axios.get(poolsApi);
-  console.log('hello from the actions!!!');
-  console.log(payload);
   return {
     type: GET_POOLS,
     payload
@@ -76,10 +74,7 @@ export const getPoolLoading = () =>{
   }
 }
 export const getPool = (id) => {
-  console.log(id, PoolApi(id));
-  const payload = Axios.get(`http://localhool:3001/pools/${id}`);
-  console.log('hello from the actionszzzz!!!');
-  console.log(payload);
+  const payload = Axios.get(`http://localhost:3001/pools/${id}`);
   return {
     type: GET_POOL,
     payload
@@ -105,7 +100,7 @@ export const addPoolLoading = () => {
   }
 }
 export const addPool = (pool) => {
-  const payload = Axios.post(`http://localhool:3001/pools/`, pool)
+  const payload = Axios.post(`http://localhost:3001/pools/`, pool)
   return {
     type: ADD_POOL,
     payload

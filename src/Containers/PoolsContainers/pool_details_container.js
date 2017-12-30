@@ -3,7 +3,7 @@ import Pools from '../../Components/Pools';
 import Details from '../../Components/PoolDetails';
 import {
   getPoolLoading, getPool, getPoolSuccess, getPoolFailure,
-} from '../../Actions/pools';
+} from '../../Actions/Pools';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +13,6 @@ const mapStateToProps = (state) => {
     adding: state.pools.adding,
     error: state.pools.error,
     errorAdding: state.pools.errorAdding,
-
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -30,33 +29,7 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
             }, 2000)
-        },
-      // getPools: () => {
-      //       dispatch(getPoolsLoading());
-      //       setTimeout(() => {
-      //           dispatch(getPools()).then(response => {
-      //               if(response.payload.status < 400){
-      //                   dispatch(getPoolsSuccess(response.payload.data));
-      //               }else{
-      //                   dispatch(getPoolsFailure(response.payload.message));
-      //               }
-      //           })
-      //       }, 2000)
-      //   },
-      // addPool: (content, callback) => {
-      //     dispatch(addPoolLoading());
-      //     setTimeout(() => {
-      //         dispatch(addPool(content)).then(response => {
-      //             if(response.payload.status < 400){
-      //                 dispatch(addPoolSuccess(response.payload.data));
-      //                 callback();
-      //             }else{
-      //                 dispatch(addPoolFailure(response.payload.message));
-      //             }
-      //         })
-      //     }, 2000)
-      // },
-    ////
+        }
   }
 }
 

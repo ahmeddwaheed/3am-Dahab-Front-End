@@ -4,7 +4,7 @@ import {
   ADD_POOL_LOADING, ADD_POOL_SUCCESS, ADD_POOL_FAILURE,
   EDIT_POOL_LOADING, EDIT_POOL_SUCCESS, EDIT_POOL_FAILURE,
   DELETE_POOL_LOADING, DELETE_POOL_SUCCESS, DELETE_POOL_FAILURE
-} from '../Actions/pools';
+} from '../Actions/Pools';
 
 const INITIAL_STATE = {
   pools: [],
@@ -19,14 +19,9 @@ export default (currentState = INITIAL_STATE, action) => {
   switch(action.type) {
     //Get all pools
     case GET_POOLS_LOADING:
-      console.log('hello from reducer!!!!');
-      console.log(currentState);
-
       return {...currentState, loading: true};
 
     case GET_POOLS_SUCCESS:
-      console.log('hello from reducer');
-      console.log(action.pools.data);
       return {...currentState, loading: false, pools: action.pools.data};
 
     case GET_POOLS_FAILURE:
