@@ -6,7 +6,7 @@ export default class PoolsPage extends Component {
     return (
       <div>
         <h2> Almakinah Pools </h2>
-        <Pools />
+        <Pools status = {this.props.match.params.status} />
       </div>
     )
   }

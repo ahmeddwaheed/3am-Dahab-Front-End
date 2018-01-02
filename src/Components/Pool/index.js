@@ -5,9 +5,13 @@ import { Button } from 'react-bootstrap';
 
 
 export default class Pool extends Component {
+
+    // getStatus = () =>{
+    //   this.props.pool.status
+    // }
     render(){
         return (
-          <div style ={{backgroundColor:'green', margin:'10px', padding:'10px'}}>
+          <div style ={{backgroundColor:'grey', margin:'10px', padding:'10px'}}>
             <p>pool name: {this.props.pool.name}</p>
             <p>amount: {this.props.pool.amount}</p>
             <p>monthly amount: {this.props.pool.monthly_amount}</p>

@@ -19,10 +19,10 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPools: () => {
-          dispatch(getPoolsLoading());
+    getPools: (status) => {
+          dispatch(getPoolsLoading(status));
           setTimeout(() => {
-              dispatch(getPools()).then(response => {
+              dispatch(getPools(status)).then(response => {
                   if(response.payload.status < 400){
                       dispatch(getPoolsSuccess(response.payload.data));
                       console.log('hello from container');
