@@ -8,7 +8,8 @@ import {
 const mapStateToProps = (state) => {
   return {
     pools: state.pools.pools,
-    pool: state.pools.pool,
+    pool: state.pools.pool.data,
+    userCard: state.pools.pool.userCard,
     loading: state.pools.loading,
     adding: state.pools.adding,
     error: state.pools.error,

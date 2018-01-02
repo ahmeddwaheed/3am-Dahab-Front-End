@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
 import UserCard from '../../Components/UserCard';
 import {getUserLoading, getUser, getUserSuccess, getUserFailure,
-        getRequest, getRequestSuccess, getRequestFailure} from '../../Actions/UserCard';
+        getRequest, getRequestSuccess, getRequestFailure,
+        addSeat, addSeatSucces, addSeatFailure} from '../../Actions/UserCard';
 
 const mapStateToProps = (state) => {
     return {
@@ -27,9 +28,9 @@ const mapDispatchToProps = (dispatch) => {
                 }), 1000
             })
         },
-        getRequest: (user_id) => {
+        getRequest: (pool_id) => {
             setTimeout (() => {
-                dispatch(getRequest(user_id)).then(response => {
+                dispatch(getRequest(pool_id)).then(response => {
                     if(response.payload.status < 400){
                         dispatch(getRequestSuccess(response.payload.data));
                     }
@@ -38,6 +39,16 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
             }, 1000)
+        },
+        addSeat :(request) => {
+            dispatch(addSeat(request)).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(addSeatSucces(response.payload.data));
+                }
+                else {
+                    dispatch(addSeatFailure(response.payload.message));
+                }
+            })
         }
     }
 }

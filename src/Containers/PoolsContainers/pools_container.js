@@ -35,19 +35,6 @@ const mapDispatchToProps = (dispatch) => {
               })
           }, 2000)
       },
-
-      getPool: (id) => {
-            dispatch(getPoolLoading(id));
-            setTimeout(() => {
-                dispatch(getPool(id)).then(response => {
-                    if(response.payload.status < 400){
-                        dispatch(getPoolSuccess(response.payload.data));
-                    }else{
-                        dispatch(getPoolFailure(response.payload.message));
-                    }
-                })
-            }, 2000)
-        },
       addPool: (content, callback) => {
           dispatch(addPoolLoading());
           setTimeout(() => {

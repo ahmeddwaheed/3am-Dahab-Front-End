@@ -31,7 +31,7 @@ export default (currentState = INITIAL_STATE, action) => {
     case GET_POOL_LOADING:
       return {...currentState, loading: true};
     case GET_POOL_SUCCESS:
-      return {...currentState, loading: false, pool: action.pool.data};
+      return {...currentState, loading: false, pool: action.pool};
     case GET_POOL_FAILURE:
       return {...currentState, loading: false, error: action.error};
 

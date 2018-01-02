@@ -9,24 +9,18 @@ const { Meta } = Card;
 
 
 export default class UserCard extends Component {
-    constructor(){
-        super()
-        this.state= {
-            check: false
-        }
-    }
     componentWillMount(){
-        this.props.getUser(1);
+        this.props.getUser(5);
     }
-    handleAction(){
-        this.props.getRequest(this.props.user_id);
-        const request = this.props.request;
-        if(request.is_accepted){
-            this.setState({check: true});
-        }
+    handleAddSeat(){
+        const seat = {user_id: this.props.user.id, pool_id: this.props.pool_id, position: this.props.card.position};
+        this.props.addSeat(seat);
+    }
+    handleDeleteSeat(){
+
     }
     render (){
-        const { user, loading, error} = this.props;
+        const { user, loading, error, card } = this.props;
         if(loading){
             return (
                 <Spin />
@@ -44,23 +38,35 @@ export default class UserCard extends Component {
             return (
                 <div>
                 {
-                    this.state.check || user.in_pool? 
-
-                    <Card bordered hoverable className="user-card"
-                      cover={<img alt="picture" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
+                    card.id?
+                    <Card className="user-card"
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.elzmannews.com/upload/library/images/18970732.jpg" />}
                     >
+                    <h3>{card.position}</h3>
                       <Meta
-                        title={user.username}
-                        description="This is the description"
-                      />
+                        title={card.name}
+                        />
                     </Card>
                     :
-                    <Card bordered hoverable className="user-card"
-                      cover={<img alt="picture" src="http://theusabulletin.com/wp-content/uploads/2017/03/grid-cell-14740-1490981787-7.jpg" />}
+                    !user.in_pool?
+
+                    <Card className="user-card"
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.elzmannews.com/upload/library/images/18970732.jpg" />}
                     >
+                    <h3>{card.position}</h3>
+                      <Meta
+                        title={card.name}
+                        />
+                        <button onClick={this.handleDeleteSeat.bind(this)}> cancel </button>
+                    </Card>
+                    :
+                    <Card className="user-card"
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.shuuf.com/shof/uploads/2013/09/29/jpg/shof_3e886a816901fc9.jpg" />}
+                    >
+                    <h3>{card.position}</h3>
                       <Meta
                       />
-                      <button onClick={this.handleAction.bind(this)}> + </button>
+                      <button onClick={this.handleAddSeat.bind(this)}> + </button>
                     </Card>
                 }
                 </div>

@@ -1,6 +1,7 @@
 import {
     GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE,
-    GET_REQUEST_SUCCESS, GET_REQUEST_FAILURE, getRequestFailure
+    GET_REQUEST_SUCCESS, GET_REQUEST_FAILURE,
+    ADD_SEAT_SUCCESS, ADD_SEAT_FAILURE
 } from '../Actions/UserCard';
 
 const INITIAL_STATE = {
@@ -19,8 +20,12 @@ export default function(currentState = INITIAL_STATE, action) {
             return {...currentState, error: action.error};
         case GET_REQUEST_SUCCESS:
             return {...currentState, request: action.request};
-        case getRequestFailure:
+        case GET_REQUEST_FAILURE:
             return {... currentState, error: action.error}
+        case ADD_SEAT_SUCCESS:
+            return {...currentState, seat: action.seat};
+        case ADD_SEAT_FAILURE:
+            return {...currentState, error: action.error};
         default:
             return currentState;
     }
