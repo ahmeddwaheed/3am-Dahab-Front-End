@@ -77,7 +77,7 @@ export const getPoolLoading = () =>{
 }
 export const getPool = (id) => {
   console.log(id, PoolApi(id));
-  const payload = Axios.get(`http://localhool:3001/pools/${id}`);
+  const payload = Axios.get(`http://localhost:3001/pools/${id}`);
   console.log('hello from the actionszzzz!!!');
   console.log(payload);
   return {
@@ -105,7 +105,7 @@ export const addPoolLoading = () => {
   }
 }
 export const addPool = (pool) => {
-  const payload = Axios.post(`http://localhool:3001/pools/`, pool)
+  const payload = Axios.post(`http://localhost:3001/pools/`, pool)
   return {
     type: ADD_POOL,
     payload

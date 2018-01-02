@@ -10,7 +10,7 @@ const { Meta } = Card;
 
 export default class UserCard extends Component {
     componentWillMount(){
-        this.props.getUser(35);
+        this.props.getUser(1);
     }
     render (){
         const { user, loading, error } = this.props;

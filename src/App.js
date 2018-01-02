@@ -6,16 +6,17 @@ import UserCard from './Containers/UserCardContainer'
 import PoolsPage from './Pages/PoolsPage';
 import PoolForm from './Pages/PoolForm';
 import PoolDetails from './Pages/PoolDetails';
+import Requests from './Containers/RequestsContainer';
+import RequestForm from './Containers/RequestFormContainer';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <header style ={{backgroundColor:'yellow', margin:'10px', padding:'10px'}}>
-          <h1 className="App-title">3am-Dahab</h1>
-          <Users />
-          <UserCard />
+      <header style ={{backgroundColor:'#ddd', margin:'10px', padding:'10px'}}>
+          <h1 className="App-title">-Dahab</h1>
+
           <p> Dahab</p>
         </header>
         <div>
@@ -28,8 +29,11 @@ class App extends Component {
           <Route path="/form" component={PoolForm} />
 
 
-          <Route path={"/pools/:id"} component={PoolDetails} />
+          <Route path={"/pools/:id/request"} component={RequestForm} />
 
+
+          <Link to="/requests"><h2> requests </h2></Link>
+          <Route path="/requests" exact component={Requests} />
         </div>
       </div>
     );
@@ -37,3 +41,5 @@ class App extends Component {
 }
 
 export default App;
+
+  // <Route path={"/pools/:id"} component={PoolDetails} />
