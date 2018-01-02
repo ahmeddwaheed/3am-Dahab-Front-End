@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Link, Route } from 'react-router-dom';
-import PoolsPage from './Pages/PoolsPage';
-import PoolForm from './Pages/PoolForm';
-import PoolDetails from './Pages/PoolDetails';
+import UserSignInForm from './Containers/UserCardContainer/user_sigin_form';
+import DirectoryPage from './Pages/DirectoryPage';
+
+import './App.css';
+
 
 class App extends Component {
   render() {
@@ -13,16 +14,10 @@ class App extends Component {
           <h1 className="App-title">3am-Dahab</h1>
         </header>
         <div>
-          <Link to="/pools"><h2> pools </h2></Link>
-          <Route path="/pools" exact component={PoolsPage} />
+          
+            <Route path="/" component= {UserSignInForm} />
+            <Route path="/home" component = {DirectoryPage} />
 
-          <Link to="/form">
-            <h2> add pool </h2>
-          </Link>
-          <Route path="/form" component={PoolForm} />
-
-
-          <Route path={"/pools/:id"} component={PoolDetails} />
         </div>
       </div>
     );

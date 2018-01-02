@@ -3,7 +3,7 @@ import { Spin, Alert} from 'antd';
 import 'antd/lib/grid/style/index.css';
 import 'antd/lib/spin/style/index.css';
 import 'antd/lib/alert/style/index.css';
-import { Card, Icon, Avatar } from 'antd';
+import { Card } from 'antd';
 const { Meta } = Card;
 // import './style.css';
 

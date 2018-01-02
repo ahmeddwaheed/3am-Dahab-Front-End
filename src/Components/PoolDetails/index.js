@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserCard from '../../Containers/UserCardContainer';
+import UserCard from '../../Containers/UserCardContainer/user_card';
 import { Row, Spin, Alert } from 'antd';
 
 

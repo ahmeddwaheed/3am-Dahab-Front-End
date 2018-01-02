@@ -1,14 +1,14 @@
 import {combineReducers} from 'redux';
-import users from './users'
 import userCard from './userCard';
 import request from './userCard';
 import pools from './pools';
+import auth from './auth';
 
 const rootReducer = combineReducers({
   pools,
-  users,
   userCard,
-  request
+  request,
+  auth
 })
 
 export default rootReducer
