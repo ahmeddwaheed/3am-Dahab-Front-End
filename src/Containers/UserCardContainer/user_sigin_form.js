@@ -7,7 +7,6 @@ import jwt from 'jsonwebtoken';
 
 const mapStateToProps = (state) => {
     return {
-        message: state.userCard.user,
         loading: state.userCard.loading,
         error: state.userCard.error
     }
@@ -19,8 +18,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(userSignInLoading());
             setTimeout(() => {
                 dispatch(userSignIn(user)).then(response => {
-                    // console.log("HATLY EL ERROR DA", response.payload.data);
-                    if(response.payload){
+                    // console.log("HATLY EL ERROR DA", response.payload.request.response);
+                    if(response.payload.data){
                         const token = response.payload.data.auth_token;  
                         localStorage.setItem('jwtToken', token);
                         setAutherizationToken(token);
@@ -30,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
                         dispatch(userSignInSuccess(response.payload.data))
                     }
                     else {
-                        dispatch(userSignInFailure(response.payload.error))
+                        dispatch(userSignInFailure(response.payload.request.response))
                     }
                 })
             }, 1000);
