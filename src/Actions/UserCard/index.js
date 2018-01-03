@@ -18,13 +18,6 @@ export const ADD_USER_LOADING = 'ADD_USER_LOADING';
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
 export const ADD_USER_FAILURE = 'ADD_USER_FAILURE';
 
-export const USER_SIGN_IN = 'USER_SIGN_IN';
-export const USER_SIGN_IN_LOADING = 'USER_SIGN_IN_LOADING';
-export const USER_SIGN_IN_SUCCESS = 'USER_SIGN_IN_SUCCESS';
-export const USER_SIGN_IN_FAILURE = 'USER_SIGN_IN_FAILURE';
-
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-
 
 export const getRequest = (pool_id) => {
     const payload = axios.get(`http://localhost:3001/requests/find_pool?pool_id=${pool_id}`);
@@ -114,37 +107,5 @@ export const addUserFailure = (error) => {
     return {
         type: ADD_USER_FAILURE,
         error
-    }
-}
-
-export const userSignIn = (user) => {
-    const payload = axios.post(`http://localhost:3001/users/login`, user);
-    return {
-        type: USER_SIGN_IN,
-        payload
-    }
-}
-export const userSignInLoading = () => {
-    return {
-        type: USER_SIGN_IN_LOADING
-    }
-}
-export const userSignInSuccess = (user) => {
-    return {
-        type: USER_SIGN_IN_SUCCESS,
-        user
-    }
-}
-export const userSignInFailure = (error) => {
-    return {
-        type: USER_SIGN_IN_FAILURE,
-        error
-    }
-}
-
-export const setCurrentUser = (user) => {
-    return {
-        type: SET_CURRENT_USER,
-        user
     }
 }

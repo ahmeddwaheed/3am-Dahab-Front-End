@@ -9,11 +9,8 @@ const { Meta } = Card;
 
 
 export default class UserCard extends Component {
-    componentWillMount(){
-        this.props.getUser(5);
-    }
     handleAddSeat(){
-        const seat = {user_id: this.props.user.id, pool_id: this.props.pool_id, position: this.props.card.position};
+        const seat = {user_id: this.props.user_id, pool_id: this.props.pool_id, position: this.props.card.position};
         this.props.addSeat(seat);
     }
     handleDeleteSeat(){
@@ -29,8 +26,8 @@ export default class UserCard extends Component {
         else if(error){
             return (
                 <Alert
-                    message={error}
-                    type="error"
+                message={error}
+                type="error"
                 />
             )
         }
@@ -48,7 +45,7 @@ export default class UserCard extends Component {
                         />
                     </Card>
                     :
-                    !user.in_pool?
+                    user.in_pool?
 
                     <Card className="user-card"
                       cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.elzmannews.com/upload/library/images/18970732.jpg" />}
@@ -57,7 +54,7 @@ export default class UserCard extends Component {
                       <Meta
                         title={card.name}
                         />
-                        <button onClick={this.handleDeleteSeat.bind(this)}> cancel </button>
+                        <button onClick={this.handleDeleteSeat.bind(this)}> x </button>
                     </Card>
                     :
                     <Card className="user-card"
@@ -66,7 +63,7 @@ export default class UserCard extends Component {
                     <h3>{card.position}</h3>
                       <Meta
                       />
-                      <button onClick={this.handleAddSeat.bind(this)}> + </button>
+                      <button onClick={this.handleAddSeat.bind(this)} > + </button>
                     </Card>
                 }
                 </div>

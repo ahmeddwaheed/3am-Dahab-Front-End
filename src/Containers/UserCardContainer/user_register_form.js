@@ -1,11 +1,13 @@
 import {connect} from 'react-redux';
 import UserForm from '../../Components/UserSignUp';
 import { addUserLoading, addUser, addUserSuccess, addUserFailure} from '../../Actions/UserCard';
+import history from '../../history';
+
 
 const mapStateToProps = (state) => {
     return {
-        message: state.userCard.user,
-        loading: state.userCard.loading,
+        message: state.userCard.user.status,
+        loading: state.userCard.user.loading,
         error: state.userCard.error
     }
 }
@@ -20,7 +22,9 @@ const mapDispatchToProps = (dispatch) => {
                         dispatch(addUserSuccess(response.payload.data))
                     }
                     else {
-                        dispatch(addUserFailure(response.payload.request.response))
+                        var payload = JSON.parse(response.payload.request.response);
+                        dispatch(addUserFailure(payload))
+                        history.push('/register');
                     }
                 })
             }, 1000);
