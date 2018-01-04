@@ -14,20 +14,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <NavigationBar />            
-      {
-            (localStorage.jwtToken)?
-            <div>
+              <NavigationBar /> 
               <Route exact path="/home/pools" component= {Pools} />
-            </div>
-            :
-            <div>
-              <Route exact path="/" component= {UserSignInForm} />                        
+              <Route exact path="/home/pools/:id" component= {PoolDetails} /> 
+              <Route exact path="/" component= {UserSignInForm} />            
               <Route exact path="/login" component= {UserSignInForm} />             
               <Route exact path="/register" component= {UserRegisterForm} />
-              <Route exact path="/home/pools/:id" component= {PoolDetails} /> 
-            </div>          
-        }
       </div>
     );
   }
