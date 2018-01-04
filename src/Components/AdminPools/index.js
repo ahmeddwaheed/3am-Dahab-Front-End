@@ -28,7 +28,7 @@ export default class Pools extends Component {
                   </select>
                   {pools.map((pool) => {
                   return (
-                   <Pool pool={pool} onClick={this.props.deletePool.bind(this)} />
+                   <Pool pool={pool} />
                  )
                   })
                  }

@@ -78,7 +78,7 @@ export default (currentState = INITIAL_STATE, action) => {
       return {...currentState, pools: newPools}
     case DELETE_POOL_SUCCESS:
       var newPools = currentState.pools.filter(pool => {
-        pool.id !== action.id
+        return pool.id !== action.id
       })
       return {...currentState, pools: newPools}
     case DELETE_POOL_FAILURE:

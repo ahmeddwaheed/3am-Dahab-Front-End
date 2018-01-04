@@ -132,7 +132,7 @@ export const editPoolLoading = (id) => {
   }
 }
 export const editPool = (id, edit) => {
-  const payload = Axios.patch(editPoolApi(id), edit);
+  const payload = Axios.patch(`http://localhost:3001/pools/${id}`, edit);
   return {
     type: EDIT_POOL,
     payload
@@ -159,7 +159,7 @@ export const deletePoolLoading = (id) => {
   }
 }
 export const deletePool = (id) => {
-  const payload = Axios.delete(editPoolApi(id));
+  const payload = Axios.delete(`http://localhost:3001/pools/${id}`);
   return {
     type: DELETE_POOL,
     payload
