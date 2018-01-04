@@ -36,6 +36,7 @@ export default class UserCard extends Component {
                 <div>
                 {
                     card.id?
+
                     <Card className="user-card"
                       cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.elzmannews.com/upload/library/images/18970732.jpg" />}
                     >
