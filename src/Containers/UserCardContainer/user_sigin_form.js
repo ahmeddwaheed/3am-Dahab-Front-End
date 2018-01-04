@@ -27,9 +27,9 @@ const mapDispatchToProps = (dispatch) => {
                     history.push('/home/pools');                      
                 }
                 else {
+                    history.push('/login');
                     var payload = JSON.parse(response.payload.request.response);
                     dispatch(userSignInFailure(payload))
-                    history.push('/');
                 }
             })
         }
