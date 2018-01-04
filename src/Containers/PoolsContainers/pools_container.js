@@ -25,11 +25,9 @@ const mapDispatchToProps = (dispatch) => {
               dispatch(getPools()).then(response => {
                   if(response.payload.status < 400){
                       dispatch(getPoolsSuccess(response.payload.data));
-                      console.log('hello from container');
                       console.log(response.payload.data);
                   }else{
                       dispatch(getPoolsFailure(response.payload.message));
-                      console.log('hello from failure container');
                       console.log(response.payload);
                   }
               })

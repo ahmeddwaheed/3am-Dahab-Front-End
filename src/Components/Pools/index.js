@@ -18,9 +18,9 @@ export default class Pools extends Component {
         return (
             <div>
                   {pools.map((pool) => {
-                  return (
-                   <Pool pool={pool}/>
-                 )
+                    return (
+                        <Pool pool={pool}/>
+                    )
                   })
                  }
 

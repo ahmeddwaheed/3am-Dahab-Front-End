@@ -13,7 +13,7 @@ export default class Pool extends Component {
             <p>monthly amount: {this.props.pool.monthly_amount}</p>
             <p>seats: {this.props.pool.seat_number}</p>
             <p>status: {this.props.pool.status}</p>
-            <Link to={`/pools/${this.props.pool.id}`}><Button bsStyle="success"> join</ Button> </Link>
+            <Link to={`/home/pools/${this.props.pool.id}`}><Button bsStyle="success"> join</ Button> </Link>
 
           </div>
         )

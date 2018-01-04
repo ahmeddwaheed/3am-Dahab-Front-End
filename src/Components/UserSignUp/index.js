@@ -5,6 +5,7 @@ import 'antd/lib/spin/style/index.css';
 import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
+import { Link, Route } from 'react-router-dom';
 
 
 export default class UserSignUp extends Component {
@@ -14,14 +15,13 @@ export default class UserSignUp extends Component {
             name: "",
             email: "",
             password: "",
-            password_confirmation: "",
-            fireRedirect: false
+            password_confirmation: ""
         }
     }
     addNewUser = (e) => {
         e.preventDefault();
         this.props.addUser(this.state);
-        this.setState({name:"", email:"", password:"", password_confirmation:"", fireRedirect: true});
+        this.setState({name:"", email:"", password:"", password_confirmation:""});
     }
     handleNameChange = (e) => {
         this.setState({name: e.target.value})
@@ -36,7 +36,8 @@ export default class UserSignUp extends Component {
         this.setState({password_confirmation: e.target.value})
     }
     render(){
-        const { loading , error, message,  fireRedirect} = this.props;
+        const { loading , error, message } = this.props;
+        
         if(loading){
             return (
                 <Spin />
@@ -45,33 +46,60 @@ export default class UserSignUp extends Component {
         return (
             <div>
                 <h1> Register </h1>
-                <form onSubmit = {this.addNewUser}>
-                    <label>Name 
-                        <input  value={this.state.name} type='text' name='name' onChange={this.handleNameChange.bind(this)} />
-                    </label><br/>
-
-                    <label>Email
-                        <input  value={this.state.email} type='email' name='email' onChange={this.handleEmailChange.bind(this)} />
-                    </label><br/>
-
-                    <label>Password
-                        <input  value={this.state.password} type='password' name='password' onChange={this.handlePasswordChange.bind(this)} />
-                    </label><br/>
-
-                    <label>Confirm Password
-                        <input  peek= "" value={this.state.confirm} type='password' name='password' onChange={this.handleConfirmChange.bind(this)} />
-                    </label>
-                    <br/>
-                    <Button bsStyle="primary" type= "submit">
-                        Sign Up
-                    </Button>
+                <form  onSubmit = {this.addNewUser} className="demoForm" >
+                    <div>
+                        <div className="panel panel-default">
+                        </div>
+                        <label htmlFor="name">Name</label>
+                        <input type="text" required className="form-control" name="name"
+                            placeholder="Username"
+                            onChange={this.handleNameChange}  />
+                    </div><br />
+                    <div>
+                        <label htmlFor="email">email</label>
+                        <input type="email" required className="form-control" name="email"
+                            placeholder="Email"
+                            onChange={this.handleEmailChange}  />
+                    </div><br />
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" required className="form-control" name="password"
+                            placeholder="Password"
+                            onChange={this.handlePasswordChange}  />
+                    </div><br />
+                    <div>
+                        <label htmlFor="password">Confirm Password</label>
+                        <input type="password" required className="form-control" name="confirm"
+                            placeholder="Confirm Password"
+                            onChange={this.handleConfirmChange}  />
+                    </div><br />
                     {
-                        error?
-                            <Alert message={error} type="error"/>
-                            :
-                            false
+                        <div>
+                            <button className="btn btn-primary" >Register</button>
+                            <Link to="/login" > Login</Link>
+                        </div>
                     }
                 </form>
+                {
+                    this.props.error?
+                    <div>
+                            <br />
+                            {
+                                // this.props.error.erros.map(error => {
+                                //    { console.log(error)}
+                                // })
+                            }
+                        <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
+                    </div>
+                    :
+                    this.props.message?
+                    <div>
+                            <br />
+                            <p>{this.props.message}</p>
+                    </div>
+                    :
+                    null
+                }
                 
             </div>
         )

@@ -15,15 +15,15 @@ export default class UserSignIn extends Component {
         this.state = {
             email: "",
             password: "",
-            formErrors: {email: '', password: '', loginError: ''},
+            formErrors: {email: '', password: ''},
             emailValid: false,
             passwordValid: false,
-            formValid: false
+            formValid: false,
         }
     }
     SignIn = (e) => {
         e.preventDefault();
-        this.props.userSignIn({email:this.state.email, password:this.state.password});
+        this.props.userSignIn({email:this.state.email, password:this.state.password})
         this.setState({email:"", password:""});
     }
     handleUserInput = (e) => {
@@ -32,14 +32,10 @@ export default class UserSignIn extends Component {
         this.setState({[name]: value},
                       () => { this.validateField(name, value) });
     }
-    submitForm = (error) => {
-        console.log('ERRORRRRRRRR => ', error);
-    }
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
         let emailValid = this.state.emailValid;
         let passwordValid = this.state.passwordValid;
-        let loginError = this.props.error;
     
         switch(fieldName) {
           case 'email':
@@ -55,8 +51,7 @@ export default class UserSignIn extends Component {
     
     this.setState({formErrors: fieldValidationErrors,
                         emailValid: emailValid,
-                        passwordValid: passwordValid,
-                        loginError: this.props.error
+                        passwordValid: passwordValid
                       }, this.validateForm);
     }
     validateForm() {
@@ -68,7 +63,7 @@ export default class UserSignIn extends Component {
     }
     
     render(){
-        const { loading , error} = this.props;
+        const { loading , error } = this.props;
         // console.log("ERRRRRRROR",error);
         // if(loading){
         //     return (
@@ -99,11 +94,20 @@ export default class UserSignIn extends Component {
                     </div>
                     {
                         <div>
-                            <button onClick={this.submitForm.bind(this, this.props.error)} className="btn btn-primary" >Sign In</button>
+                            <button className="btn btn-primary" >Sign In</button>
                             <Link to="/register" > Register</Link>
                         </div>
                     }
                 </form>
+                {
+                    this.props.error?
+                        <div>
+                            <br />
+                            <Alert message={this.props.error.message} type="error"/>
+                        </div>
+                        :
+                        null
+                }
                 
             </div>
         )

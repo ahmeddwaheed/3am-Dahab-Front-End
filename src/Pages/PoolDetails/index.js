@@ -6,7 +6,7 @@ export default class Details extends Component {
   render (){
     return (
       <div>
-        <h2> helloooooooo from  pool details </h2>
+        <h2> Pool </h2>
         <PoolDetails id = {this.props.match.params.id} />
         <Route path="/joined_pool/" Component={PoolDetails}/>
       </div>
