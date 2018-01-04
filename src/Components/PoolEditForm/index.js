@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 
 export default class Form extends Component {
     componentWillMount() {
@@ -18,7 +19,8 @@ export default class Form extends Component {
         amount: '',
         monthly_amount: '',
         seat_number: '',
-        status:'comming'
+        status:'comming',
+        redirect : false
       }
 
       this._handleChange = this._handleChange.bind(this)
@@ -28,7 +30,7 @@ export default class Form extends Component {
     }
     edit = (e) => {
       e.preventDefault();
-      this.props.editPool(this.props.match.params.id, this.state);
+      this.setState({ redirect: true}, () => this.props.editPool(this.props.match.params.id, this.state));
       this.setState({ name:'',
                       amount: '',
                       monthly_amount: '',
@@ -38,7 +40,32 @@ export default class Form extends Component {
 
     };
 
+
+    // edit = (e) => {
+    //   e.preventDefault();
+    //   this.setState({ redirect: true}, () => this.props.editPool(this.props.match.params.id, this.state));
+    //   this.setState({
+    //                   launch_date: '',
+    //                   end_date: ''
+    //                 });
+    //
+    // };
+    // edit = (e) => {
+    //   e.preventDefault();
+    //   this.props.editPool(this.props.match.params.id, this.state);
+    //   this.setState({ name:'',
+    //                   amount: '',
+    //                   monthly_amount: '',
+    //                   seat_number: '',
+    //                   status:'comming'
+    //                });
+    //
+    // };
+
     render(){
+        if (this.state.redirect){
+         return( <Redirect to= "/pools/"/>)
+        }
 
         console.log("§§§§§§§§§§", this.props)
         const { pools, loading} = this.props;
