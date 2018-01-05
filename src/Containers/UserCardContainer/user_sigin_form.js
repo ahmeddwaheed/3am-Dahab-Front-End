@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import UserForm from '../../Components/UserSignIn';
 import history from '../../history';
-import {userSignInLoading, userSignIn, userSignInSuccess, userSignInFailure, setCurrentUser, userLogout} from '../../Actions/Authentication';
+import {userSignInLoading, userSignIn, userSignInSuccess, userSignInFailure, userLogout} from '../../Actions/Authentication';
 import setAutherizationToken from './utils/setAuthrizationToken';
 import jwt from 'jsonwebtoken';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.auth.loading,
         error: state.auth.error,
-        auth: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated
     }
 }
 
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
                     dispatch(userSignInSuccess(response.payload.data))
                     localStorage.setItem('jwtToken', token);
                     setAutherizationToken(token);
-                    history.push('/home/pools');                      
+                    history.push('/pools');                      
                 }
                 else {
                     history.push('/login');

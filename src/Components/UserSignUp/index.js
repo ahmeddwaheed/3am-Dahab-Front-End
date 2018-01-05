@@ -36,72 +36,81 @@ export default class UserSignUp extends Component {
         this.setState({password_confirmation: e.target.value})
     }
     render(){
-        const { loading , error, message } = this.props;
+        const { loading , error, message , isAuthenticated} = this.props;
         
         if(loading){
             return (
                 <Spin />
             )
         }
-        return (
-            <div>
-                <h1> Register </h1>
-                <form  onSubmit = {this.addNewUser} className="demoForm" >
-                    <div>
-                        <div className="panel panel-default">
-                        </div>
-                        <label htmlFor="name">Name</label>
-                        <input type="text" required className="form-control" name="name"
-                            placeholder="Username"
-                            onChange={this.handleNameChange}  />
-                    </div><br />
-                    <div>
-                        <label htmlFor="email">email</label>
-                        <input type="email" required className="form-control" name="email"
-                            placeholder="Email"
-                            onChange={this.handleEmailChange}  />
-                    </div><br />
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" required className="form-control" name="password"
-                            placeholder="Password"
-                            onChange={this.handlePasswordChange}  />
-                    </div><br />
-                    <div>
-                        <label htmlFor="password">Confirm Password</label>
-                        <input type="password" required className="form-control" name="confirm"
-                            placeholder="Confirm Password"
-                            onChange={this.handleConfirmChange}  />
-                    </div><br />
-                    {
+        if(!isAuthenticated){
+            return (
+                <div>
+                    <h1> Register </h1>
+                    <form  onSubmit = {this.addNewUser} className="demoForm" >
                         <div>
-                            <button className="btn btn-primary" >Register</button>
-                            <Link to="/login" > Login</Link>
+                            <div className="panel panel-default">
+                            </div>
+                            <label htmlFor="name">Name</label>
+                            <input type="text" required className="form-control" name="name"
+                                placeholder="Username"
+                                onChange={this.handleNameChange}  />
+                        </div><br />
+                        <div>
+                            <label htmlFor="email">email</label>
+                            <input type="email" required className="form-control" name="email"
+                                placeholder="Email"
+                                onChange={this.handleEmailChange}  />
+                        </div><br />
+                        <div>
+                            <label htmlFor="password">Password</label>
+                            <input type="password" required className="form-control" name="password"
+                                placeholder="Password"
+                                onChange={this.handlePasswordChange}  />
+                        </div><br />
+                        <div>
+                            <label htmlFor="password">Confirm Password</label>
+                            <input type="password" required className="form-control" name="confirm"
+                                placeholder="Confirm Password"
+                                onChange={this.handleConfirmChange}  />
+                        </div><br />
+                        {
+                            <div>
+                                <button className="btn btn-primary" >Register</button>
+                                <Link to="/login" > Login</Link>
+                            </div>
+                        }
+                    </form>
+                    {
+                        this.props.error?
+                        <div>
+                                <br />
+                                {
+                                    // this.props.error.erros.map(error => {
+                                    //    { console.log(error)}
+                                    // })
+                                }
+                            <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
                         </div>
+                        :
+                        this.props.message?
+                        <div>
+                                <br />
+                                <p>{this.props.message}</p>
+                        </div>
+                        :
+                        null
                     }
-                </form>
-                {
-                    this.props.error?
-                    <div>
-                            <br />
-                            {
-                                // this.props.error.erros.map(error => {
-                                //    { console.log(error)}
-                                // })
-                            }
-                        <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
-                    </div>
-                    :
-                    this.props.message?
-                    <div>
-                            <br />
-                            <p>{this.props.message}</p>
-                    </div>
-                    :
-                    null
-                }
-                
-            </div>
-        )
+                    
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <h1> Invalid Request </h1>
+                </div>
+            )
+        }
     }
 }

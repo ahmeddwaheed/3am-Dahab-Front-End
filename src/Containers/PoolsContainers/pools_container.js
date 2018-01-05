@@ -14,15 +14,17 @@ const mapStateToProps = (state) => {
     loading: state.pools.loading,
     adding: state.pools.adding,
     error: state.pools.error,
-    errorAdding: state.pools.errorAdding
+    errorAdding: state.pools.errorAdding,
+    currentUser: state.auth.user,
+    isAuthenticated: state.auth.isAuthenticated
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPools: () => {
-          dispatch(getPoolsLoading());
+    getPools: (status) => {
+          dispatch(getPoolsLoading(status));
           setTimeout(() => {
-              dispatch(getPools()).then(response => {
+              dispatch(getPools(status)).then(response => {
                   if(response.payload.status < 400){
                       dispatch(getPoolsSuccess(response.payload.data));
                       console.log(response.payload.data);

@@ -4,9 +4,11 @@ import 'antd/lib/grid/style/index.css';
 import 'antd/lib/spin/style/index.css';
 import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
-import { Redirect } from 'react-router'
+import { Redirect, Router } from 'react-router'
 import { Link, Route } from 'react-router-dom';
 import {FormErrors} from '../FormErrors';
+import history from '../../history';
+
 import './Form.css';
 
 export default class UserSignIn extends Component {
@@ -18,7 +20,7 @@ export default class UserSignIn extends Component {
             formErrors: {email: '', password: ''},
             emailValid: false,
             passwordValid: false,
-            formValid: false,
+            formValid: false
         }
     }
     SignIn = (e) => {
@@ -30,86 +32,95 @@ export default class UserSignIn extends Component {
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value},
-                      () => { this.validateField(name, value) });
-    }
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-    
-        switch(fieldName) {
-          case 'email':
-            emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-            fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-            break;
-          case 'password':
-            passwordValid = value.length >= 6;
-            fieldValidationErrors.password = passwordValid ? '': ' is too short';
-            break;
-          default: break;
-    }
-    
-    this.setState({formErrors: fieldValidationErrors,
-                        emailValid: emailValid,
-                        passwordValid: passwordValid
-                      }, this.validateForm);
-    }
-    validateForm() {
-        this.setState({formValid: this.state.emailValid && this.state.passwordValid});
-    }
-    
-    errorClass(error) {
-        return(error.length === 0 ? '' : 'has-error');
-    }
+            () => { this.validateField(name, value) });
+        }
+        validateField(fieldName, value) {
+            let fieldValidationErrors = this.state.formErrors;
+            let emailValid = this.state.emailValid;
+            let passwordValid = this.state.passwordValid;
+            
+            switch(fieldName) {
+                case 'email':
+                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+                break;
+                case 'password':
+                passwordValid = value.length >= 6;
+                fieldValidationErrors.password = passwordValid ? '': ' is too short';
+                break;
+                default: break;
+            }
+            
+            this.setState({formErrors: fieldValidationErrors,
+                emailValid: emailValid,
+                passwordValid: passwordValid
+            }, this.validateForm);
+        }
+        validateForm() {
+            this.setState({formValid: this.state.emailValid && this.state.passwordValid});
+        }
+        
+        errorClass(error) {
+            return(error.length === 0 ? '' : 'has-error');
+        }
     
     render(){
-        const { loading , error } = this.props;
+        const { loading , error , isAuthenticated} = this.props;
         // console.log("ERRRRRRROR",error);
         // if(loading){
         //     return (
         //         <Spin />
         //     )
         // }
-        // console.log("EEEEEEEE", message);
-        return (
-            <div>
-                <h1> Sign In </h1>
-                <form  onSubmit = {this.SignIn} className="demoForm" >
-                    <div className="panel panel-default">
-                        <FormErrors formErrors={this.state.formErrors} />
-                    </div>
-                    <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" required className="form-control" name="email"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={this.handleUserInput}  />
-                    </div>
-                    <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.handleUserInput}  />
-                    </div>
+        console.log("EEEEEEEE", this.props.hoba);
+        if(!isAuthenticated){
+            return (
+                <div>
+                    <h1> Sign In </h1>
+                    <form  onSubmit = {this.SignIn} className="demoForm" >
+                        <div className="panel panel-default">
+                            <FormErrors formErrors={this.state.formErrors} />
+                        </div>
+                        <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
+                            <label htmlFor="email">Email</label>
+                            <input type="email" required className="form-control" name="email"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.handleUserInput}  />
+                        </div>
+                        <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
+                            <label htmlFor="password">Password</label>
+                            <input type="password" className="form-control" name="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleUserInput}  />
+                        </div>
+                        {
+                            <div>
+                                <button className="btn btn-primary" >Sign In</button>
+                                <Link to="/register" > Register</Link>
+                            </div>
+                        }
+                    </form>
                     {
-                        <div>
-                            <button className="btn btn-primary" >Sign In</button>
-                            <Link to="/register" > Register</Link>
-                        </div>
+                        this.props.error?
+                            <div>
+                                <br />
+                                <Alert message={this.props.error.message} type="error"/>
+                            </div>
+                            :
+                            null
                     }
-                </form>
-                {
-                    this.props.error?
-                        <div>
-                            <br />
-                            <Alert message={this.props.error.message} type="error"/>
-                        </div>
-                        :
-                        null
-                }
-                
-            </div>
-        )
+                    
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <h1> Invalid Request </h1>
+                </div>
+            )
+        }
     }
 }

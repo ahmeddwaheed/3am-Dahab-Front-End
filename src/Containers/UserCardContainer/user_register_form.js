@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
     return {
         message: state.userCard.user.status,
         loading: state.userCard.user.loading,
-        error: state.userCard.error
+        error: state.userCard.error,
+        isAuthenticated: state.auth.isAuthenticated
     }
 }
 

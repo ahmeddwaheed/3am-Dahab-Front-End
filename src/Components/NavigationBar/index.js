@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 export default class NavigationBar extends Component {
-
-    logout(e){
-      e.preventDefault();
-      this.props.userLogout();
-    }
+  logout(e){
+    e.preventDefault();
+    this.props.userLogout();
+  }
 
   render() {
     const {isAuthenticated} = this.props.auth;
@@ -27,7 +26,12 @@ export default class NavigationBar extends Component {
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
-              <Link to="/" className="navbar-brand">3am Dahab</Link>
+              {
+                isAuthenticated?
+                <Link to="/pools" className="navbar-brand">3am Dahab</Link>
+                :
+                <Link to="/" className="navbar-brand">3am Dahab</Link>                
+              }
             </div>
             
             <div>
