@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
     error: state.pools.error,
     errorAdding: state.pools.errorAdding,
     currentUser: state.auth.user,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    isAdmin: state.admin.isAdmin
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -27,13 +28,11 @@ const mapDispatchToProps = (dispatch) => {
               dispatch(getPools(status)).then(response => {
                   if(response.payload.status < 400){
                       dispatch(getPoolsSuccess(response.payload.data));
-                      console.log(response.payload.data);
                   }else{
                       dispatch(getPoolsFailure(response.payload.message));
-                      console.log(response.payload);
                   }
               })
-          }, 2000)
+          }, 1000)
       },
       addPool: (content, callback) => {
           dispatch(addPoolLoading());
@@ -46,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
                       dispatch(addPoolFailure(response.payload.message));
                   }
               })
-          }, 2000)
+          }, 1000)
       },
       editPool: (id, type, value) => {
           dispatch(editPoolLoading(id));
@@ -58,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
                       dispatch(editPoolFailure(response.payload.message));
                   }
               })
-          }, 2000)
+          }, 1000)
       },
       deletePool: (id) => {
           dispatch(deletePoolLoading(id));
@@ -70,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
                       dispatch(deletePoolFailure(id));
                   }
               })
-          }, 2000)
+          }, 1000)
       }
   }
 }

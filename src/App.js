@@ -11,6 +11,7 @@ import LaunchForm from './Containers/PoolsContainers/pool_launch_container';
 import NavigationBar from './Containers/UserCardContainer/nav_bar';
 import UserSignInForm from './Containers/UserCardContainer/user_sigin_form';
 import UserRegisterForm from './Containers/UserCardContainer/user_register_form';
+import AdminLogin from './Containers/AdminContainer';
 
 import './App.css';
 
@@ -19,11 +20,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavigationBar /> 
         <Route exact path="/login" component= {UserSignInForm} />
         <Route path="/pools" exact component={PoolsPage} />
         <Route exact path="/" component= {UserSignInForm} />
         <Route exact path="/register" component= {UserRegisterForm} />
+        <Route exact path={"/pools/:id/request"} component={RequestForm} />
+        <Route exact path={"/admin/login"} exact component={AdminLogin} />  
+        <Route exact path={"/dashboard"} exact component={Dashboard} />              
       </div>
       
     );

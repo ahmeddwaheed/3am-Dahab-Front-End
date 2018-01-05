@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import NavBar from '../../Components/NavigationBar';
 import history from '../../history';
-import { userLogout} from '../../Actions/Authentication';
 import setAutherizationToken from './utils/setAuthrizationToken';
 import jwt from 'jsonwebtoken';
+import {userLogout, setCurrentUser , setCurrentUserSuccess, setCurrentUserFailure} from '../../Actions/Authentication';
+
 
 
 const mapStateToProps = (state) => {
@@ -20,6 +21,16 @@ const mapDispatchToProps = (dispatch) => {
             localStorage.removeItem('jwtToken');
             setAutherizationToken(false);
             history.push('/');
+        },
+        setCurrentUser: () => {
+            dispatch(setCurrentUser()).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(setCurrentUserSuccess(response.payload.data))
+                }
+                else {
+                    dispatch(setCurrentUserFailure(response.payload.error))
+                }
+            })
         }
      }
 }

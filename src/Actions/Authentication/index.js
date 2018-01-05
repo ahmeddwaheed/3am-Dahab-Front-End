@@ -11,9 +11,14 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER ';
 export const SET_CURRENT_USER_SUCCESS = 'SET_CURRENT_USER_SUCCESS';
 export const SET_CURRENT_USER_FAILURE = 'SET_CURRENT_USER_FAILURE';
 
+export const ADMIN_SIGN_IN = 'ADMIN_SIGN_IN';
+export const ADMIN_SIGN_IN_SUCCESS = 'ADMIN_SIGN_IN_SUCCESS';
+export const ADMIN_SIGN_IN_FAILURE = 'ADMIN_SIGN_IN_FAILURE';
 
-
-
+export const ADMIN_LOG_OUT = 'ADMIN_LOG_OUT';
+export const CURRENT_ADMIN = 'CURRENT_ADMIN ';
+export const CURRENT_ADMIN_SUCCESS = 'CURRENT_ADMIN_SUCCESS';
+export const CURRENT_ADMIN_FAILURE = 'CURRENT_ADMIN_FAILURE';
 
 export const userSignIn = (user) => {
     const payload = axios.post(`http://localhost:3001/users/login`, user);
@@ -61,6 +66,44 @@ export const setCurrentUserSuccess = (user) => {
 export const setCurrentUserFailure = (error) => {
     return {
         type: SET_CURRENT_USER_FAILURE,
+        error
+    }
+}
+export const adminSignIn = (admin) => {
+    const payload = axios.post(`http://localhost:3001/admins/login`, admin);
+    return {
+        type: ADMIN_SIGN_IN,
+        payload
+    }
+}
+export const adminSignInSuccess = (admin) => {
+    return {
+        type: ADMIN_SIGN_IN_SUCCESS,
+        admin
+    }
+}
+export const AdminSignInFailure = (error) => {
+    return {
+        type: ADMIN_SIGN_IN_FAILURE,
+        error
+    }
+}
+export const setCurrentAdmin = () => {
+    const payload = axios.get(`http://localhost:3001/current_admin`)
+    return {
+        type: CURRENT_ADMIN,
+        payload
+    }
+}
+export const setCurrentAdminSuccess = (admin) => {
+    return {
+        type: CURRENT_ADMIN_SUCCESS,
+        admin
+    }
+}
+export const setCurrentAdminFailure = (error) => {
+    return {
+        type: CURRENT_ADMIN_FAILURE,
         error
     }
 }

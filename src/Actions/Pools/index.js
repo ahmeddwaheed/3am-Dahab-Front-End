@@ -49,9 +49,6 @@ export const getPoolsLoading = () =>{
 }
 export const getPools = (status) => {
   const payload = Axios.get(`http://localhost:3001/pools?status=${status}`);
-  console.log('hello from the actinnnnnnnnons!!!');
-  console.log(payload);
-
   return {
     type: GET_POOLS,
     payload

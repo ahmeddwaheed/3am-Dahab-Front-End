@@ -6,6 +6,7 @@ import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
+import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
 
 
 export default class UserSignUp extends Component {
@@ -46,6 +47,7 @@ export default class UserSignUp extends Component {
         if(!isAuthenticated){
             return (
                 <div>
+                <NavigationBar />
                     <h1> Register </h1>
                     <form  onSubmit = {this.addNewUser} className="demoForm" >
                         <div>

@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
                       dispatch(addPoolFailure(response.payload.message));
                   }
               })
-          }, 2000)
+          }, 1000)
       }
 
   }

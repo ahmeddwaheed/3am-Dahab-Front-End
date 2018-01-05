@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Pool from '../Pool';
 import history from '../../history';
+import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
+
 
 
 // const Search = Input.Search;
@@ -22,10 +24,16 @@ export default class Pools extends Component {
       }
     }
     render(){
-        const { pools, loading , currentUser, isAuthenticated} = this.props;
-        if (isAuthenticated){
+        const { pools, loading , currentUser, isAuthenticated, isAdmin} = this.props;
+        if (isAuthenticated || isAdmin){
           return (
-              <div>
+            <div>
+                  {
+                    isAuthenticated?
+                    <NavigationBar /> 
+                    :
+                    null
+                  }
                     <h1>HI {currentUser.name}</h1>
                     <select name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
                       <option value = "" >All</option>

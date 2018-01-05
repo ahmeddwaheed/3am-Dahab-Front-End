@@ -7,7 +7,6 @@ import {
 } from '../../Actions/Requests';
 
 const mapStateToProps = (state) => {
-  console.log("FEEEEEEN EL STAAAATE", state.requests);
   return {
     requests: state.requests.requests,
     loading: state.requests.loading,
@@ -24,12 +23,9 @@ const mapDispatchToProps = (dispatch) => {
               dispatch(getRequests()).then(response => {
                   if(response.payload.status < 400){
                       dispatch(getRequestsSuccess(response.payload.data));
-                      console.log('hello from success container');
-                      console.log(response.payload.data);
-                  }else{
+                  }
+                  else{
                       dispatch(getRequestsFailure(response.payload.message));
-                      console.log('hello from failure container');
-                      console.log(response.payload);
                   }
               })
           }, 1000)

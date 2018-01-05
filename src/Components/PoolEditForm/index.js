@@ -67,7 +67,6 @@ export default class Form extends Component {
          return( <Redirect to= "/pools/"/>)
         }
 
-        console.log("§§§§§§§§§§", this.props)
         const { pools, loading} = this.props;
         return (
             <div>

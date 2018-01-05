@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
+import history from '../../history';
+
+
 
 export default class Form extends Component {
   componentWillMount(){
       const {pool, getPool, match: {params: {id}}} = this.props;
-      console.log('paraaahhhhhhhaaaaaaaaams',this.props);
-      // console.log(id);
-      console.log('id', this.props)
   }
     constructor(props){
       super(props);
@@ -14,9 +15,8 @@ export default class Form extends Component {
         background: '',
         program: '',
         user_id:'',
-        pool_id:this.props.match.params.id
+        pool_id: this.props.match.params.id
       }
-      console.log('MATCH', props.match)
       this._handleChange = this._handleChange.bind(this)
     }
     _handleChange(e){
@@ -28,30 +28,35 @@ export default class Form extends Component {
       this.setState({ reason:'',
                       background: '',
                       program: '',
-                      user_id:''
+                      user_id: this.props.user.id
                    });
     };
 
     render(){
-        const { requests, loading} = this.props;
+        const { requests, loading, user} = this.props;
+        if(user){
+          return (
+              <div>
+              <NavigationBar />
+                   <form onSubmit = {this.add}>
+  
+                       <label> reason </label>
+                       <input type = "text" name="reason"  onChange={this._handleChange} />
+                       <label> background </label>
+                       <input type = "text" name="background" onChange={this._handleChange} />
+                       <label> program </label>
+                       <input type = "text" name="program" onChange={this._handleChange} />
+  
+                       <input type = "submit" value = "Submit" />
+                    </form>
+              </div>
+          )
+        }
+        else {
+          history.push('/');
+          return null
+        }
 
-        return (
-            <div>
-                 <form onSubmit = {this.add}>
-
-                     <label> reason </label>
-                     <input type = "text" name="reason"  onChange={this._handleChange} />
-                     <label> background </label>
-                     <input type = "text" name="background" onChange={this._handleChange} />
-                     <label> program </label>
-                     <input type = "text" name="program" onChange={this._handleChange} />
-                     <label> userID </label>
-                     <input type = "text" name="user_id" onChange={this._handleChange} />
-
-                     <input type = "submit" value = "Submit" />
-                  </form>
-            </div>
-        )
     }
 }
 
