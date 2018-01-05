@@ -24,19 +24,14 @@ export default class Pool extends Component {
             <p>monthly amount: {this.props.pool.monthly_amount}</p>
             <p>seats: {this.props.pool.seat_number}</p>
             <p>status: {this.props.pool.status}</p>
-            <Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</ Button></Link>
-
+            <Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</ Button> </Link>
+            
             {this.props.pool.number_of_users == this.props.pool.seat_number && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/launch`}><Button bsStyle="success"> Launch</ Button></Link>: null}
-            {this.props.pool.number_of_users == null && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/edit`}><Button bsStyle="primary"> Edit</ Button></Link>: null}
+            {this.props.pool.number_of_users == null && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/edit`}><Button bsStyle="primary"> Edit </ Button></Link>: null}
             {this.props.pool.number_of_users == null && this.props.pool.status == "comming" ?<Button onClick = {this.delete} bsStyle="danger"> Delete</ Button> : null}
           </div>
         )
     }
 }
 
-// <Link to="/form"><h2> add pool </h2></Link>
 
-
-// <Button onClick={() => this.props.onClick(this.props.pool.id)} bsStyle="danger"> Delete</ Button>
-
-// <Link to={`/pools/${this.props.pool.id}`}><Button bsStyle="success"> join</ Button> </Link>

@@ -4,7 +4,7 @@ import {
 
   addPoolLoading, addPool, addPoolSuccess, addPoolFailure,
 
-} from '../../Actions/pools';
+} from '../../Actions/Pools';
 
 const mapStateToProps = (state) => {
   return {

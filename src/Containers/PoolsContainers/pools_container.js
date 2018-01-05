@@ -6,7 +6,7 @@ import {
   addPoolLoading, addPool, addPoolSuccess, addPoolFailure,
   editPoolLoading, editPool, editPoolSuccess, editPoolFailure,
   deletePoolLoading, deletePool, deletePoolSuccess, deletePoolFailure
-} from '../../Actions/pools';
+} from '../../Actions/Pools';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +14,9 @@ const mapStateToProps = (state) => {
     loading: state.pools.loading,
     adding: state.pools.adding,
     error: state.pools.error,
-    errorAdding: state.pools.errorAdding
+    errorAdding: state.pools.errorAdding,
+    currentUser: state.auth.user,
+    isAuthenticated: state.auth.isAuthenticated
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -25,29 +27,14 @@ const mapDispatchToProps = (dispatch) => {
               dispatch(getPools(status)).then(response => {
                   if(response.payload.status < 400){
                       dispatch(getPoolsSuccess(response.payload.data));
-                      console.log('hello from container');
                       console.log(response.payload.data);
                   }else{
                       dispatch(getPoolsFailure(response.payload.message));
-                      console.log('hello from failure container');
                       console.log(response.payload);
                   }
               })
           }, 2000)
       },
-
-      getPool: (id) => {
-            dispatch(getPoolLoading(id));
-            setTimeout(() => {
-                dispatch(getPool(id)).then(response => {
-                    if(response.payload.status < 400){
-                        dispatch(getPoolSuccess(response.payload.data));
-                    }else{
-                        dispatch(getPoolFailure(response.payload.message));
-                    }
-                })
-            }, 2000)
-        },
       addPool: (content, callback) => {
           dispatch(addPoolLoading());
           setTimeout(() => {
