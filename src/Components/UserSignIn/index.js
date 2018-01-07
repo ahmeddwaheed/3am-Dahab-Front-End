@@ -8,7 +8,7 @@ import { Redirect, Router } from 'react-router'
 import { Link, Route } from 'react-router-dom';
 import {FormErrors} from '../FormErrors';
 import history from '../../history';
-import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
+import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 import './Form.css';
 
 export default class UserSignIn extends Component {
@@ -65,17 +65,17 @@ export default class UserSignIn extends Component {
         }
     
     render(){
-        const { loading , error , isAuthenticated} = this.props;
+        const { loading , error, isUser} = this.props;
         // console.log("ERRRRRRROR",error);
         // if(loading){
         //     return (
         //         <Spin />
         //     )
         // }
-        if(!isAuthenticated){
+        if(!isUser){
             return (
                 <div>
-                <NavigationBar /> 
+                <UserHeader /> 
                     <h1> Sign In </h1>
                     <form  onSubmit = {this.SignIn} className="demoForm" >
                         <div className="panel panel-default">

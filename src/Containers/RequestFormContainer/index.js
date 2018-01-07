@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
     adding: state.adding,
     error: state.error,
     errorAdding: state.errorAdding,
-    user: state.auth.user
+    user: state.authUser.user
   }
 }
 

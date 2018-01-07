@@ -6,7 +6,7 @@ import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
-import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
+import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 
 
 export default class UserSignUp extends Component {
@@ -37,17 +37,16 @@ export default class UserSignUp extends Component {
         this.setState({password_confirmation: e.target.value})
     }
     render(){
-        const { loading , error, message , isAuthenticated} = this.props;
+        const { loading , error, message } = this.props;
         
         if(loading){
             return (
                 <Spin />
             )
         }
-        if(!isAuthenticated){
             return (
                 <div>
-                <NavigationBar />
+                <UserHeader />
                     <h1> Register </h1>
                     <form  onSubmit = {this.addNewUser} className="demoForm" >
                         <div>
@@ -106,13 +105,13 @@ export default class UserSignUp extends Component {
                     
                 </div>
             )
-        }
-        else {
-            return (
-                <div>
-                    <h1> Invalid Request </h1>
-                </div>
-            )
-        }
+        // }
+        // else {
+        //     return (
+        //         <div>
+        //             <h1> Invalid Request </h1>
+        //         </div>
+        //     )
+        // }
     }
 }

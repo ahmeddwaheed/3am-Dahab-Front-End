@@ -9,7 +9,6 @@ const mapStateToProps = (state) => {
         message: state.userCard.user.status,
         loading: state.userCard.user.loading,
         error: state.userCard.error,
-        isAuthenticated: state.auth.isAuthenticated
     }
 }
 

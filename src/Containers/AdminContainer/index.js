@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken';
 
 const mapStateToProps = (state) => {
     return {
-        
+        isAdmin: state.authAdmin.isAdmin
     }
 }
 
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
                     const token = response.payload.data.auth_token;  
                     dispatch(adminSignInSuccess(response.payload.data))
                     localStorage.setItem('jwtToken', token);
+                    localStorage.setItem('isAdmin', true);
                     setAutherizationToken(token);
                     history.push('/dashboard');                      
                 }

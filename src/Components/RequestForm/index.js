@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
+import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 import history from '../../history';
 
 
@@ -37,7 +37,7 @@ export default class Form extends Component {
         if(user){
           return (
               <div>
-              <NavigationBar />
+              <UserHeader />
                    <form onSubmit = {this.add}>
   
                        <label> reason </label>

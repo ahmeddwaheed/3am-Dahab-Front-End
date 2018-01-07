@@ -1,16 +1,20 @@
 import {connect} from 'react-redux';
-import NavBar from '../../Components/NavigationBar';
+import User from '../../Components/UserHeader';
+import Admin from '../../Components/AdminHeader';
 import history from '../../history';
 import setAutherizationToken from './utils/setAuthrizationToken';
 import jwt from 'jsonwebtoken';
-import {userLogout, setCurrentUser , setCurrentUserSuccess, setCurrentUserFailure} from '../../Actions/Authentication';
+import {userLogout, setCurrentUser , setCurrentUserSuccess, setCurrentUserFailure,
+    setCurrentAdmin, setCurrentAdminSuccess, setCurrentAdminFailure} from '../../Actions/Authentication';
 
 
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.auth,
-        user: state.auth.user
+        authUser: state.authUser,
+        user: state.authUser.user,
+        isUser: state.authUser.isUser,
+        isAdmin: state.authAdmin.isAdmin      
     }
 }
 
@@ -19,6 +23,8 @@ const mapDispatchToProps = (dispatch) => {
         userLogout: () => {
             dispatch(userLogout())
             localStorage.removeItem('jwtToken');
+            localStorage.removeItem('isUser');
+            localStorage.removeItem('isAdmin');
             setAutherizationToken(false);
             history.push('/');
         },
@@ -31,7 +37,18 @@ const mapDispatchToProps = (dispatch) => {
                     dispatch(setCurrentUserFailure(response.payload.error))
                 }
             })
+        },
+        setCurrentAdmin: () => {
+            dispatch(setCurrentAdmin()).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(setCurrentAdminSuccess(response.payload.data))
+                }
+                else{
+                    dispatch(setCurrentAdminFailure(response.payload.error))
+                }
+            })
         }
      }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(User);
+export const AdminHeader = connect(mapStateToProps, mapDispatchToProps)(Admin);

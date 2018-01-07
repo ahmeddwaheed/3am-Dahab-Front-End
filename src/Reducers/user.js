@@ -3,7 +3,7 @@ import {USER_SIGN_IN_SUCCESS, USER_SIGN_IN_LOADING, USER_SIGN_IN_FAILURE, USER_L
 import isEmpty from 'lodash';
 
 const INTIAL_STATE = {
-    isAuthenticated: localStorage.jwtToken ? true: false,
+    isUser: !!localStorage.getItem('isUser'),
     user: {},
     error: null
 };
@@ -13,13 +13,13 @@ export default  (currentState = INTIAL_STATE, action) => {
         case USER_SIGN_IN_LOADING:
             return {...currentState, loading: true};
         case USER_SIGN_IN_SUCCESS:
-            return {...currentState, user: action.user, isAuthenticated: true};
+            return {...currentState, user: action.user, isUser: true};
         case USER_SIGN_IN_FAILURE:
             return {...currentState, error:action.error};
         case USER_LOG_OUT:
-            return {...currentState, isAuthenticated: false, user:{}}
+            return {...currentState, user:{}, isUser: false}
         case SET_CURRENT_USER_SUCCESS:
-            return {...currentState, user: action.user, isAuthenticated: true};
+            return {...currentState, user: action.user};
         case SET_CURRENT_USER_FAILURE: 
             return {...currentState, error: action.error}
         default: return currentState;

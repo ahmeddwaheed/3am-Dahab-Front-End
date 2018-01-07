@@ -3,23 +3,23 @@ import {ADMIN_SIGN_IN_SUCCESS, ADMIN_SIGN_IN_FAILURE, ADMIN_LOG_OUT,
 import isEmpty from 'lodash';
 
 const INTIAL_STATE = {
-   isAdmin: localStorage.jwtToken ? true: false,
-   admin: {},
-   error: null
+    isAdmin: !!localStorage.getItem('isAdmin'),
+    admin: {},
+    error: null
 };
 
 export default  (currentState = INTIAL_STATE, action) => {
    switch(action.type){
        case ADMIN_SIGN_IN_SUCCESS:
-           return {...currentState, admin: action.admin, isAdmin: true};
+           return {...currentState, admin: action.admin, isAdmin: true}
        case ADMIN_SIGN_IN_FAILURE:
-           return {...currentState, error:action.error, isAdmin: false};
+           return {...currentState, error:action.error,};
        case ADMIN_LOG_OUT:
-           return {...currentState, isAdmin: false, admin:{}}
+           return {...currentState, admin:{}, isAdmin: true}
        case CURRENT_ADMIN_SUCCESS:
-           return {...currentState, admin: action.admin, isAdmin: true};
+           return {...currentState, admin: action.admin}
        case CURRENT_ADMIN_FAILURE: 
-           return {...currentState, error: action.error, isAdmin:false}
+           return {...currentState, error: action.error}
        default: return currentState;
    }
 }

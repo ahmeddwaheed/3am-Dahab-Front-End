@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Pool from '../Pool';
 import history from '../../history';
-import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
+import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 
 
 
@@ -24,13 +24,13 @@ export default class Pools extends Component {
       }
     }
     render(){
-        const { pools, loading , currentUser, isAuthenticated, isAdmin} = this.props;
-        if (isAuthenticated || isAdmin){
+        const { pools, loading , currentUser, isUser , isAdmin } = this.props;
+        if(isUser || isAdmin){
           return (
             <div>
                   {
-                    isAuthenticated?
-                    <NavigationBar /> 
+                    isUser? 
+                    <UserHeader />
                     :
                     null
                   }
@@ -42,7 +42,7 @@ export default class Pools extends Component {
                     </select>
                     {pools.map((pool) => {
                       return (
-                      <Pool pool={pool} onClick={this.props.deletePool.bind(this)} />
+                      <Pool isAdmin= {isAdmin} isUser= {isUser} pool={pool} onClick={this.props.deletePool.bind(this)} />
                       )
                     })
                    }
@@ -51,7 +51,7 @@ export default class Pools extends Component {
           )
         }
         else {
-          history.push('/'); 
+          history.push('/login'); 
           return null
         }
     }

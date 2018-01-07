@@ -4,8 +4,8 @@ import request from './userCard';
 import pools from './pools';
 import requestForm from './request_form';
 import requests from './request';
-import auth from './user';
-import admin from './admin';
+import authUser from './user';
+import authAdmin from './admin';
 
 
 const rootReducer = combineReducers({
@@ -14,8 +14,8 @@ const rootReducer = combineReducers({
   requestForm,
   requests,
   request,
-  auth,
-  admin
+  authUser,
+  authAdmin
 })
 
 export default rootReducer

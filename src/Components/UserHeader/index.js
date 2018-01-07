@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default class NavigationBar extends Component {
+export default class UserHeader extends Component {
 
   componentWillMount(){
     this.props.setCurrentUser();
@@ -14,7 +14,7 @@ export default class NavigationBar extends Component {
   }
   
   render() {
-    const {isAuthenticated} = this.props.auth;
+    const {isUser} = this.props;
     const userLinks = (
       <ul className="nav navbar-nav navbar-right">
         <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
@@ -31,7 +31,7 @@ export default class NavigationBar extends Component {
           <div className="container-fluid">
             <div className="navbar-header">
               {
-                isAuthenticated?
+                isUser?
                 <Link to="/pools" className="navbar-brand">3am Dahab</Link>
                 :
                 <Link to="/" className="navbar-brand">3am Dahab</Link>                
@@ -39,7 +39,7 @@ export default class NavigationBar extends Component {
             </div>
             
             <div>
-                {isAuthenticated? userLinks : guestLinks}
+                {isUser? userLinks : guestLinks}
             </div>
             
           </div>

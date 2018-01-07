@@ -8,7 +8,7 @@ import { Redirect, Router } from 'react-router'
 import { Link, Route } from 'react-router-dom';
 import {FormErrors} from '../FormErrors';
 import history from '../../history';
-import NavigationBar from '../../Containers/UserCardContainer/nav_bar';
+import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 
 export default class UserSignIn extends Component {
     constructor(){
@@ -64,7 +64,7 @@ export default class UserSignIn extends Component {
         }
     
     render(){
-        const { loading , error , isAuthenticated} = this.props;
+        const { loading , error} = this.props;
         // console.log("ERRRRRRROR",error);
         // if(loading){
         //     return (
@@ -73,7 +73,7 @@ export default class UserSignIn extends Component {
         // }
         return (
             <div>
-            <NavigationBar /> 
+            <UserHeader /> 
                 <h1> Admin Login </h1>
                 <form  onSubmit = {this.SignIn} className="demoForm" >
                     <div className="panel panel-default">

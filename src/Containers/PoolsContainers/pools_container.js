@@ -15,9 +15,9 @@ const mapStateToProps = (state) => {
     adding: state.pools.adding,
     error: state.pools.error,
     errorAdding: state.pools.errorAdding,
-    currentUser: state.auth.user,
-    isAuthenticated: state.auth.isAuthenticated,
-    isAdmin: state.admin.isAdmin
+    currentUser: state.authUser.user,
+    isUser: state.authUser.isUser,
+    isAdmin: state.authAdmin.isAdmin    
   }
 }
 const mapDispatchToProps = (dispatch) => {
