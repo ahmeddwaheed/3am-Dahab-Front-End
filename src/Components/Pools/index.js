@@ -3,10 +3,6 @@ import Pool from '../Pool';
 import history from '../../history';
 import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 
-
-
-// const Search = Input.Search;
-//
 export default class Pools extends Component {
     constructor(props){
         super(props);
@@ -25,11 +21,6 @@ export default class Pools extends Component {
     }
     render(){
         const { pools, loading , currentUser, isUser , isAdmin } = this.props;
-        // var image = ""
-        // if(currentUser.avatar){
-        //   image = "localhost:3001" + currentUser.avatar.url
-        // }
-        // debugger
         if(isUser || isAdmin){
           return (
             <div>
