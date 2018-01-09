@@ -5,12 +5,14 @@ import {
 } from '../../Actions/RequestForm';
 
 const mapStateToProps = (state) => {
+    console.log("EL STATE", state);
   return {
     requests: state.requests,
     loading: state.loading,
     adding: state.adding,
     error: state.error,
-    errorAdding: state.errorAdding
+    errorAdding: state.errorAdding,
+    user: state.authUser.user
   }
 }
 
@@ -22,7 +24,6 @@ const mapDispatchToProps = (dispatch) => {
               dispatch(addRequest(request)).then(response => {
                   if(response.payload.status < 400){
                       dispatch(addRequestSuccess(response.payload.data.data));
-                      console.log('prooooops',this.props)
 
                   }else{
                       dispatch(addRequestFailure(response.payload.message));

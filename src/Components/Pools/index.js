@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Pool from '../Pool';
 import history from '../../history';
+import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
+
 
 
 // const Search = Input.Search;
@@ -22,11 +24,29 @@ export default class Pools extends Component {
       }
     }
     render(){
-        const { pools, loading , currentUser, isAuthenticated} = this.props;
-        if (isAuthenticated){
+        const { pools, loading , currentUser, isUser , isAdmin } = this.props;
+        // var image = ""
+        // if(currentUser.avatar){
+        //   image = "localhost:3001" + currentUser.avatar.url
+        // }
+        // debugger
+        if(isUser || isAdmin){
           return (
-              <div>
-                    <h1>HI {currentUser.name}</h1>
+            <div>
+                  {
+                    isUser? 
+                    <div>
+                      <h1>HI {currentUser.name}</h1>
+                      {
+                        currentUser.avatar?
+                        <img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src={`http://localhost:3001${currentUser.avatar.url}`} />
+                        :
+                        null
+                      }
+                    </div>
+                    :
+                    null
+                  }
                     <select name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
                       <option value = "" >All</option>
                       <option value = "comming">comming</option>
@@ -34,7 +54,7 @@ export default class Pools extends Component {
                     </select>
                     {pools.map((pool) => {
                       return (
-                      <Pool pool={pool} onClick={this.props.deletePool.bind(this)} />
+                      <Pool isAdmin= {isAdmin} isUser= {isUser} pool={pool} onClick={this.props.deletePool.bind(this)} />
                       )
                     })
                    }
@@ -43,8 +63,11 @@ export default class Pools extends Component {
           )
         }
         else {
-          history.push('/'); 
-          return null
+          return (
+            <div>
+              <h1> Invalid Request </h1>
+            </div>
+          )
         }
     }
 }

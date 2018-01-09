@@ -39,6 +39,14 @@ export const DELETE_POOL = 'DELETE_POOL';
 export const DELETE_POOL_SUCCESS = 'DELETE_POOL_SUCCESS';
 export const DELETE_POOL_FAILURE = 'DELETE_POOL_FAILURE';
 
+// add seat
+
+
+export const ADD_SEAT = 'ADD_SEAT';
+export const ADD_SEAT_SUCCESS = 'ADD_SEAT_SUCCESS';
+export const ADD_SEAT_FAILURE = 'ADD_SEAT_FAILURE';
+
+
 //Action Creators
 
 //Get all pools
@@ -49,9 +57,6 @@ export const getPoolsLoading = () =>{
 }
 export const getPools = (status) => {
   const payload = Axios.get(`http://localhost:3001/pools?status=${status}`);
-  console.log('hello from the actinnnnnnnnons!!!');
-  console.log(payload);
-
   return {
     type: GET_POOLS,
     payload
@@ -175,3 +180,40 @@ export const deletePoolFailure = (id) => {
     id
   }
 }
+export const addSeat = (user) => {
+  const payload = Axios.post(`http://localhost:3001/users_pools`, user);
+  return {
+      type: ADD_SEAT,
+      payload
+  }
+}
+export const addSeatSucces = (user) => {
+  return {
+      type: ADD_SEAT_SUCCESS,
+      user
+  }
+}
+export const addSeatFailure = (error) => {
+  return {
+      type: ADD_SEAT_FAILURE,
+      error
+  }
+}
+// export const deleteSeat = (id) => {
+//   const payload = Axios.delete(`http://localhost:3001/users_pools`, id);
+//   return {
+//       type: DELETE_SEAT,
+//       payload
+//   }
+// }
+// export const deleteSeatSucces = () => {
+//   return {
+//       type: DELETE_SEAT_SUCCESS,
+//   }
+// }
+// export const deleteSeatFailure = (error) => {
+//   return {
+//       type: DELETE_SEAT_FAILURE,
+//       error
+//   }
+// }

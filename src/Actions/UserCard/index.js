@@ -9,14 +9,12 @@ export const GET_REQUEST = 'GET_REQUEST';
 export const GET_REQUEST_SUCCESS = 'GET_REQUEST_SUCCESS';
 export const GET_REQUEST_FAILURE = 'GET_REQUEST_FAILURE';
 
-export const ADD_SEAT = 'ADD_SEAT';
-export const ADD_SEAT_SUCCESS = 'ADD_SEAT_SUCCESS';
-export const ADD_SEAT_FAILURE = 'ADD_SEAT_FAILURE';
-
 export const ADD_USER = 'ADD_USER';
 export const ADD_USER_LOADING = 'ADD_USER_LOADING';
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
 export const ADD_USER_FAILURE = 'ADD_USER_FAILURE';
+
+
 
 
 export const getRequest = (pool_id) => {
@@ -61,26 +59,6 @@ export const getUserSuccess = (user) => {
 export const getUserFailure = (error) => {
     return {
         type: GET_USER_FAILURE,
-        error
-    }
-}
-
-export const addSeat = (seat) => {
-    const payload = axios.post(`http://localhost:3001/users_pools`, seat);
-    return {
-        type: ADD_SEAT,
-        payload
-    }
-}
-export const addSeatSucces = (seat) => {
-    return {
-        type: ADD_SEAT_SUCCESS,
-        seat
-    }
-}
-export const addSeatFailure = (error) => {
-    return {
-        type: ADD_SEAT_FAILURE,
         error
     }
 }
