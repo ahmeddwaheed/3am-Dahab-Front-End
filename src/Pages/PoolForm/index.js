@@ -5,7 +5,6 @@ export default class FormPage extends Component {
   render (){
     return (
       <div>
-        <h2> New pool</h2>
         <Form />
       </div>
     )

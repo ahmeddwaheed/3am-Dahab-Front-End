@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
-import PoolsPage from './Containers/PoolsContainers/pools_container';
+import PoolsPage from './Pages/PoolsPage';
 import PoolForm from './Pages/PoolForm';
 import PoolDetails from './Pages/PoolDetails';
 import Requests from './Containers/RequestsContainer';
@@ -27,6 +27,8 @@ class App extends Component {
         <Route exact path={"/pools/:id/request"} component={RequestForm} />
         <Route exact path={"/admin/login"} exact component={AdminLogin} />  
         <Route exact path={"/dashboard"} exact component={Dashboard} />
+        <Route exact path={"/new_pool"} exact component={PoolForm} />
+        <Route exact path={`/pool/:id`} exact component={PoolDetails} />              
       </div>
       
     );

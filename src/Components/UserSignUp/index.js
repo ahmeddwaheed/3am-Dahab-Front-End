@@ -16,13 +16,19 @@ export default class UserSignUp extends Component {
             name: "",
             email: "",
             password: "",
-            password_confirmation: ""
+            password_confirmation: "",
+            avatar: ""
         }
     }
-    addNewUser = (e) => {
-        e.preventDefault();
-        this.props.addUser(this.state);
-        this.setState({name:"", email:"", password:"", password_confirmation:""});
+    addNewUser = () => {
+        let user = new FormData();
+        user.append('name',this.state.name);
+        user.append('email',this.state.email);
+        user.append('password',this.state.password);
+        user.append('password_confirmation',this.state.password_confirmation);
+        user.append('avatar',this.state.avatar);
+        this.props.addUser(user);        
+        this.setState({name:"", email:"", password:"", password_confirmation:"", avatar:""});
     }
     handleNameChange = (e) => {
         this.setState({name: e.target.value})
@@ -36,7 +42,10 @@ export default class UserSignUp extends Component {
     handleConfirmChange = (e) => {
         this.setState({password_confirmation: e.target.value})
     }
-    render(){
+    handleAvatarChange = (e) => {
+        this.setState({avatar: e.target.files[0]})
+    }
+    render(){        
         const { loading , error, message } = this.props;
         
         if(loading){
@@ -48,7 +57,7 @@ export default class UserSignUp extends Component {
                 <div>
                 <UserHeader />
                     <h1> Register </h1>
-                    <form  onSubmit = {this.addNewUser} className="demoForm" >
+                    <form className="demoForm" >
                         <div>
                             <div className="panel panel-default">
                             </div>
@@ -75,9 +84,14 @@ export default class UserSignUp extends Component {
                                 placeholder="Confirm Password"
                                 onChange={this.handleConfirmChange}  />
                         </div><br />
+                        <div>
+                            <label htmlFor="ImageUpload">Upload Image</label>
+                            <input type="file" required className="form-control" name="image"
+                            onChange={this.handleAvatarChange}/>
+                        </div><br />
                         {
                             <div>
-                                <button className="btn btn-primary" >Register</button>
+                                <button type="button" onClick={()=> this.addNewUser()} className="btn btn-primary" >Register</button>
                                 <Link to="/login" > Login</Link>
                             </div>
                         }
@@ -97,7 +111,7 @@ export default class UserSignUp extends Component {
                         this.props.message?
                         <div>
                                 <br />
-                                <p>{this.props.message}</p>
+                                <Alert message={this.props.message} type="success"/>
                         </div>
                         :
                         null

@@ -34,7 +34,7 @@ export default class UserHeader extends Component {
             <div className="navbar-header">
               {
                 isAdmin?
-                <Link to="/pools" className="navbar-brand">3am Dahab</Link>
+                <Link to="/dashboard" className="navbar-brand">3am Dahab</Link>
                 :
                 <Link to="/" className="navbar-brand">3am Dahab</Link>                
               }

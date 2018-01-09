@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import Pools from '../../Components/Pools';
 import Details from '../../Components/PoolDetails';
-import {
-  getPoolLoading, getPool, getPoolSuccess, getPoolFailure,
-} from '../../Actions/Pools';
+import {getPoolLoading, getPool, getPoolSuccess, getPoolFailure,
+    addSeat, addSeatSucces, addSeatFailure} from '../../Actions/Pools';
 
 const mapStateToProps = (state) => {
   return {
@@ -15,7 +14,8 @@ const mapStateToProps = (state) => {
     error: state.pools.error,
     errorAdding: state.pools.errorAdding,
     isUser: state.authUser.isUser,
-    isAdmin: state.authAdmin.isAdmin
+    isAdmin: state.authAdmin.isAdmin,
+    user: state.authUser.user
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -32,6 +32,16 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
             }, 1000)
+        },
+        addSeat :(user) => {
+            dispatch(addSeat(user)).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(addSeatSucces(response.payload.data.users_pools));
+                }
+                else {
+                    dispatch(addSeatFailure(response.payload.message));
+                }
+            })
         }
   }
 }

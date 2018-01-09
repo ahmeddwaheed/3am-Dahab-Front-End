@@ -25,16 +25,28 @@ export default class Pools extends Component {
     }
     render(){
         const { pools, loading , currentUser, isUser , isAdmin } = this.props;
+        // var image = ""
+        // if(currentUser.avatar){
+        //   image = "localhost:3001" + currentUser.avatar.url
+        // }
+        // debugger
         if(isUser || isAdmin){
           return (
             <div>
                   {
                     isUser? 
-                    <UserHeader />
+                    <div>
+                      <h1>HI {currentUser.name}</h1>
+                      {
+                        currentUser.avatar?
+                        <img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src={`http://localhost:3001${currentUser.avatar.url}`} />
+                        :
+                        null
+                      }
+                    </div>
                     :
                     null
                   }
-                    <h1>HI {currentUser.name}</h1>
                     <select name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
                       <option value = "" >All</option>
                       <option value = "comming">comming</option>
@@ -51,8 +63,11 @@ export default class Pools extends Component {
           )
         }
         else {
-          history.push('/login'); 
-          return null
+          return (
+            <div>
+              <h1> Invalid Request </h1>
+            </div>
+          )
         }
     }
 }

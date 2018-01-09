@@ -18,7 +18,6 @@ export default class Pool extends Component {
     }
     render(){
         const {isUser, isAdmin} = this.props;
-        console.log("ENTA FEEEEEN", isAdmin)
         return (
           <div style ={{backgroundColor:'grey', margin:'10px', padding:'10px'}}>
             <p>pool name: {this.props.pool.name}</p>
