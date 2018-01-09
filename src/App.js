@@ -6,6 +6,8 @@ import UserCard from './Containers/UserCardContainer'
 import PoolsPage from './Pages/PoolsPage';
 import PoolForm from './Pages/PoolForm';
 import PoolDetails from './Pages/PoolDetails';
+import Notifications from './Containers/NotificationsContainer'
+
 
 
 class App extends Component {
@@ -13,7 +15,7 @@ class App extends Component {
     return (
       <div className="App">
       <header style ={{backgroundColor:'yellow', margin:'10px', padding:'10px'}}>
-          <h1 className="App-title">3am-Dahab</h1>
+          <h1 className="App-title">Dahab</h1>
           <Users />
           <UserCard />
           <p> Dahab</p>
@@ -29,6 +31,10 @@ class App extends Component {
 
 
           <Route path={"/pools/:id"} component={PoolDetails} />
+
+
+          <Link to="/notifications"><h2> notifications </h2></Link>
+          <Route path="/notifications" exact component={Notifications} />
 
         </div>
       </div>
