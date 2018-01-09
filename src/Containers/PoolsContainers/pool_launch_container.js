@@ -6,6 +6,7 @@ import {
 } from '../../Actions/pools';
 
 
+
 const mapStateToProps = (state) => {
   return {
     pool: state.pools.pool,

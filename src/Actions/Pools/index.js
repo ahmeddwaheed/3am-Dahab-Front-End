@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { poolsApi, PoolApi, editPoolApi } from '../api';
+import { poolsApi, PoolApi, editPoolApi } from '../../api';
 
 
 // Action Types
@@ -47,10 +47,11 @@ export const getPoolsLoading = () =>{
     type: GET_POOLS_LOADING
   }
 }
-export const getPools = () => {
-  const payload = Axios.get(poolsApi);
-  console.log('hello from the actions!!!');
+export const getPools = (status) => {
+  const payload = Axios.get(`http://localhost:3001/pools?status=${status}`);
+  console.log('hello from the actinnnnnnnnons!!!');
   console.log(payload);
+
   return {
     type: GET_POOLS,
     payload
@@ -76,10 +77,7 @@ export const getPoolLoading = () =>{
   }
 }
 export const getPool = (id) => {
-  console.log(id, PoolApi(id));
-  const payload = Axios.get(`http://localhool:3001/pools/${id}`);
-  console.log('hello from the actionszzzz!!!');
-  console.log(payload);
+  const payload = Axios.get(`http://localhost:3001/pools/${id}`);
   return {
     type: GET_POOL,
     payload
@@ -105,7 +103,7 @@ export const addPoolLoading = () => {
   }
 }
 export const addPool = (pool) => {
-  const payload = Axios.post(`http://localhool:3001/pools/`, pool)
+  const payload = Axios.post(`http://localhost:3001/pools/`, pool)
   return {
     type: ADD_POOL,
     payload
@@ -132,7 +130,7 @@ export const editPoolLoading = (id) => {
   }
 }
 export const editPool = (id, edit) => {
-  const payload = Axios.patch(editPoolApi(id), edit);
+  const payload = Axios.patch(`http://localhost:3001/pools/${id}`, edit);
   return {
     type: EDIT_POOL,
     payload
@@ -159,7 +157,7 @@ export const deletePoolLoading = (id) => {
   }
 }
 export const deletePool = (id) => {
-  const payload = Axios.delete(editPoolApi(id));
+  const payload = Axios.delete(`http://localhost:3001/pools/${id}`);
   return {
     type: DELETE_POOL,
     payload
