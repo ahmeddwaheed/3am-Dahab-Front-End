@@ -15,7 +15,6 @@ const rootReducer = combineReducers({
   requestForm,
   requests,
   request,
-  auth,
   notifications,
   authUser,
   authAdmin
