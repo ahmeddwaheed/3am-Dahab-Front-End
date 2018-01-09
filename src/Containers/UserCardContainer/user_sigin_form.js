@@ -8,9 +8,9 @@ import jwt from 'jsonwebtoken';
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.auth.loading,
-        error: state.auth.error,
-        isAuthenticated: state.auth.isAuthenticated
+        loading: state.authUser.loading,
+        error: state.authUser.error,
+        isUser: state.authUser.isUser
     }
 }
 
@@ -23,11 +23,12 @@ const mapDispatchToProps = (dispatch) => {
                     const token = response.payload.data.auth_token;  
                     dispatch(userSignInSuccess(response.payload.data))
                     localStorage.setItem('jwtToken', token);
+                    localStorage.setItem('isUser', true);
                     setAutherizationToken(token);
                     history.push('/pools');                      
                 }
                 else {
-                    history.push('/login');
+                    // history.push('/login');
                     var payload = JSON.parse(response.payload.request.response);
                     dispatch(userSignInFailure(payload))
                 }

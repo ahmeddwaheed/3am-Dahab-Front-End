@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
     loading: state.pools.loading,
     adding: state.pools.adding,
     error: state.pools.error,
-    errorAdding: state.pools.errorAdding
+    errorAdding: state.pools.errorAdding,
+    isAdmin: state.authAdmin.isAdmin
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -27,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
                       dispatch(addPoolFailure(response.payload.message));
                   }
               })
-          }, 2000)
+          }, 1000)
       }
 
   }

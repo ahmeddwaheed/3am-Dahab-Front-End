@@ -5,7 +5,9 @@ import pools from './pools';
 import notifications from './notifications';
 import requestForm from './request_form';
 import requests from './request';
-import auth from './auth';
+import authUser from './user';
+import authAdmin from './admin';
+
 
 const rootReducer = combineReducers({
   pools,
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
   requests,
   request,
   auth,
-  notifications
+  notifications,
+  authUser,
+  authAdmin
 
 })
 

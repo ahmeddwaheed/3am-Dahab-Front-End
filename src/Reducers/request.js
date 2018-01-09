@@ -18,14 +18,10 @@ export default (currentState = INITIAL_STATE, action) => {
   switch(action.type) {
     //Get all requests
     case GET_REQUESTS_LOADING:
-      console.log('hello from reducer!!!!');
-      console.log(currentState);
 
       return {...currentState, loading: true};
 
     case GET_REQUESTS_SUCCESS:
-      console.log('hello from reducer');
-      console.log(action.requests);
       return {...currentState, loading: false, requests: action.requests};
 
     case GET_REQUESTS_FAILURE:

@@ -9,15 +9,17 @@ const { Meta } = Card;
 
 
 export default class UserCard extends Component {
-    handleAddSeat(){
-        const seat = {user_id: this.props.user_id, pool_id: this.props.pool_id, position: this.props.card.position};
-        this.props.addSeat(seat);
+    constructor(){
+        super()
+        this.state = {
+            hamada: 0,
+        }
     }
     handleDeleteSeat(){
 
     }
     render (){
-        const { user, loading, error, card } = this.props;
+        const { user, loading, error, card} = this.props;
         if(loading){
             return (
                 <Spin />
@@ -35,37 +37,47 @@ export default class UserCard extends Component {
             return (
                 <div>
                 {
+                    // Users in the pool //
                     card.id?
 
                     <Card className="user-card"
-                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.elzmannews.com/upload/library/images/18970732.jpg" />}
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture1" src={`http://localhost:3001${card.avatar}`} />}
                     >
                     <h3>{card.position}</h3>
                       <Meta
                         title={card.name}
                         />
                     </Card>
+                    // User try to join pool //
                     :
-                    user.in_pool?
+                    this.props.in_pool == card.position?
 
                     <Card className="user-card"
-                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.elzmannews.com/upload/library/images/18970732.jpg" />}
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture2" src={`http://localhost:3001${this.props.user.avatar.url}`} />}
                     >
                     <h3>{card.position}</h3>
                       <Meta
                         title={card.name}
                         />
-                        <button onClick={this.handleDeleteSeat.bind(this)}> x </button>
+                        <button onClick= {this.handleDeleteSeat.bind(this)}> x </button>
                     </Card>
+                    // Empty seats //
                     :
                     <Card className="user-card"
-                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src="http://www.shuuf.com/shof/uploads/2013/09/29/jpg/shof_3e886a816901fc9.jpg" />}
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture3" src={card.avatar}/>}
                     >
                     <h3>{card.position}</h3>
                       <Meta
                       />
-                      <button onClick={this.handleAddSeat.bind(this)} > + </button>
+                      {
+                          !this.props.user.in_pool?
+                          <button onClick= {() => {this.props.addSeat(this.props.card.position, this.props.user.id)}}> + </button>
+                          :
+                          null
+                          
+                      }
                     </Card>
+                    
                 }
                 </div>
               )

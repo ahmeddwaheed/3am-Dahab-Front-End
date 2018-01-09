@@ -6,6 +6,7 @@ import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
+import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 
 
 export default class UserSignUp extends Component {
@@ -15,13 +16,19 @@ export default class UserSignUp extends Component {
             name: "",
             email: "",
             password: "",
-            password_confirmation: ""
+            password_confirmation: "",
+            avatar: ""
         }
     }
-    addNewUser = (e) => {
-        e.preventDefault();
-        this.props.addUser(this.state);
-        this.setState({name:"", email:"", password:"", password_confirmation:""});
+    addNewUser = () => {
+        let user = new FormData();
+        user.append('name',this.state.name);
+        user.append('email',this.state.email);
+        user.append('password',this.state.password);
+        user.append('password_confirmation',this.state.password_confirmation);
+        user.append('avatar',this.state.avatar);
+        this.props.addUser(user);        
+        this.setState({name:"", email:"", password:"", password_confirmation:"", avatar:""});
     }
     handleNameChange = (e) => {
         this.setState({name: e.target.value})
@@ -35,19 +42,22 @@ export default class UserSignUp extends Component {
     handleConfirmChange = (e) => {
         this.setState({password_confirmation: e.target.value})
     }
-    render(){
-        const { loading , error, message , isAuthenticated} = this.props;
+    handleAvatarChange = (e) => {
+        this.setState({avatar: e.target.files[0]})
+    }
+    render(){        
+        const { loading , error, message } = this.props;
         
         if(loading){
             return (
                 <Spin />
             )
         }
-        if(!isAuthenticated){
             return (
                 <div>
+                <UserHeader />
                     <h1> Register </h1>
-                    <form  onSubmit = {this.addNewUser} className="demoForm" >
+                    <form className="demoForm" >
                         <div>
                             <div className="panel panel-default">
                             </div>
@@ -74,9 +84,14 @@ export default class UserSignUp extends Component {
                                 placeholder="Confirm Password"
                                 onChange={this.handleConfirmChange}  />
                         </div><br />
+                        <div>
+                            <label htmlFor="ImageUpload">Upload Image</label>
+                            <input type="file" required className="form-control" name="image"
+                            onChange={this.handleAvatarChange}/>
+                        </div><br />
                         {
                             <div>
-                                <button className="btn btn-primary" >Register</button>
+                                <button type="button" onClick={()=> this.addNewUser()} className="btn btn-primary" >Register</button>
                                 <Link to="/login" > Login</Link>
                             </div>
                         }
@@ -96,7 +111,7 @@ export default class UserSignUp extends Component {
                         this.props.message?
                         <div>
                                 <br />
-                                <p>{this.props.message}</p>
+                                <Alert message={this.props.message} type="success"/>
                         </div>
                         :
                         null
@@ -104,13 +119,13 @@ export default class UserSignUp extends Component {
                     
                 </div>
             )
-        }
-        else {
-            return (
-                <div>
-                    <h1> Invalid Request </h1>
-                </div>
-            )
-        }
+        // }
+        // else {
+        //     return (
+        //         <div>
+        //             <h1> Invalid Request </h1>
+        //         </div>
+        //     )
+        // }
     }
 }

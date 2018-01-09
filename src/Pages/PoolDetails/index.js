@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import PoolDetails from '../../Containers/PoolsContainers/pool_details_container';
 import { Route } from 'react-router-dom';
+import { UserHeader } from '../../Containers/UserCardContainer/nav_bar';
 
 export default class Details extends Component {
   render (){
     return (
       <div>
-        <h2> Pool </h2>
+        <UserHeader/>
         <PoolDetails id = {this.props.match.params.id} />
-        <Route path="/joined_pool/" Component={PoolDetails}/>
       </div>
     )
   }
