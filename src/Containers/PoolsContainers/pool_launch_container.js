@@ -3,7 +3,8 @@ import Form from '../../Components/PoolLaunchForm';
 import {
   getPoolLoading, getPool, getPoolSuccess, getPoolFailure,
   editPoolLoading, editPool, editPoolSuccess, editPoolFailure
-} from '../../Actions/Pools';
+} from '../../Actions/pools';
+
 
 
 const mapStateToProps = (state) => {

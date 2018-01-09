@@ -11,10 +11,10 @@ export default class Request extends Component {
 
     }
     accept = () =>{
-      this.props.editRequest(this.props.request.id, {is_accepted: true});
+      this.props.editRequest(this.props.request.id, {is_accepted: "accepted"});
     }
     reject = () =>{
-      this.props.editRequest(this.props.request.id, {is_accepted: false});
+      this.props.editRequest(this.props.request.id, {is_accepted: "rejected"});
     }
     render(){
 
