@@ -25,7 +25,7 @@ export default class Pools extends Component {
           return (
             <div>
                   {
-                    isUser? 
+                    isUser?
                     <div>
                       <h1>HI {currentUser.name}</h1>
                       {

@@ -25,16 +25,13 @@ export default class Pool extends Component {
             <p>monthly amount: {this.props.pool.monthly_amount}</p>
             <p>seats: {this.props.pool.seat_number}</p>
             <p>status: {this.props.pool.status}</p>
-            {
-              isUser?
-              <Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</Button> </Link>
-              :
-              null
-            }
+            <p>number of users: {this.props.pool.number_of_users}</p>
             
-            {isAdmin && this.props.pool.number_of_users == this.props.pool.seat_number && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/launch`}><Button bsStyle="success"> Launch</Button></Link>: null}
-            {isAdmin && this.props.pool.number_of_users == 0 && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/edit`}><Button bsStyle="primary"> Edit </Button></Link>: null}
-            {isAdmin && this.props.pool.number_of_users == 0 && this.props.pool.status == "comming" ?<Button onClick = {this.delete} bsStyle="danger"> Delete</Button> : null}
+            { isUser?<Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</Button> </Link>:null}
+            
+            {isAdmin == true && this.props.pool.number_of_users == this.props.pool.seat_number && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/launch`}><Button bsStyle="success"> Launch</Button></Link>: null}
+            {isAdmin == true && this.props.pool.number_of_users == 0 && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/edit`}><Button bsStyle="primary"> Edit </Button></Link>: null}
+            {isAdmin == true && this.props.pool.number_of_users == 0 && this.props.pool.status == "comming" ?<Button onClick = {this.delete} bsStyle="danger"> Delete</Button> : null}
           </div>
         )
     }

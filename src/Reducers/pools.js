@@ -83,7 +83,7 @@ export default (currentState = INITIAL_STATE, action) => {
         if (pool.id == action.id) {pool.loading = false; pool.error = action.error}
         return pool;
       })
-      return {...currentState, pools: newPools}
+      return {...currentState, pools: newPools};
 
       case ADD_SEAT_SUCCESS:
       var newSeat = action.user

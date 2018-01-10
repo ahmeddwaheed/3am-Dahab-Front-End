@@ -18,12 +18,12 @@ const mapDispatchToProps = (dispatch) => {
         adminSignIn: (admin) => {
             dispatch(adminSignIn(admin)).then(response => {
                 if(response.payload.status < 400){
-                    const token = response.payload.data.auth_token;  
+                    const token = response.payload.data.auth_token;
                     dispatch(adminSignInSuccess(response.payload.data))
                     localStorage.setItem('jwtToken', token);
                     localStorage.setItem('isAdmin', true);
                     setAutherizationToken(token);
-                    history.push('/dashboard');                      
+                    history.push('/dashboard');
                 }
                 else {
                     history.push('/admin/login');
