@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import PoolForm from '../../Containers/PoolsContainers/pool_form_container';
+
 
 
 export default class UserHeader extends Component {
@@ -17,7 +19,8 @@ export default class UserHeader extends Component {
     const {isAdmin} = this.props;
     const userLinks = (
         <div>
-        <button> Create Pool</button>
+        <Link to="/new_pool"><button> Create Pool </button></Link>
+          <Route path="/new_pool" exact component={PoolForm} />
         <ul className="nav navbar-nav navbar-right">
             <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </ul>

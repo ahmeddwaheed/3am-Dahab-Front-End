@@ -3,7 +3,6 @@ import { Link, Route } from 'react-router-dom';
 import PoolsPage from './Pages/PoolsPage';
 import PoolForm from './Pages/PoolForm';
 import PoolDetails from './Pages/PoolDetails';
-import Notifications from './Containers/NotificationsContainer';
 import Requests from './Containers/RequestsContainer';
 import RequestForm from './Containers/RequestFormContainer';
 import Dashboard from './Pages/Dashboard';
@@ -20,18 +19,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-
-        <div>
-          <Link to="/form">
-            <h2> add pool </h2>
-          </Link>
-          <Route path="/form" component={PoolForm} />
-          <Link to="/notifications"><h2> notifications </h2></Link>
-          <Route path="/notifications" exact component={Notifications} />
-      
-        </div>
-
         <Route exact path="/login" component= {UserSignInForm} />
         <Route path="/pools" exact component={PoolsPage} />
         <Route exact path="/" component= {UserSignInForm} />
