@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "actioncable": "^5.1.4",
     "antd": "^3.0.3",
     "axios": "^0.17.1",
     "jsonwebtoken": "^8.1.0",

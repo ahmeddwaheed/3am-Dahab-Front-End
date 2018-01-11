@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
     loading: state.notifications.loading,
     adding: state.notifications.adding,
     error: state.notifications.error,
-    errorAdding: state.notifications.errorAdding
+    errorAdding: state.notifications.errorAdding,
+    user_token: state.authUser.user.auth_token
   }
 }
 const mapDispatchToProps = (dispatch) => {
