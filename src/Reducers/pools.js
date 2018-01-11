@@ -55,11 +55,11 @@ export default (currentState = INITIAL_STATE, action) => {
       })
       return {...currentState, pools: newPools}
     case EDIT_POOL_SUCCESS:
-      var newPools = currentState.pools.map(pool => {
-        if(pool.id == action.id) {pool.loading = false; pool = action.pool}
-        return pool;
-      })
-      return {...currentState, pools: newPools}
+      var newPools = currentState.pools.slice(0);
+      const updatedPool = action.pool.data;
+      const position = newPools.findIndex(pool => pool.id === updatedPool.id);
+      newPools[position] = updatedPool;
+      return {...currentState, pools: newPools, loading: false}
     case EDIT_POOL_FAILURE:
       var newPools = currentState.pools.map(pool => {
         if(pool.id == action.id) {pool.loading = false; pool.error = action.error}

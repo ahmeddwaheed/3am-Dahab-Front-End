@@ -4,23 +4,33 @@ import {Redirect} from 'react-router-dom';
 export default class Form extends Component {
     componentWillMount() {
       this.props.getPool(this.props.match.params.id);
+        // const {name, amount, monthly_amount,seat_number} = this.props.pool.data;
+
     }
 
     componentWillReceiveProps(nextProps) {
       if (Object.keys(nextProps.pool).length !== 0) {
-        this.state = nextProps.pool;
+        const {name, amount, monthly_amount, seat_number} = nextProps.pool.data;
+        this.setState({
+          ...this.state,
+          name,
+          amount,
+          monthly_amount,
+          seat_number
+        });
       }
     }
-
     constructor(){
       super();
+
       this.state = {
-        name:'',
+        name: '',
         amount: '',
         monthly_amount: '',
         seat_number: '',
         status:'comming',
-        redirect : false
+        redirect : false,
+        filled: true
       }
 
       this._handleChange = this._handleChange.bind(this)
@@ -30,14 +40,15 @@ export default class Form extends Component {
     }
     edit = (e) => {
       e.preventDefault();
-      this.setState({ redirect: true}, () => this.props.editPool(this.props.match.params.id, this.state));
-      this.setState({ name:'',
-                      amount: '',
-                      monthly_amount: '',
-                      seat_number: '',
-                      status:'comming'
-                   });
-
+      this.setState({ redirect: true}, () => {
+        this.props.editPool(this.props.match.params.id, this.state);
+        this.setState({ name:'',
+                        amount: '',
+                        monthly_amount: '',
+                        seat_number: '',
+                        status:'comming'
+                     });
+      });
     };
 
 
@@ -64,8 +75,15 @@ export default class Form extends Component {
 
     render(){
         if (this.state.redirect){
-         return( <Redirect to= "/pools/"/>)
-        }
+         return( <Redirect to= "/dashboard"/>)
+       }
+        // if(Object.keys(this.props.pool).length != 0){
+        //   const {name, amount, monthly_amount, seat_number} = this.props.pool.data
+        //   if(!this.state.filled){
+        //     return
+        //   }
+        //   this.setState({name: name, amount: amount, monthly_amount: monthly_amount, seat_number: seat_number, filled: false})
+        // }
 
         const { pools, loading} = this.props;
         return (

@@ -42,12 +42,15 @@ export default (currentState = INITIAL_STATE, action) => {
         return request;
       })
       return {...currentState, requests: newRequests}
+
     case EDIT_REQUEST_SUCCESS:
-      var newRequests = currentState.requests.map(request => {
-        if(request.id == action.request.id) {request.loading = false; request = action.request}
-        return request;
-      })
-      return {...currentState, requests: newRequests}
+      var newRequests = currentState.requests.slice(0);
+      const updatedRequest = action.request.data;
+      const position = newRequests.findIndex(request => request.id === updatedRequest.id);
+      newRequests[position] = updatedRequest;
+     return {...currentState, requests: newRequests, loading: false}
+
+
     case EDIT_REQUEST_FAILURE:
       var newRequests = currentState.requests.map(request => {
         if(request.id == action.id) {request.loading = false; request.error = action.error}

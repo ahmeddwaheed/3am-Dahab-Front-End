@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import NotificationDetails from '../../Pages/NotificationDetails';
-// import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { Button } from 'react-bootstrap';
 
 export default class Notification extends Component {
@@ -10,6 +10,7 @@ export default class Notification extends Component {
             <p>notification : {this.props.notification.message}</p>
             <p>user: {this.props.notification.user_id}</p>
             <p>pool: {this.props.notification.pool_id}</p>
+            <Link to={`/pools/${this.props.notification.pool_id}`}>GO TO POOL</Link>
           </div>
         )
     }
