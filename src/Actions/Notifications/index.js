@@ -18,7 +18,7 @@ export const getNotificationsLoading = () =>{
   }
 }
 export const getNotifications = () => {
-  const payload = Axios.get(`http://localhool:3001/notifications`);
+  const payload = Axios.get(`http://localhost:3001/notifications`);
   return {
     type: GET_NOTIFICATIONS,
     payload

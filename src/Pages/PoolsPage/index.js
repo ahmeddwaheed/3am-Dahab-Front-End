@@ -14,7 +14,6 @@ export default class PoolsPage extends Component {
         localStorage.isAdmin || localStorage.isUser?
         <div>
         <Link to="/notifications"><h2> notifications </h2></Link>
-          <Route path="/notifications" exact component={Notifications} />
         <Pools status = {this.props.match.params.status} />
         </div>
         :
