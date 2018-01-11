@@ -16,9 +16,19 @@ export default class UserHeader extends Component {
   render() {
     const {isUser} = this.props;
     const userLinks = (
-      <ul className="nav navbar-nav navbar-right">
-        <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
-      </ul>
+      <div>
+      {
+        this.props.user.avatar?
+        <Link to="/profile/edit">
+          <img style={{'borderRadius': '50px', 'width': '35px', 'height': '40px'}} alt="picture" src={`http://localhost:3001${this.props.user.avatar.url}`} />
+        </Link>
+        :
+        null
+      }
+        <ul className="nav navbar-nav navbar-right">
+          <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
+        </ul>
+      </div>
     );
     const guestLinks = (
             <ul className="nav navbar-nav navbar-right">

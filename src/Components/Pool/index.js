@@ -26,8 +26,8 @@ export default class Pool extends Component {
             <p>seats: {this.props.pool.seat_number}</p>
             <p>status: {this.props.pool.status}</p>
             <p>number of users: {this.props.pool.number_of_users}</p>
-            { isUser && this.props.pool.status == "comming" ? <Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</Button> </Link>:null}
 
+            { isUser && this.props.pool.status == "comming" ? <Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</Button> </Link>:null}
             {isAdmin == true && this.props.pool.number_of_users == this.props.pool.seat_number && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/launch`}><Button bsStyle="success"> Launch</Button></Link>: null}
             {isAdmin == true && this.props.pool.number_of_users == null && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/edit`}><Button bsStyle="primary"> Edit </Button></Link>: null}
             {isAdmin == true && this.props.pool.number_of_users == null && this.props.pool.status == "comming" ?<Button onClick = {this.delete} bsStyle="danger"> Delete</Button> : null}

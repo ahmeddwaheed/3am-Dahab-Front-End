@@ -12,6 +12,7 @@ import UserHeader from './Containers/UserCardContainer/nav_bar';
 import UserSignInForm from './Containers/UserCardContainer/user_sigin_form';
 import UserRegisterForm from './Containers/UserCardContainer/user_register_form';
 import AdminLogin from './Containers/AdminContainer';
+import UserEditForm from './Containers/UserCardContainer/user_edit_form';
 import PoolLaunchForm from './Containers/PoolsContainers/pool_launch_container';
 import PoolEditForm from './Containers/PoolsContainers/pool_edit_container';
 import Notifications from './Containers/NotificationsContainer';
@@ -25,10 +26,11 @@ class App extends Component {
       <div className="App">
 
         <Route exact path="/login" component= {UserSignInForm} />
-        <Route path="/pools" exact component={PoolsPage} />
+        <Route exact path="/pools" exact component={PoolsPage} />
         <Route exact path="/" component= {UserSignInForm} />
         <Route exact path="/register" component= {UserRegisterForm} />
         <Route exact path={"/pools/:id/request"} component={RequestForm} />
+        <Route exact path={`/profile/edit`} exact component={UserEditForm} />
         <Route path={"/admin/login"} exact component={AdminLogin} />
         <Route path={"/dashboard"} exact component={Dashboard} />
         <Route path={"/new_pool"} exact component={PoolForm} />
@@ -36,10 +38,7 @@ class App extends Component {
         <Route path={`/pools/:id`} exact component={PoolDetails} />
         <Route path="/pools/:id/launch" exact component={PoolLaunchForm} />
         <Route path="/pools/:id/edit" exact component={PoolEditForm} />
-
-
       </div>
-
     );
   }
 }

@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
         authUser: state.authUser,
         user: state.authUser.user,
         isUser: state.authUser.isUser,
-        isAdmin: state.authAdmin.isAdmin      
+        isAdmin: state.authAdmin.isAdmin
     }
 }
 

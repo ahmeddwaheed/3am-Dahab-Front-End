@@ -13,7 +13,6 @@ export default class Dashborad extends Component {
     return (
       <div>
         <AdminHeader />
-
         {
           localStorage.isAdmin?
           <div>
