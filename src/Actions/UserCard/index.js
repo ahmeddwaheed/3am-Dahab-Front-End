@@ -14,6 +14,10 @@ export const ADD_USER_LOADING = 'ADD_USER_LOADING';
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
 export const ADD_USER_FAILURE = 'ADD_USER_FAILURE';
 
+export const EDIT_USER = 'EDIT_USER';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_FAILURE = 'EDIT_USER_FAILURE';
+
 
 
 
@@ -84,6 +88,25 @@ export const addUserSuccess = (user) => {
 export const addUserFailure = (error) => {
     return {
         type: ADD_USER_FAILURE,
+        error
+    }
+}
+export const editUser = (id, user) => {
+    const payload = axios.patch(`http://localhost:3001/users/${id}`, user);
+    return {
+        type: EDIT_USER,
+        payload
+    }
+}
+export const editUserSuccess = (user) => {
+    return {
+        type: EDIT_USER_SUCCESS,
+        user
+    }
+}
+export const editUserFailure = (error) => {
+    return {
+        type: EDIT_USER_FAILURE,
         error
     }
 }

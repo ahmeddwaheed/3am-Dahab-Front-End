@@ -12,6 +12,7 @@ import UserHeader from './Containers/UserCardContainer/nav_bar';
 import UserSignInForm from './Containers/UserCardContainer/user_sigin_form';
 import UserRegisterForm from './Containers/UserCardContainer/user_register_form';
 import AdminLogin from './Containers/AdminContainer';
+import UserEditForm from './Containers/UserCardContainer/user_edit_form';
 
 import './App.css';
 
@@ -20,16 +21,16 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/login" component= {UserSignInForm} />
-        <Route path="/pools" exact component={PoolsPage} />
+        <Route exact path="/pools" exact component={PoolsPage} />
         <Route exact path="/" component= {UserSignInForm} />
         <Route exact path="/register" component= {UserRegisterForm} />
         <Route exact path={"/pools/:id/request"} component={RequestForm} />
-        <Route exact path={"/admin/login"} exact component={AdminLogin} />  
+        <Route exact path={"/admin/login"} exact component={AdminLogin} />
         <Route exact path={"/dashboard"} exact component={Dashboard} />
         <Route exact path={"/new_pool"} exact component={PoolForm} />
-        <Route exact path={`/pools/:id`} exact component={PoolDetails} />              
+        <Route exact path={`/pools/:id`} exact component={PoolDetails} />
+        <Route exact path={`/profile/edit`} exact component={UserEditForm} />
       </div>
-      
     );
   }
 }

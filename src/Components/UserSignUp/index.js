@@ -27,7 +27,7 @@ export default class UserSignUp extends Component {
         user.append('password',this.state.password);
         user.append('password_confirmation',this.state.password_confirmation);
         user.append('avatar',this.state.avatar);
-        this.props.addUser(user);        
+        this.props.addUser(user);
         this.setState({name:"", email:"", password:"", password_confirmation:"", avatar:""});
     }
     handleNameChange = (e) => {

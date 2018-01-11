@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import UserCard from '../../Containers/UserCardContainer/user_card';
 import { Button } from 'react-bootstrap';
 import { Row, Spin, Alert } from 'antd';
+import Checkout from '../../Checkout';
+
 
 
 export default class Details extends Component {
@@ -10,7 +12,7 @@ export default class Details extends Component {
       this.state = {
           addedSeat: false,
           user_details: {user_id:"", pool_id:"", position:""},
-          user_in_pool: 0
+          user_in_pool: 0,
       }
     }
     componentWillMount(){
@@ -20,11 +22,16 @@ export default class Details extends Component {
       this.setState({user_details:{user_id:id, pool_id:this.props.id, position:position}, addedSeat:true})
     }
     handleDeleteSeat(){
-      // var clear = this.setState({user_details:{user_id:null, pool_id:null}, addedSeat:false})
-      // this.props.addSeat(clear) 
+      let card_id
+      this.props.userCard.map(card => {
+        if(this.props.user.id === card.user_id){
+          card_id = card.id
+        }
+      })
+      this.props.deleteSeat(card_id)
     }
     render(){
-      const {loading, error, pool, userCard} = this.props;
+      const {loading, error, pool, userCard, user} = this.props;
       if(loading){
         return (
           <Spin />
@@ -63,10 +70,15 @@ export default class Details extends Component {
               }
               <br/><br/><br/>
               {
-                this.state.addedSeat?
+                this.state.addedSeat && !this.props.pools.pool.current_user_in_pool?
                 <Button onClick={() => this.props.addSeat(this.state.user_details)} bsStyle="primary" > Confirm Join </Button>
                 :
+                this.props.pools.pool.current_user_in_pool?
                 <Button onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
+                :
+                <div>
+                  <Checkout name={name} description={'Monthly Payment'} amount={monthly_amount}/>
+                </div>
               }
               </div>
           </div>
