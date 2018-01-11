@@ -14,13 +14,12 @@ export default class UserHeader extends Component {
     e.preventDefault();
     this.props.userLogout();
   }
-  
+
   render() {
     const {isAdmin} = this.props;
     const userLinks = (
         <div>
         <Link to="/new_pool"><button> Create Pool </button></Link>
-          <Route path="/new_pool" exact component={PoolForm} />
         <ul className="nav navbar-nav navbar-right">
             <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </ul>
@@ -39,14 +38,14 @@ export default class UserHeader extends Component {
                 isAdmin?
                 <Link to="/dashboard" className="navbar-brand">3am Dahab</Link>
                 :
-                <Link to="/" className="navbar-brand">3am Dahab</Link>                
+                <Link to="/" className="navbar-brand">3am Dahab</Link>
               }
             </div>
-            
+
             <div>
                 {isAdmin? userLinks : guestLinks}
             </div>
-            
+
           </div>
         </nav>
       );

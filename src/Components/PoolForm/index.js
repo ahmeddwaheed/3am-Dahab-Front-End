@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AdminHeader } from '../../Containers/UserCardContainer/nav_bar';
+import {Redirect} from 'react-router-dom';
 
 
 export default class Form extends Component {
@@ -10,7 +11,8 @@ export default class Form extends Component {
         amount: '',
         monthly_amount: '',
         seat_number: '',
-        status:'comming'
+        status:'comming',
+        redirect : false
       }
       this._handleChange = this._handleChange.bind(this)
     }
@@ -24,11 +26,15 @@ export default class Form extends Component {
                       amount: '',
                       monthly_amount: '',
                       seat_number: '',
-                      status:'comming'
+                      status:'comming',
+                      redirect: true
                    });
     };
 
     render(){
+        if (this.state.redirect){
+         return( <Redirect to= "/dashboard"/>)
+        }
         const { pools, loading, isAdmin} = this.props;
         if(isAdmin){
           return (
@@ -36,7 +42,7 @@ export default class Form extends Component {
             <AdminHeader/>
                   <h2> New pool</h2>
                    <form onSubmit = {this.add}>
-  
+
                        <label> Pool Name </label>
                        <input type = "text" name="name"  onChange={this._handleChange} />
                        <label> amount </label>
@@ -47,7 +53,7 @@ export default class Form extends Component {
                        <input type = "text" name="seat_number" onChange={this._handleChange} />
                        <label> status </label>
                        <input type = "text" name="status" onChange={this._handleChange} />
-  
+
                        <input type = "submit" value = "Create Pool" />
                     </form>
               </div>
