@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {AdminHeader} from '../../Containers/UserCardContainer/nav_bar'
 
 export default class Form extends Component {
     componentWillMount() {
@@ -45,7 +44,6 @@ export default class Form extends Component {
         return (
 
             <div>
-            <AdminHeader />
                  <form onSubmit = {this.edit}>
 
                      <p> Pool Name {this.props.pool.name}</p>

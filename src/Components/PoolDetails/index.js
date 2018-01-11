@@ -73,12 +73,13 @@ export default class Details extends Component {
                 this.state.addedSeat && !this.props.pools.pool.current_user_in_pool?
                 <Button onClick={() => this.props.addSeat(this.state.user_details)} bsStyle="primary" > Confirm Join </Button>
                 :
-                this.props.pools.pool.current_user_in_pool?
+                this.props.pools.pool.current_user_in_pool && pool.status == 'comming'?
                 <Button onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
                 :
-                <div>
-                  <Checkout name={name} description={'Monthly Payment'} amount={monthly_amount}/>
-                </div>
+                pool.status == 'running'?
+                <Checkout name={name} description={"Online Payment"} amount={monthly_amount} user_id={user.id} pool_id={pool.id}/>
+                :
+                null
               }
               </div>
           </div>
