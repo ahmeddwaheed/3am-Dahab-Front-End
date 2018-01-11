@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
-import history from '../../history';
 
 
 
@@ -34,28 +32,21 @@ export default class Form extends Component {
 
     render(){
         const { requests, loading, user} = this.props;
-        if(user){
-          return (
-              <div>
-              <UserHeader />
-                   <form onSubmit = {this.add}>
-  
-                       <label> reason </label>
-                       <input type = "text" name="reason"  onChange={this._handleChange} />
-                       <label> background </label>
-                       <input type = "text" name="background" onChange={this._handleChange} />
-                       <label> program </label>
-                       <input type = "text" name="program" onChange={this._handleChange} />
-  
-                       <input type = "submit" value = "Submit" />
-                    </form>
-              </div>
-          )
-        }
-        else {
-          history.push('/');
-          return null
-        }
+        return (
+            <div>
+                  <form onSubmit = {this.add}>
+
+                      <label> reason </label>
+                      <input type = "text" name="reason"  onChange={this._handleChange} />
+                      <label> background </label>
+                      <input type = "text" name="background" onChange={this._handleChange} />
+                      <label> program </label>
+                      <input type = "text" name="program" onChange={this._handleChange} />
+
+                      <input type = "submit" value = "Submit" />
+                  </form>
+            </div>
+        )
 
     }
 }

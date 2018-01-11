@@ -25,12 +25,12 @@ const mapDispatchToProps = (dispatch) => {
                     localStorage.setItem('jwtToken', token);
                     localStorage.setItem('isUser', true);
                     setAutherizationToken(token);
-                    history.push('/pools');                      
+                    history.push('/pools');
                 }
                 else {
                     // history.push('/login');
-                    var payload = JSON.parse(response.payload.request.response);
-                    dispatch(userSignInFailure(payload))
+                    // var payload = JSON.parse(response.payload.request.response);
+                    dispatch(userSignInFailure(response.payload.message))
                 }
             })
         }

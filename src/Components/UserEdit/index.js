@@ -6,7 +6,6 @@ import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
-import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
 
 
 export default class UserEdit extends Component {
@@ -40,7 +39,6 @@ export default class UserEdit extends Component {
        
         return (
             <div>
-            <UserHeader />
                 <h1> Edit Profile </h1>
                 <form className="demoForm" >
                     <div>
