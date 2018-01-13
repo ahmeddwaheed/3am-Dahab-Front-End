@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import './style.css';
 
 export default class Form extends Component {
     componentWillMount() {
@@ -35,9 +36,11 @@ export default class Form extends Component {
 
       this._handleChange = this._handleChange.bind(this)
     }
+
     _handleChange(e){
       this.setState({...this.state, [e.target.name]:e.target.value})
     }
+
     edit = (e) => {
       e.preventDefault();
       this.setState({ redirect: true}, () => {
@@ -51,57 +54,66 @@ export default class Form extends Component {
       });
     };
 
-
-    // edit = (e) => {
-    //   e.preventDefault();
-    //   this.setState({ redirect: true}, () => this.props.editPool(this.props.match.params.id, this.state));
-    //   this.setState({
-    //                   launch_date: '',
-    //                   end_date: ''
-    //                 });
-    //
-    // };
-    // edit = (e) => {
-    //   e.preventDefault();
-    //   this.props.editPool(this.props.match.params.id, this.state);
-    //   this.setState({ name:'',
-    //                   amount: '',
-    //                   monthly_amount: '',
-    //                   seat_number: '',
-    //                   status:'comming'
-    //                });
-    //
-    // };
-
     render(){
         if (this.state.redirect){
          return( <Redirect to= "/dashboard"/>)
        }
-        // if(Object.keys(this.props.pool).length != 0){
-        //   const {name, amount, monthly_amount, seat_number} = this.props.pool.data
-        //   if(!this.state.filled){
-        //     return
-        //   }
-        //   this.setState({name: name, amount: amount, monthly_amount: monthly_amount, seat_number: seat_number, filled: false})
-        // }
-
         const { pools, loading} = this.props;
         return (
             <div>
                  <form onSubmit = {this.edit}>
 
-                     <label> Pool Name </label>
-                     <input type = "text" name="name"  onChange={this._handleChange} value={this.state.name} />
-                     <label> amount </label>
-                     <input type = "text" name="amount" onChange={this._handleChange} value={this.state.amount} />
-                     <label> monthly amount </label>
-                     <input type = "text" name="monthly_amount" onChange={this._handleChange} value={this.state.monthly_amount} />
-                     <label> seats number </label>
-                     <input type = "text" name="seat_number" onChange={this._handleChange} value={this.state.seat_number} />
+                     <div className = 'group'>
+                        <div className = 'row'>
+                          <input className = 'input inputMaterial' type = "text" name="name"  onChange={this._handleChange} value={this.state.name} />
+                          <span className = 'highlight'> </span>
+                          <span className = 'bar'></span>
+                          <label className = 'label'> Name </label>
+                        </div>
+                     </div>
+                     <div className = 'group'>
+                        <input className = 'input inputMaterial' type = "text"  name="amount" onChange={this._handleChange} value={this.state.amount}  />
+                        <span className = 'highlight'> </span>
+                        <span className = 'bar'></span>
+                        <label className = 'label'> amount </label>
+                     </div>
+                     <div className = 'group'>
+                        <input className = 'input inputMaterial' type = "text" name="monthly_amount" onChange={this._handleChange} value={this.state.monthly_amount} />
+                        <span className = 'highlight'> </span>
+                        <span className = 'bar'></span>
+                        <label className = 'label'> monthly amount </label>
+                     </div>
+                     <div className = 'group'>
+                        <input className = 'input inputMaterial' type = "text" name="seat_number" onChange={this._handleChange} value={this.state.seat_number} />
+                        <span className = 'highlight'> </span>
+                        <span className = 'bar'></span>
+                        <label className = 'label'> seats number </label>
+                     </div>
 
-                     <input type = "submit" value = "Edit Pool" />
+                     <input className = 'input' type = "submit" value = "Edit Pool" />
+
+
                   </form>
             </div>
         )
     }
 }
+
+
+
+
+
+
+//
+// <label className = 'label'> Name </label>
+// <input className = 'input ' type = "text" name="name"  onChange={this._handleChange} value={this.state.name} />
+//
+//
+// <label className = 'label' > amount </label>
+// <input className = 'input' type = "text" name="amount" onChange={this._handleChange} value={this.state.amount} />
+// <label className = 'label' > monthly amount </label>
+// <input className = 'input' type = "text" name="monthly_amount" onChange={this._handleChange} value={this.state.monthly_amount} />
+// <label className = 'label' > seats number </label>
+// <input className = 'input' type = "text" name="seat_number" onChange={this._handleChange} value={this.state.seat_number} />
+//
+// <input className = 'input' type = "submit" value = "Edit Pool" />

@@ -1,0 +1,37 @@
+*{
+  box-sizing: border-box;
+  font-family: Arial tahoma
+}
+.clearfix::before,
+.clearfix::after{
+  display: table;
+  content: '';
+  clear: both;
+}
+.start{
+  float: left;
+}
+.end{
+  float: right;
+}
+
+
+/* start of the pool */
+.pool{
+  border :  1px solid #ccc;
+  background-color: #eee;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  height: 200px;
+
+}
+.pool-name{
+  font-weight: bold;
+  font-size: 22px;
+}
+.amount{
+  font-weight: bold;
+  font-size: 20px;
+  color:#2196f3;
+}

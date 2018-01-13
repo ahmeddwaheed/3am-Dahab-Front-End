@@ -1,0 +1,15 @@
+.pool-details{
+   display: flex;
+   align-items: flex-start;
+   flex-wrap: wrap;
+   height: 100%;
+   background: #eee;
+   border: 1px solid #ccc;
+   margin: 10px;
+   padding: 10px
+}
+.card{
+  width: 20%;
+  flex-grow: 1;
+
+}

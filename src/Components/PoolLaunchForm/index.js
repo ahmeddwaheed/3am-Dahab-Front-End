@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {AdminHeader} from '../../Containers/UserCardContainer/nav_bar'
 
 export default class Form extends Component {
     componentWillMount() {
@@ -19,8 +18,8 @@ export default class Form extends Component {
         launch_date: '',
         end_date: '',
         status:'running',
-        redirect : false
-
+        redirect : false,
+        current_user_in_pool:true
       }
 
       this._handleChange = this._handleChange.bind(this)
@@ -30,6 +29,7 @@ export default class Form extends Component {
     }
     edit = (e) => {
       e.preventDefault();
+      debugger
       this.setState({status: 'running', redirect: true}, () => this.props.editPool(this.props.match.params.id, this.state));
       this.setState({
                       launch_date: '',
@@ -45,7 +45,6 @@ export default class Form extends Component {
         return (
 
             <div>
-            <AdminHeader />
                  <form onSubmit = {this.edit}>
 
                      <p> Pool Name {this.props.pool.name}</p>

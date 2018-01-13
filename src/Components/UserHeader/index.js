@@ -8,6 +8,13 @@ import Cable from 'actioncable';
 
 export default class UserHeader extends Component {
 
+  constructor(){
+    super()
+    this.state = {
+      notification_count: 0
+    }
+  }
+
   componentWillMount(){
     this.props.setCurrentUser();
     this.createSocket();
@@ -19,7 +26,6 @@ export default class UserHeader extends Component {
   }
   createSocket() {
 
-    console.count('createSocket');
     let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
     this.notifications = cable.subscriptions.create({
       channel: 'NotificationChannel'
@@ -28,6 +34,7 @@ export default class UserHeader extends Component {
 
       },
       received: (data) => {
+        this.setState({notification_count: this.state.notification_count +1 })
         alert(data);
       },
       create: (notificationContent) => {
@@ -41,10 +48,20 @@ export default class UserHeader extends Component {
   render() {
     const {isUser} = this.props;
     const userLinks = (
-      <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/notifications"><h2> notifications </h2></Link></li>
-        <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
-      </ul>
+      <div>
+      {
+        this.props.user.avatar?
+        <Link to="/profile/edit">
+          <img style={{'borderRadius': '50px', 'width': '35px', 'height': '40px'}} alt="picture" src={`http://localhost:3001${this.props.user.avatar.url}`} />
+        </Link>
+        :
+        null
+      }
+        <ul className="nav navbar-nav navbar-right">
+        <li><Notifications /><p style={{"color": "red"}}>{this.state.notification_count}</p></li>
+          <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
+        </ul>
+      </div>
     );
     const guestLinks = (
             <ul className="nav navbar-nav navbar-right">

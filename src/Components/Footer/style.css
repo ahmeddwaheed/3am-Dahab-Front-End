@@ -1,0 +1,16 @@
+.clearfix::before,
+.clearfix::after{
+  display: table;
+  content: '';
+  clear: both;
+}
+.start{
+  float: left;
+}
+.end{
+  float: right;
+}
+.footer{
+  background: #4496EC;
+  padding: 20px;
+}

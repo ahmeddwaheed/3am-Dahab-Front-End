@@ -22,7 +22,6 @@ export default class Notification extends Component {
           <p>notification : {this.props.notification.message}</p>
           <p>user: {this.props.notification.user_id}</p>
           <p>pool: {this.props.notification.pool_id}</p>
-          <Link to={`/pools/${this.props.notification.pool_id}`}>GO TO POOL</Link>
         </div>
       )
   }

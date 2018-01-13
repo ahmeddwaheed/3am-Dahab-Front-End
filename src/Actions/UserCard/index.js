@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {getRequestPoolApi, userApi, userRegisterApi} from '../../api';
 
 export const GET_USER_LOADING = 'GET_USER_LOADING';
 export const GET_USER = 'GET_USER';
@@ -14,11 +15,14 @@ export const ADD_USER_LOADING = 'ADD_USER_LOADING';
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
 export const ADD_USER_FAILURE = 'ADD_USER_FAILURE';
 
+export const EDIT_USER = 'EDIT_USER';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_FAILURE = 'EDIT_USER_FAILURE';
 
 
 
 export const getRequest = (pool_id) => {
-    const payload = axios.get(`http://localhost:3001/requests/find_pool?pool_id=${pool_id}`);
+    const payload = axios.get(getRequestPoolApi(pool_id));
     return {
         type: GET_REQUEST,
         payload
@@ -43,7 +47,7 @@ export const getUserLoading = () => {
     }
 }
 export const getUser = (id) => {
-    const payload = axios.get(`http://localhost:3001/users/${id}`);
+    const payload = axios.get(userApi(id));
     return {
         type: GET_USER,
         payload
@@ -64,7 +68,7 @@ export const getUserFailure = (error) => {
 }
 
 export const addUser = (user) => {
-    const payload = axios.post(`http://localhost:3001/users/register`, user);
+    const payload = axios.post(userRegisterApi, user);
     return {
         type: ADD_USER,
         payload
@@ -84,6 +88,25 @@ export const addUserSuccess = (user) => {
 export const addUserFailure = (error) => {
     return {
         type: ADD_USER_FAILURE,
+        error
+    }
+}
+export const editUser = (id, user) => {
+    const payload = axios.patch(userApi(id), user);
+    return {
+        type: EDIT_USER,
+        payload
+    }
+}
+export const editUserSuccess = (user) => {
+    return {
+        type: EDIT_USER_SUCCESS,
+        user
+    }
+}
+export const editUserFailure = (error) => {
+    return {
+        type: EDIT_USER_FAILURE,
         error
     }
 }

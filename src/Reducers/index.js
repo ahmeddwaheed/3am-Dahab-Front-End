@@ -18,7 +18,6 @@ const rootReducer = combineReducers({
   notifications,
   authUser,
   authAdmin
-
 })
 
 export default rootReducer
