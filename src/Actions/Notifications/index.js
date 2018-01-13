@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import {notificationsApi} from '../../api';
 
 // Action Types
 
@@ -18,7 +19,7 @@ export const getNotificationsLoading = () =>{
   }
 }
 export const getNotifications = () => {
-  const payload = Axios.get(`http://localhost:3001/notifications`);
+  const payload = Axios.get(notificationsApi);
   return {
     type: GET_NOTIFICATIONS,
     payload

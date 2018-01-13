@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
 import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
+import Login from '../../Containers/UserCardContainer/user_sigin_form';
 
 
 export default class UserSignUp extends Component {
@@ -45,9 +46,8 @@ export default class UserSignUp extends Component {
     handleAvatarChange = (e) => {
         this.setState({avatar: e.target.files[0]})
     }
-    render(){        
+    render(){
         const { loading , error, message } = this.props;
-        
         if(loading){
             return (
                 <Spin />
@@ -99,24 +99,26 @@ export default class UserSignUp extends Component {
                     {
                         this.props.error?
                         <div>
-                                <br />
-                                {
-                                    // this.props.error.erros.map(error => {
-                                    //    { console.log(error)}
-                                    // })
-                                }
-                            <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
+                            {
+                                this.props.error.errors.map(error => {
+                                    return (
+                                    <div>
+                                        <Alert message={error} type="error"/>
+                                    </div>
+                                    )
+                                })
+                            }
                         </div>
                         :
                         this.props.message?
                         <div>
-                                <br />
+                            {
                                 <Alert message={this.props.message} type="success"/>
+                            }
                         </div>
                         :
                         null
                     }
-                    
                 </div>
             )
         // }

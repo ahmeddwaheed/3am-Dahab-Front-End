@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RequestDetails from '../../Pages/RequestsPage';
 import { Link, Route } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import './style.css';
 
 
 export default class Request extends Component {
@@ -19,7 +20,8 @@ export default class Request extends Component {
     render(){
         if (this.props.request.is_accepted == "pending") {
           return (
-              <div style ={{backgroundColor:'#ccc', margin:'10px', padding:'10px'}}>
+              <div className = 'request'>
+                <p>name: {this.props.request.user_name}</p>
                 <p>reason: {this.props.request.reason}</p>
                 <p>background: {this.props.request.background}</p>
                 <p>program: {this.props.request.program}</p>

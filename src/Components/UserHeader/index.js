@@ -1,18 +1,50 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Notifications from '../../Containers/NotificationsContainer';
+import Cable from 'actioncable';
+
+
 
 
 export default class UserHeader extends Component {
 
+  constructor(){
+    super()
+    this.state = {
+      notification_count: 0
+    }
+  }
+
   componentWillMount(){
     this.props.setCurrentUser();
+    this.createSocket();
   }
 
   logout(e){
     e.preventDefault();
     this.props.userLogout();
   }
-  
+  createSocket() {
+
+    let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
+    this.notifications = cable.subscriptions.create({
+      channel: 'NotificationChannel'
+    }, {
+      connected: () => {
+
+      },
+      received: (data) => {
+        this.setState({notification_count: this.state.notification_count +1 })
+        alert(data);
+      },
+      create: (notificationContent) => {
+        this.perform('create', {
+            content: notificationContent
+        });
+      }
+    })
+  }
+
   render() {
     const {isUser} = this.props;
     const userLinks = (
@@ -26,6 +58,7 @@ export default class UserHeader extends Component {
         null
       }
         <ul className="nav navbar-nav navbar-right">
+        <li><Notifications /><p style={{"color": "red"}}>{this.state.notification_count}</p></li>
           <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </ul>
       </div>
@@ -42,16 +75,16 @@ export default class UserHeader extends Component {
             <div className="navbar-header">
               {
                 isUser?
-                <Link to="/pools" className="navbar-brand">3am Dahab</Link>
+                <Link to="/pools" className="navbar-brand">Dahab</Link>
                 :
-                <Link to="/" className="navbar-brand">3am Dahab</Link>                
+                <Link to="/" className="navbar-brand">Dahab</Link>
               }
             </div>
-            
+
             <div>
                 {isUser? userLinks : guestLinks}
             </div>
-            
+
           </div>
         </nav>
       );

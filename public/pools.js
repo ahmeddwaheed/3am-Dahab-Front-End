@@ -48,8 +48,6 @@ export const getPoolsLoading = () =>{
 }
 export const getPools = (status) => {
   const payload = Axios.get(`http://localhost:3001/pools?status=${status}`);
-  console.log('hello from the actinnnnnnnnons!!!');
-  console.log(payload);
   return {
     type: GET_POOLS,
     payload
@@ -75,10 +73,7 @@ export const getPoolLoading = () =>{
   }
 }
 export const getPool = (id) => {
-  console.log(id, PoolApi(id));
   const payload = Axios.get(`http://localhost:3001/pools/${id}`);
-  console.log('hello from the actionszzzz!!!');
-  console.log(payload);
   return {
     type: GET_POOL,
     payload

@@ -18,8 +18,8 @@ export default class Form extends Component {
         launch_date: '',
         end_date: '',
         status:'running',
-        redirect : false
-
+        redirect : false,
+        current_user_in_pool:true
       }
 
       this._handleChange = this._handleChange.bind(this)
@@ -29,6 +29,7 @@ export default class Form extends Component {
     }
     edit = (e) => {
       e.preventDefault();
+      debugger
       this.setState({status: 'running', redirect: true}, () => this.props.editPool(this.props.match.params.id, this.state));
       this.setState({
                       launch_date: '',

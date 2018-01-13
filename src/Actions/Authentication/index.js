@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {userSignInAPi, currentUserApi, adminLoginApi, currentAdminApi} from '../../api';
 
 export const USER_SIGN_IN = 'USER_SIGN_IN';
 export const USER_SIGN_IN_LOADING = 'USER_SIGN_IN_LOADING';
@@ -21,7 +21,7 @@ export const CURRENT_ADMIN_SUCCESS = 'CURRENT_ADMIN_SUCCESS';
 export const CURRENT_ADMIN_FAILURE = 'CURRENT_ADMIN_FAILURE';
 
 export const userSignIn = (user) => {
-    const payload = axios.post(`http://localhost:3001/users/login`, user);
+    const payload = axios.post(userSignInAPi, user);
     return {
         type: USER_SIGN_IN,
         payload
@@ -51,7 +51,7 @@ export const userLogout = () => {
     }
 }
 export const setCurrentUser = () => {
-    const payload = axios.get(`http://localhost:3001/current_user`)
+    const payload = axios.get(currentUserApi)
     return {
         type: SET_CURRENT_USER,
         payload
@@ -70,7 +70,7 @@ export const setCurrentUserFailure = (error) => {
     }
 }
 export const adminSignIn = (admin) => {
-    const payload = axios.post(`http://localhost:3001/admins/login`, admin);
+    const payload = axios.post(adminLoginApi, admin);
     return {
         type: ADMIN_SIGN_IN,
         payload
@@ -89,7 +89,7 @@ export const AdminSignInFailure = (error) => {
     }
 }
 export const setCurrentAdmin = () => {
-    const payload = axios.get(`http://localhost:3001/current_admin`)
+    const payload = axios.get(currentAdminApi)
     return {
         type: CURRENT_ADMIN,
         payload

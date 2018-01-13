@@ -5,7 +5,7 @@ import {
   getPoolLoading, getPool, getPoolSuccess, getPoolFailure,
   addPoolLoading, addPool, addPoolSuccess, addPoolFailure,
   editPoolLoading, editPool, editPoolSuccess, editPoolFailure,
-  deletePoolLoading, deletePool, deletePoolSuccess, deletePoolFailure
+  deletePoolLoading, deletePool, deletePoolSuccess, deletePoolFailure,
 } from '../../Actions/Pools';
 
 const mapStateToProps = (state) => {
@@ -15,9 +15,9 @@ const mapStateToProps = (state) => {
     adding: state.pools.adding,
     error: state.pools.error,
     errorAdding: state.pools.errorAdding,
-    currentUser: state.authUser.user,
     isUser: state.authUser.isUser,
-    isAdmin: state.authAdmin.isAdmin
+    isAdmin: state.authAdmin.isAdmin,
+    currentUser: state.authUser.user
   }
 }
 const mapDispatchToProps = (dispatch) => {

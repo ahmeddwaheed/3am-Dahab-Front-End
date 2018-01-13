@@ -19,7 +19,7 @@ export default class Pools extends Component {
       }
     }
     render(){
-        const { pools, loading , currentUser, isUser , isAdmin } = this.props;
+      const { pools, loading , currentUser, isUser , isAdmin } = this.props;
         return (
           <div>
                 {
@@ -44,7 +44,7 @@ export default class Pools extends Component {
                   {
                       pools.map((pool) => {
                       return (
-                        <Pool isAdmin= {isAdmin} isUser= {isUser} pool={pool} onClick={this.props.deletePool.bind(this)} />
+                        <Pool isAdmin= {isAdmin} isUser= {isUser} pool={pool} onClick={this.props.deletePool.bind(this)} currentUser={currentUser} />
                       )
                       })
                   }
