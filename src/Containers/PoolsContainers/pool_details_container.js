@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import Pools from '../../Components/Pools';
 import Details from '../../Components/PoolDetails';
 import {getPoolLoading, getPool, getPoolSuccess, getPoolFailure,
-    addSeat, addSeatSucces, addSeatFailure} from '../../Actions/Pools';
+    addSeat, addSeatSucces, addSeatFailure, 
+    deleteSeat, deleteSeatSucces, deleteSeatFailure} from '../../Actions/Pools';
 
 const mapStateToProps = (state) => {
   return {
-    pools: state.pools.pools,
+    pools: state.pools,
     pool: state.pools.pool.data,
     userCard: state.pools.pool.userCard,
     loading: state.pools.loading,
@@ -40,6 +41,16 @@ const mapDispatchToProps = (dispatch) => {
                 }
                 else {
                     dispatch(addSeatFailure(response.payload.message));
+                }
+            })
+        },
+        deleteSeat :(id) => {
+            dispatch(deleteSeat(id)).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(deleteSeatSucces(id));
+                }
+                else {
+                    dispatch(deleteSeatFailure(response.payload.message));
                 }
             })
         }

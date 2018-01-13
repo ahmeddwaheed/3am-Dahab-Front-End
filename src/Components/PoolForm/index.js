@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { AdminHeader } from '../../Containers/UserCardContainer/nav_bar';
 import {Redirect} from 'react-router-dom';
+import './style.css';
 
 
 export default class Form extends Component {
@@ -36,122 +36,54 @@ export default class Form extends Component {
          return( <Redirect to= "/dashboard"/>)
         }
         const { pools, loading, isAdmin} = this.props;
-        if(isAdmin){
-          return (
-            <div>
-            <AdminHeader/>
-                  <h2> New pool</h2>
-                   <form onSubmit = {this.add}>
+        return (
+          <div className = 'parent' >
+                  <form onSubmit = {this.add}>
+                    <div className = 'group'>
+                         <input className = ' inputMaterial' type = "text" name="name" placeholder = "name" onChange={this._handleChange} />
+                         <span className = 'highlight'></span>
+                         <span className = 'bar'></span>
+                         <label className = 'label'> Name </label>
+                    </div>
+                    <div className = 'group'>
+                       <input className = ' inputMaterial' type = "text"  name="amount" placeholder = "amount" onChange={this._handleChange}  />
+                       <span className = 'highlight'> </span>
+                       <span className = 'bar'></span>
+                       <label className = 'label'> amount </label>
+                    </div>
+                    <div className = 'group'>
+                       <input className = ' inputMaterial' type = "text" name="monthly_amount" placeholder = "monthly amount" onChange={this._handleChange}/>
+                       <span className = 'highlight'> </span>
+                       <span className = 'bar'></span>
+                       <label className = 'label'> monthly amount </label>
+                    </div>
+                    <div className = 'group'>
+                       <input className = ' inputMaterial' type = "text" name="seat_number" placeholder = "name" placeholder = "seats number" onChange={this._handleChange}  />
+                       <span className = 'highlight'> </span>
+                       <span className = 'bar'></span>
+                       <label className = 'label'> seats number </label>
+                    </div>
 
-                       <label> Pool Name </label>
-                       <input type = "text" name="name"  onChange={this._handleChange} />
-                       <label> amount </label>
-                       <input type = "text" name="amount" onChange={this._handleChange} />
-                       <label> monthly amount </label>
-                       <input type = "text" name="monthly_amount" onChange={this._handleChange} />
-                       <label> seats number </label>
-                       <input type = "text" name="seat_number" onChange={this._handleChange} />
-                       <label> status </label>
-                       <input type = "text" name="status" onChange={this._handleChange} />
-
-                       <input type = "submit" value = "Create Pool" />
-                    </form>
-              </div>
-          )
-        }
-        else {
-          return (
-            <div>
-              <h1> Invalid Request </h1>
+                    <input className = 'button' type = "submit" value = "Create Pool" />
+                  </form>
             </div>
-          )
-        }
+        )
     }
 }
 
 
 
-// import React, { Component } from 'react';
-//
-// export default class Form extends Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             pool: '',
-//
-//         }
-//     }
-//     onNameChange = (e) => {
-//       const pool = e.target.value;
-//       this.setState({pool} );
-//     };
-//
-//
-//     add = (e) => {
-//       e.preventDefault();
-//       this.props.addPool(this.state.pool);
-//       this.setState({ pool: '' });
-//     };
-//
-//     render(){
-//         const { pools, loading} = this.props;
-//         return (
-//             <div>
-//                  <form onSubmit = {this.add}>
-//                      <input type = "text" value={this.state.pool} onChange={this.onNameChange} placeholder = "New Pool" />
-//                      <input type = "submit" value = "Add Pool" />
-//                   </form>
-//             </div>
-//         )
-//     }
-// }
 
-
-
-
-
-
-//
-//
-// import React, { Component } from 'react';
-//
-//
-// export default class Form extends Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             pool: '',
-//
-//         }
-//     }
-//     onNameChange = (e) => {
-//       const pool = e.target.value;
-//       console.log(e.target.value);
-//       console.log(pool);
-//       this.setState({pool} );
-//       console.log(this.state);
-//       console.log(pool);
-//     };
-//
-//     add = (e) => {
-//       e.preventDefault();
-//       this.props.addPool(this.state.pool);
-//       console.log('component add');
-//       console.log(this.state);
-//       this.setState({ pool: '' });
-//
-//     };
-//
-//     render(){
-//         const { pools, loading} = this.props;
-//         return (
-//             <div>
-//                  <form onSubmit = {this.add}>
-//                      <input type = "text" value={this.state.pool} onChange={this.onNameChange} placeholder = "New Pool" />
-//                      <input type = "submit" value = "Add Pool" />
-//                   </form>
-//             </div>
-//         )
-//     }
-// }
-//
+                      //
+                      // <label> Pool Name </label>
+                      // <input type = "text" name="name"  onChange={this._handleChange} />
+                      // <label> amount </label>
+                      // <input type = "text" name="amount" onChange={this._handleChange} />
+                      // <label> monthly amount </label>
+                      // <input type = "text" name="monthly_amount" onChange={this._handleChange} />
+                      // <label> seats number </label>
+                      // <input type = "text" name="seat_number" onChange={this._handleChange} />
+                      // <label> status </label>
+                      // <input type = "text" name="status" onChange={this._handleChange} />
+                      //
+                      // <input type = "submit" value = "Create Pool" />

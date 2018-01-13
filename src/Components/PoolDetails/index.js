@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import UserCard from '../../Containers/UserCardContainer/user_card';
 import { Button } from 'react-bootstrap';
 import { Row, Spin, Alert } from 'antd';
+import Checkout from '../../Checkout';
+import './style.css';
 
 
 export default class Details extends Component {
@@ -10,7 +12,7 @@ export default class Details extends Component {
       this.state = {
           addedSeat: false,
           user_details: {user_id:"", pool_id:"", position:""},
-          user_in_pool: 0
+          user_in_pool: 0,
       }
     }
     componentWillMount(){
@@ -20,11 +22,16 @@ export default class Details extends Component {
       this.setState({user_details:{user_id:id, pool_id:this.props.id, position:position}, addedSeat:true})
     }
     handleDeleteSeat(){
-      // var clear = this.setState({user_details:{user_id:null, pool_id:null}, addedSeat:false})
-      // this.props.addSeat(clear) 
+      let card_id
+      this.props.userCard.map(card => {
+        if(this.props.user.id === card.user_id){
+          card_id = card.id
+        }
+      })
+      this.props.deleteSeat(card_id)
     }
     render(){
-      const {loading, error, pool, userCard} = this.props;
+      const {loading, error, pool, userCard, user} = this.props;
       if(loading){
         return (
           <Spin />
@@ -42,18 +49,21 @@ export default class Details extends Component {
         const { name, amount, monthly_amount, seat_number, status} = this.props.pool;
         const userCards = this.props.userCard;
         return (
-          <div>
+          <div className = 'clearfix pool-parent'>
             <h2>{name}</h2>
-            <div style ={{backgroundColor: 'blue', margin:'10px', padding:'10px'}}>
-              
+            <aside className = 'start pool-info'>
               <p>amount: {amount}</p>
               <p>monthly amount: {monthly_amount}</p>
               <p>seats: {seat_number}</p>
               <p>status: {status}</p>
+            </aside>
+            <div className = 'pool-details start'>
+
+
               {
                 userCards.map(card => {
                   return (
-                    <div style={{display: 'inline-block', margin:'10px'}}>
+                    <div className = 'card'>
                         {
                           <div><UserCard addSeat={this.handleAddSeat.bind(this)} card={card} in_pool={this.state.user_details.position} /></div>
                         }
@@ -63,12 +73,23 @@ export default class Details extends Component {
               }
               <br/><br/><br/>
               {
-                this.state.addedSeat?
-                <Button onClick={() => this.props.addSeat(this.state.user_details)} bsStyle="primary" > Confirm Join </Button>
+                this.state.addedSeat && !this.props.pools.pool.current_user_in_pool?
+                <Button className = 'end' onClick={() => this.props.addSeat(this.state.user_details)} bsStyle="primary" > Confirm Join </Button>
                 :
-                <Button onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
+                this.props.pools.pool.current_user_in_pool && pool.status == 'comming'?
+                <Button className = 'end' onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
+                :
+                pool.status == 'running'?
+                <div className = 'stripe'>
+                <Checkout  name={name} description={"Online Payment"} amount={monthly_amount} user_id={user.id} pool_id={pool.id}/>
+                </div>
+                :
+                null
               }
+
+
               </div>
+
           </div>
         )
       }

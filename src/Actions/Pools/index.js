@@ -47,6 +47,13 @@ export const ADD_SEAT_SUCCESS = 'ADD_SEAT_SUCCESS';
 export const ADD_SEAT_FAILURE = 'ADD_SEAT_FAILURE';
 
 
+// delete seat
+
+export const DELETE_SEAT = 'DELETE_SEAT';
+export const DELETE_SEAT_SUCCESS = 'DELETE_SEAT_SUCCESS';
+export const DELETE_SEAT_FAILURE = 'DELETE_SEAT_FAILURE';
+
+
 //Action Creators
 
 //Get all pools
@@ -199,21 +206,22 @@ export const addSeatFailure = (error) => {
       error
   }
 }
-// export const deleteSeat = (id) => {
-//   const payload = Axios.delete(`http://localhost:3001/users_pools`, id);
-//   return {
-//       type: DELETE_SEAT,
-//       payload
-//   }
-// }
-// export const deleteSeatSucces = () => {
-//   return {
-//       type: DELETE_SEAT_SUCCESS,
-//   }
-// }
-// export const deleteSeatFailure = (error) => {
-//   return {
-//       type: DELETE_SEAT_FAILURE,
-//       error
-//   }
-// }
+export const deleteSeat = (id) => {
+  const payload = Axios.delete(`http://localhost:3001/users_pools/${id}`);
+  return {
+      type: DELETE_SEAT,
+      payload
+  }
+}
+export const deleteSeatSucces = (id) => {
+  return {
+      type: DELETE_SEAT_SUCCESS,
+      id
+  }
+}
+export const deleteSeatFailure = (error) => {
+  return {
+      type: DELETE_SEAT_FAILURE,
+      error
+  }
+}

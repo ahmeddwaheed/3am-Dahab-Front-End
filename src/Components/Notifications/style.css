@@ -1,0 +1,13 @@
+.notifications-header{
+  background-color: #eee;
+  border: none
+}
+.notifications-header .btn-default {
+  background-color: #eee;
+  border-color: #eee;
+}
+
+.btn-group > .btn:first-child {
+    margin-left: 0;
+    line-height: 0px;
+}

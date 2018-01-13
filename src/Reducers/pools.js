@@ -4,7 +4,8 @@ import {
   ADD_POOL_LOADING, ADD_POOL_SUCCESS, ADD_POOL_FAILURE,
   EDIT_POOL_LOADING, EDIT_POOL_SUCCESS, EDIT_POOL_FAILURE,
   DELETE_POOL_LOADING, DELETE_POOL_SUCCESS, DELETE_POOL_FAILURE,
-  ADD_SEAT_SUCCESS, ADD_SEAT_FAILURE
+  ADD_SEAT_SUCCESS, ADD_SEAT_FAILURE,
+  DELETE_SEAT_SUCCESS, DELETE_SEAT_FAILURE, deleteSeatSucces
 } from '../Actions/Pools';
 
 const INITIAL_STATE = {
@@ -98,6 +99,27 @@ export default (currentState = INITIAL_STATE, action) => {
         return {...currentState, pool: newPool}
       case ADD_SEAT_FAILURE:
         return {...currentState, error: action.error};
+
+      case DELETE_SEAT_SUCCESS:
+        var seat = currentState.pool.userCard.map(card => {
+          if(card.id == action.id){
+            card = {
+              id: null,
+              user_id: null,
+              created_at: null,
+              updated_at: null,
+              avatar: "http://bit.ly/2mhzC6H",
+              pool_id: card.pool_id,
+              position: card.position
+            }
+          }
+          return card
+        })
+        var newPool = {...currentState.pool};
+        newPool.userCard = seat;
+        return {...currentState, pool:newPool}
+      case DELETE_SEAT_FAILURE:
+        return{...currentState, error: action.error}
 
     default:
       return currentState;

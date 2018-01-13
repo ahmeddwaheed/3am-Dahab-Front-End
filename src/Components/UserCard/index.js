@@ -59,7 +59,7 @@ export default class UserCard extends Component {
                       <Meta
                         title={card.name}
                         />
-                        <button onClick= {this.handleDeleteSeat.bind(this)}> x </button>
+                        <button className = 'button ' onClick= {this.handleDeleteSeat.bind(this)}> x </button>
                     </Card>
                     // Empty seats //
                     :
@@ -71,13 +71,13 @@ export default class UserCard extends Component {
                       />
                       {
                           !this.props.user.in_pool?
-                          <button onClick= {() => {this.props.addSeat(this.props.card.position, this.props.user.id)}}> + </button>
+                          <button className = 'button ' onClick= {() => {this.props.addSeat(this.props.card.position, this.props.user.id)}}> + </button>
                           :
                           null
-                          
+
                       }
                     </Card>
-                    
+
                 }
                 </div>
               )

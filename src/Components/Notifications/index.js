@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Notification from '../Notification';
 import Cable from 'actioncable';
-
+import {DropdownButton, ButtonToolbar, MenuItem} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './style.css';
+import notification from './notification.svg';
 // const Search = Input.Search;
 //
 export default class Notifications extends Component {
@@ -21,14 +24,26 @@ export default class Notifications extends Component {
     render(){
         const { notifications, loading } = this.props;
         return (
-            <div>
-                  {notifications.map((notification) => {
-                  return (
-                   <Notification notification={notification}/>
-                 )
-                  })
-                 }
-            </div>
+          <ButtonToolbar className = 'notifications-header'>
+          {this.props.count != 0 ? this.props.count:null}
+            <DropdownButton
+              className = 'notifications-header'
+              title= {<img className = 'nav-img' src = {notification} />}
+              noCaret
+              id="dropdown-no-caret"
+            >
+            {notifications.map((notification) => {
+              console.log("hellllooooo",notification.pool_id)
+            return (
+              <Link to={`/pools/${notification.pool_id}`}><MenuItem>{notification.message}</MenuItem></Link>
+
+
+           )
+            })
+           }
+
+            </DropdownButton>
+          </ButtonToolbar>
         )
     }
 }

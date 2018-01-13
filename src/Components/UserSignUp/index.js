@@ -27,7 +27,7 @@ export default class UserSignUp extends Component {
         user.append('password',this.state.password);
         user.append('password_confirmation',this.state.password_confirmation);
         user.append('avatar',this.state.avatar);
-        this.props.addUser(user);        
+        this.props.addUser(user);
         this.setState({name:"", email:"", password:"", password_confirmation:"", avatar:""});
     }
     handleNameChange = (e) => {
@@ -45,9 +45,9 @@ export default class UserSignUp extends Component {
     handleAvatarChange = (e) => {
         this.setState({avatar: e.target.files[0]})
     }
-    render(){        
+    render(){
         const { loading , error, message } = this.props;
-        
+
         if(loading){
             return (
                 <Spin />
@@ -56,76 +56,85 @@ export default class UserSignUp extends Component {
             return (
                 <div>
                 <UserHeader />
-                    <h1> Register </h1>
+                  <div className = 'parent'>
                     <form className="demoForm" >
                         <div>
-                            <div className="panel panel-default">
+
+                            <div className = 'group'>
+                              <input type="text" required className="inputMaterial" name="name"
+                                  placeholder="Username"
+                                  onChange={this.handleNameChange}  />
+                              <span className = 'highlight'></span>
+                              <span className = 'bar'></span>
+                              <label className = 'label' htmlFor="email" >Name</label>
                             </div>
-                            <label htmlFor="name">Name</label>
-                            <input type="text" required className="form-control" name="name"
-                                placeholder="Username"
-                                onChange={this.handleNameChange}  />
-                        </div><br />
-                        <div>
-                            <label htmlFor="email">email</label>
-                            <input type="email" required className="form-control" name="email"
+                        </div>
+
+                        <div className = 'group'>
+                            <input type="email" required className="inputMaterial" name="email"
                                 placeholder="Email"
                                 onChange={this.handleEmailChange}  />
-                        </div><br />
-                        <div>
-                            <label htmlFor="password">Password</label>
-                            <input type="password" required className="form-control" name="password"
+
+                                <span className = 'highlight'></span>
+                                <span className = 'bar'></span>
+                                <label className = 'label' htmlFor="email" >Email</label>
+
+                        </div>
+
+                        <div className = 'group'>
+                            <input type="password" required className="inputMaterial" name="password"
                                 placeholder="Password"
                                 onChange={this.handlePasswordChange}  />
-                        </div><br />
-                        <div>
-                            <label htmlFor="password">Confirm Password</label>
-                            <input type="password" required className="form-control" name="confirm"
+                                <span className = 'highlight'></span>
+                                <span className = 'bar'></span>
+                                <label className = 'label' htmlFor="password" >Password</label>
+
+                        </div>
+
+                        <div className = 'group'>
+                            <input type="password" required className="inputMaterial" name="confirm"
                                 placeholder="Confirm Password"
                                 onChange={this.handleConfirmChange}  />
-                        </div><br />
-                        <div>
-                            <label htmlFor="ImageUpload">Upload Image</label>
-                            <input type="file" required className="form-control" name="image"
+                            <span className = 'highlight'></span>
+                            <span className = 'bar'></span>
+                            <label className = 'label' htmlFor="password" >Confirm Password</label>
+                        </div>
+                        <div className = 'group'>
+                            <input type="file" required className="inputMaterial" name="image"
                             onChange={this.handleAvatarChange}/>
-                        </div><br />
+
+                            <span className = 'highlight'></span>
+                            <span className = 'bar'></span>
+                            <label className = 'label' htmlFor="ImageUpload">Upload Image</label>
+                        </div>
+
+                        <div >
+                        </div>
+
                         {
                             <div>
-                                <button type="button" onClick={()=> this.addNewUser()} className="btn btn-primary" >Register</button>
+                                <button  type="button" onClick={()=> this.addNewUser()} className="button" >Register</button>
                                 <Link to="/login" > Login</Link>
                             </div>
                         }
                     </form>
+                  </div>
                     {
                         this.props.error?
                         <div>
-                                <br />
-                                {
-                                    // this.props.error.erros.map(error => {
-                                    //    { console.log(error)}
-                                    // })
-                                }
                             <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
                         </div>
                         :
                         this.props.message?
                         <div>
-                                <br />
+
                                 <Alert message={this.props.message} type="success"/>
                         </div>
                         :
                         null
                     }
-                    
+
                 </div>
             )
-        // }
-        // else {
-        //     return (
-        //         <div>
-        //             <h1> Invalid Request </h1>
-        //         </div>
-        //     )
-        // }
     }
 }

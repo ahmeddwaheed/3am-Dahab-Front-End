@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
-import history from '../../history';
-
+import './style.css';
 
 
 export default class Form extends Component {
@@ -34,31 +32,38 @@ export default class Form extends Component {
 
     render(){
         const { requests, loading, user} = this.props;
-        if(user){
-          return (
-              <div>
-              <UserHeader />
-                   <form onSubmit = {this.add}>
-  
-                       <label> reason </label>
-                       <input type = "text" name="reason"  onChange={this._handleChange} />
-                       <label> background </label>
-                       <input type = "text" name="background" onChange={this._handleChange} />
-                       <label> program </label>
-                       <input type = "text" name="program" onChange={this._handleChange} />
-  
-                       <input type = "submit" value = "Submit" />
-                    </form>
-              </div>
-          )
-        }
-        else {
-          history.push('/');
-          return null
-        }
+        return (
+            <div className = 'parent' >
+                  <form onSubmit = {this.add}>
+
+                  <div className = 'group'>
+                     <input className = ' inputMaterial' type = "text" name="reason" placeholder = 'reason'  onChange={this._handleChange}  />
+                     <span className = 'highlight'> </span>
+                     <span className = 'bar'></span>
+                     <label className = 'label'> reason </label>
+                  </div>
+                  <div className = 'group'>
+                     <input className = ' inputMaterial' type = "text" name="background" placeholder = 'background' onChange={this._handleChange}  />
+                     <span className = 'highlight'> </span>
+                     <span className = 'bar'></span>
+                     <label className = 'label'> background </label>
+                  </div>
+                  <div className = 'group'>
+                     <input className = ' inputMaterial' type = "text" name="program" placeholder = 'program' onChange={this._handleChange}  />
+                     <span className = 'highlight'> </span>
+                     <span className = 'bar'></span>
+                     <label className = 'label'> program</label>
+                  </div>
+
+                  <input  className = 'button' type = "submit" value = "Submit" />
+                  </form>
+            </div>
+        )
 
     }
 }
+
+
 
 
 

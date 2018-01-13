@@ -1,0 +1,164 @@
+.logo{
+ font-family:  cursive;
+ font-weight: normal;
+ color: #009688;
+ margin-left: 15px;
+ padding-left: 15px;
+ position: relative;
+}
+
+.user-image{
+  width:25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.header {
+  background-color: #eee;
+  padding-bottom: 5px
+}
+.slideInLeft{
+  font-family:  cursive;
+  margin-left: 10px;
+  text-decoration: none
+
+}
+.slideInLeft:hover{
+  text-decoration: none
+
+}
+.notifications-header{
+  line-height: 34px;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.logo img {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  animation: bounceIn 0.6s;
+  transform: rotate(0deg) scale(1) translateZ(0);
+  transition: all 0.4s cubic-bezier(.8,1.8,.75,.75);
+  cursor: pointer;
+}
+
+.logo img:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.bubble { fill: #e76853; }
+.icon { fill:  #fff; }
+
+@keyframes bounceIn {
+  0% {
+    opacity: 1;
+    transform: scale(.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* .logo span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  animation: bounceIn 0.6s;
+  transform: rotate(0deg) scale(1) translateZ(0);
+  transition: all 0.4s cubic-bezier(.8,1.8,.75,.75);
+  cursor: pointer;
+}
+
+.logo span:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.bubble { fill: #e76853; }
+.icon { fill:  #fff; } */
+/*
+@keyframes bounceIn {
+  0% {
+    opacity: 1;
+    transform: scale(.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}*/
+/* .logo span{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: -50px;
+  top: 5px;
+  color: #eee;
+
+}
+
+
+.logo span:hover:after{
+  position: relative;
+  color: #333;
+  left: 5px;
+  top: 5px;
+  visibility: visible;
+  animation: slideInLeft 5s;
+  transform: rotate(0deg) scale(1) translateZ(0);
+  transition: all 5s cubic-bezier(.8,1.8,.75,.75);
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+  transform: translate3d(10%, 0, 0);
+
+  }
+} */
+
+
+.profile{
+  display: inline-block;
+}
+.nav-img{
+  width: 25px;
+  height: 25px
+}
+.nav-icon{
+  color: #009688
+}
+.nav-text{
+  color: #009688;
+  line-height: 20px
+
+}

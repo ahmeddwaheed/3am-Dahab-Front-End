@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Notifications from '../../Containers/NotificationsContainer';
 import Cable from 'actioncable';
-
-
-
+import './style.css';
+import Logo from './logo.svg';
+import user from './user-male-black-shape.svg';
 
 export default class UserHeader extends Component {
+
+  constructor(){
+    super()
+    this.state = {
+      notification_count: 0
+    }
+  }
 
   componentWillMount(){
     this.props.setCurrentUser();
@@ -28,6 +35,7 @@ export default class UserHeader extends Component {
 
       },
       received: (data) => {
+        this.setState({notification_count: this.state.notification_count +1 })
         alert(data);
       },
       create: (notificationContent) => {
@@ -41,26 +49,40 @@ export default class UserHeader extends Component {
   render() {
     const {isUser} = this.props;
     const userLinks = (
-      <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/notifications"><h2> notifications </h2></Link></li>
-        <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
-      </ul>
+      <div >
+        <ul className="nav navbar-nav navbar-right">
+
+
+          <li>
+          <Link to = "/profile/edit">
+          {
+            this.props.user.avatar?
+            <img className='user-image' src = {user}/>
+            :
+            null
+          }
+          </Link>
+          </li>
+          <li><Notifications count={this.state.notification_count} /></li>
+          <li><a href="#" onClick={this.logout.bind(this)}><span className = 'nav-text'>Logout</span></a></li>
+        </ul>
+      </div>
     );
     const guestLinks = (
             <ul className="nav navbar-nav navbar-right">
-                <li><Link to="/register">Sign up</Link></li>
-                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register"><span className = 'nav-text'>Sign up</span></Link></li>
+                <li><Link to="/login"><span className = 'nav-text'>Login</span></Link></li>
             </ul>
     );
     return (
         <nav className="navbar navbar-default">
-          <div className="container-fluid">
+          <div className="container-fluid header">
             <div className="navbar-header">
               {
                 isUser?
-                <Link to="/pools" className="navbar-brand">Dahab</Link>
+                <Link to="/pools" ><span className = 'logo' ><img src = {Logo} alt = 'logo'/><span className = 'slideInLeft'>Dahab</span></span></Link>
                 :
-                <Link to="/" className="navbar-brand">Dahab</Link>
+                <Link to="/" ><span className = 'logo' ><img src = {Logo} alt = 'logo'/><span className = 'slideInLeft'>Dahab</span></span></Link>
               }
             </div>
 
