@@ -64,8 +64,6 @@ export default class Details extends Component {
               <p>Status: {status}</p>
             </aside>
             <div className = 'pool-details start'>
-
-
               {
                 userCards.map(card => {
                   return (
@@ -77,7 +75,6 @@ export default class Details extends Component {
                   )
                 })
               }
-              <br/><br/><br/>
               {
                 this.state.addedSeat && !this.props.pools.pool.current_user_in_pool?
                 <Button className = 'end' onClick={() => this.props.addSeat(this.state.user_details)} bsStyle="primary" > Confirm Join </Button>

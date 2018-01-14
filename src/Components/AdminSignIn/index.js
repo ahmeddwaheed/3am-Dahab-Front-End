@@ -9,6 +9,7 @@ import { Link, Route } from 'react-router-dom';
 import {FormErrors} from '../FormErrors';
 import history from '../../history';
 import {AdminHeader} from '../../Containers/UserCardContainer/nav_bar';
+import './style.css'
 
 export default class UserSignIn extends Component {
     constructor(){
@@ -78,32 +79,35 @@ export default class UserSignIn extends Component {
                               <div className="panel panel-default">
                                   <FormErrors formErrors={this.state.formErrors} />
                               </div>
-                              <div className={`group ${this.errorClass(this.state.formErrors.email)}`}>
-                                  <input type="email" required className="form-control" name="email"
-                                      placeholder="Email" className="inputMaterial"
-                                      value={this.state.email}
-                                      onChange={this.handleUserInput}  />
-                                  <span className = 'highlight'></span>
-                                  <span className = 'bar'></span>
+                            <div className ="container">
+                                <div className={`group ${this.errorClass(this.state.formErrors.email)}`}>
+                                    <input type="email" required className="form-control" name="email"
+                                        placeholder="Email" className="inputMaterial"
+                                        value={this.state.email}
+                                        onChange={this.handleUserInput}  />
+                                    <span className = 'highlight'></span>
+                                    <span className = 'bar'></span>
+                                    <label className = 'label' htmlFor="email">Email</label>
+                                </div>
+
+
+                                <div className={`group ${this.errorClass(this.state.formErrors.password)}`}>
+                                    <input type="password" className="inputMaterial" name="password"
+                                        placeholder="Password"
+                                        value={this.state.password}
+                                        onChange={this.handleUserInput}  />
+                                    <span className = 'highlight'></span>
+                                    <span className = 'bar'></span>
+                                    <label className = 'label' htmlFor="password">Password</label>
+
+                                </div>
+                                {
+                                    <div>
+                                        <button className="button" >Sign In</button>
+                                        <Link to="/register" > Register</Link>
+                                    </div>
+                                }
                               </div>
-
-
-                              <div className={`group ${this.errorClass(this.state.formErrors.password)}`}>
-                                  <input type="password" className="inputMaterial" name="password"
-                                      placeholder="Password"
-                                      value={this.state.password}
-                                      onChange={this.handleUserInput}  />
-                                  <span className = 'highlight'></span>
-                                  <span className = 'bar'></span>
-                                  <label className = 'label' htmlFor="password">Password</label>
-
-                              </div>
-                              {
-                                  <div>
-                                      <button className="button" >Sign In</button>
-                                      <Link to="/register" > Register</Link>
-                                  </div>
-                              }
                         </form>
                     </div>
 

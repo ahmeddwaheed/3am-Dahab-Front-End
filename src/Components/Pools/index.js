@@ -37,8 +37,8 @@ export default class Pools extends Component {
                   :
                   null
                 }
-                  <select name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
-                    <option value = "" >All</option>
+                  <select className= "choice" name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
+                    <option value = "" >All Pools</option>
                     <option value = "comming">comming</option>
                     <option value = "running">running</option>
                   </select>

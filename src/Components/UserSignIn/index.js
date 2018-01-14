@@ -78,12 +78,14 @@ export default class UserSignIn extends Component {
                               <input type="email" required className="inputMaterial" name="email" placeholder="Email" value={this.state.email} onChange={this.handleUserInput}  />
                               <span className = 'highlight'></span>
                               <span className = 'bar'></span>
+                              <label className = 'label' htmlFor="email" >Email</label>
                           </div>
 
                           <div className={`group ${this.errorClass(this.state.formErrors.password)}`}>
                               <input type="password" className="inputMaterial" name="password"  placeholder="Password"  value={this.state.password} onChange={this.handleUserInput}  />
                               <span className = 'highlight'></span>
                               <span className = 'bar'></span>
+                              <label className = 'label' htmlFor="password" >Password</label>
 
                           </div>
                           <div >

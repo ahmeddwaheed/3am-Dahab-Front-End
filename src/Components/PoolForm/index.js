@@ -49,19 +49,19 @@ export default class Form extends Component {
                        <input className = ' inputMaterial' type = "text"  name="amount" placeholder = "amount" onChange={this._handleChange}  />
                        <span className = 'highlight'> </span>
                        <span className = 'bar'></span>
-                       <label className = 'label'> amount </label>
+                       <label className = 'label'> Amount </label>
                     </div>
                     <div className = 'group'>
                        <input className = ' inputMaterial' type = "text" name="monthly_amount" placeholder = "monthly amount" onChange={this._handleChange}/>
                        <span className = 'highlight'> </span>
                        <span className = 'bar'></span>
-                       <label className = 'label'> monthly amount </label>
+                       <label className = 'label'> Monthly amount </label>
                     </div>
                     <div className = 'group'>
                        <input className = ' inputMaterial' type = "text" name="seat_number" placeholder = "name" placeholder = "seats number" onChange={this._handleChange}  />
                        <span className = 'highlight'> </span>
                        <span className = 'bar'></span>
-                       <label className = 'label'> seats number </label>
+                       <label className = 'label'> Seats number </label>
                     </div>
 
                     <input className = 'button' type = "submit" value = "Create Pool" />

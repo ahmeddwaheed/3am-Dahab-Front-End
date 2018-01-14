@@ -1,12 +1,12 @@
 
 .group {
   width: 40%;
-  margin: 20px;
+  margin: 40px;
   padding: 7px;
   display: table;
 
 }
-/*
+/* 
 .input:hover{
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 1px -1px 1px 1px #CCC;
@@ -16,7 +16,6 @@
  .label{
   color: #000;
   font-size: 22px;
-
 }
 
 /* floating labels */
@@ -137,8 +136,8 @@ html{
 }
 .group{
   position:relative;
-  margin-bottom: 35px;
-  margin-left: 40px;
+  /* margin-bottom: 35px; */
+  /* margin-left: 40px; */
 }
 
 .inputMaterial 				{
@@ -152,7 +151,6 @@ html{
 
 .inputMaterial:focus ~ .label,
 .inputMaterial:valid ~ .label {
-  top: -20px;
   font-size: 14px;
 }
 
