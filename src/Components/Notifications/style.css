@@ -11,3 +11,18 @@
     margin-left: 0;
     line-height: 0px;
 }
+.notification a {
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
+.notification {
+  padding: 20px;
+}
+.notifications {
+  width: 50px;
+}
+.dropdown-menu {
+  width: 318px;
+}

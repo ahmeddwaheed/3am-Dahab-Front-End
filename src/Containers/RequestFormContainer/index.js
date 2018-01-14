@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import Request from '../../Components/RequestForm';
+import history from '../../history';
 import {
   addRequestLoading, addRequest, addRequestSuccess, addRequestFailure,
 } from '../../Actions/RequestForm';
 
 const mapStateToProps = (state) => {
-    console.log("EL STATE", state);
   return {
     requests: state.requests,
     loading: state.loading,
@@ -24,6 +24,7 @@ const mapDispatchToProps = (dispatch) => {
               dispatch(addRequest(request)).then(response => {
                   if(response.payload.status < 400){
                       dispatch(addRequestSuccess(response.payload.data.data));
+                      history.push('/pools');
 
                   }else{
                       dispatch(addRequestFailure(response.payload.message));

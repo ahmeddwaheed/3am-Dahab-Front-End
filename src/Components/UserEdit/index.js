@@ -6,7 +6,7 @@ import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
-
+import './style.css';
 
 export default class UserEdit extends Component {
     constructor(props){
@@ -51,7 +51,7 @@ export default class UserEdit extends Component {
                             <span className = 'bar'></span>
                     </div>
                     <div className = 'group'>
-                        <label className = 'label' htmlFor="ImageUpload">Upload Image</label>
+                        <label className = 'label' htmlFor="ImageUpload">Image</label>
                         <input type="file" required className="inputMaterial" name="image"
                         value={this.state.avatar.url}
                         onChange={this.handleAvatarChange}/>
@@ -60,13 +60,13 @@ export default class UserEdit extends Component {
                     </div>
                     {
                         <div>
-                            <button  className = 'button' type="button" onClick={()=> this.editUser()}  >Edit Prfile</button>
+                            <button  className = 'button' type="button" onClick={()=> this.editUser()}  >Edit Profile</button>
                         </div>
                     }
                 </form>
                 {
                     this.props.error?
-                    <div>                
+                    <div>
                         <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
                     </div>
                     :
@@ -74,11 +74,6 @@ export default class UserEdit extends Component {
                     <div>
                             <Alert message={this.props.message} type="success"/>
                     </div>
-                    :
-                    this.state.redirect?
-                    setTimeout(() => {
-                        <Redirect to= "/pools"/>
-                    }, 1000)
                     :
                     null
                 }

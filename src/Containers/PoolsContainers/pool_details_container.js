@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Pools from '../../Components/Pools';
 import Details from '../../Components/PoolDetails';
 import {getPoolLoading, getPool, getPoolSuccess, getPoolFailure,
-    addSeat, addSeatSucces, addSeatFailure, 
+    addSeat, addSeatSucces, addSeatFailure,
     deleteSeat, deleteSeatSucces, deleteSeatFailure} from '../../Actions/Pools';
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
     errorAdding: state.pools.errorAdding,
     isUser: state.authUser.isUser,
     isAdmin: state.authAdmin.isAdmin,
-    user: state.authUser.user
+    user: state.authUser.user,
+    adding_seat: state.pools.adding_seat
   }
 }
 const mapDispatchToProps = (dispatch) => {

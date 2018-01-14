@@ -47,15 +47,21 @@ export default class Details extends Component {
       }
       else if (this.props.pool !== undefined){
         const { name, amount, monthly_amount, seat_number, status} = this.props.pool;
+        var user_position;
+        userCard.map(card => {
+          if(card.user_id== user.id){
+            user_position = card.position
+          }
+        })
         const userCards = this.props.userCard;
         return (
           <div className = 'clearfix pool-parent'>
             <h2>{name}</h2>
             <aside className = 'start pool-info'>
-              <p>amount: {amount}</p>
-              <p>monthly amount: {monthly_amount}</p>
-              <p>seats: {seat_number}</p>
-              <p>status: {status}</p>
+              <p>Amount: {amount}</p>
+              <p>Monthly amount: {monthly_amount}</p>
+              <p>Seats: {seat_number}</p>
+              <p>Status: {status}</p>
             </aside>
             <div className = 'pool-details start'>
 
@@ -80,14 +86,12 @@ export default class Details extends Component {
                 <Button className = 'end' onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
                 :
                 pool.status == 'running'?
-                <div className = 'stripe'>
+                <div className = 'end'>
                 <Checkout  name={name} description={"Online Payment"} amount={monthly_amount} user_id={user.id} pool_id={pool.id}/>
                 </div>
                 :
                 null
               }
-
-
               </div>
 
           </div>

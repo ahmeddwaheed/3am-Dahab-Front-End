@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import RequestDetails from '../../Pages/RequestsPage';
 import { Link, Route } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import './style.css';
@@ -21,6 +20,7 @@ export default class Request extends Component {
         if (this.props.request.is_accepted == "pending") {
           return (
               <div className = 'request'>
+                <p>name: {this.props.request.user_name}</p>
                 <p>reason: {this.props.request.reason}</p>
                 <p>background: {this.props.request.background}</p>
                 <p>program: {this.props.request.program}</p>
@@ -34,12 +34,3 @@ export default class Request extends Component {
 
     }
 }
-// <Link to={`/requests/${this.props.request.id}`}> </Link>
-// {is_accepted: true}
-// the old  way
-// this.setState({is_accepted:false});
-// this.editRequest(`${this.props.request.id}`,this.state);
-
-// <Link to={`/requests/${this.props.request.id}/request`}><Button onClick={this.accept} bsStyle="primary"> Accept</ Button> </Link>
-
-// <Link to={`/requests/${this.props.request.id}`}><Button bsStyle="success"> join</ Button> </Link>

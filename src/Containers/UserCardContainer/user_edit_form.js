@@ -18,7 +18,9 @@ const mapDispatchToProps = (dispatch) => {
         editUser: (id, user) => {
             dispatch(editUser(id, user)).then(response => {
                 if(response.payload.status < 400){
-                    dispatch(editUserSuccess(response.payload.data))
+                  debugger;
+                    dispatch(editUserSuccess(response.payload.data.data))
+                    history.push('/pools');
                 }
                 else {
                     // var payload = JSON.parse(response.payload.request.response);

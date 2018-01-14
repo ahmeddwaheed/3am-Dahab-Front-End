@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import {requestApi} from '../../api';
 
 // Action Types
 
@@ -16,7 +17,7 @@ export const addRequestLoading = () => {
   }
 }
 export const addRequest = (request) => {
-  const payload = Axios.post(`http://localhost:3001/requests/`, request)
+  const payload = Axios.post(requestApi, request)
   return {
     type: ADD_REQUEST,
     payload

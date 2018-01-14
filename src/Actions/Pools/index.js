@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { poolsApi, PoolApi, editPoolApi } from '../../api';
+import { getPoolsApi, poolApi, addPoolApi, userPoolApi, deleteUserPoolApi} from '../../api';
 
 
 // Action Types
@@ -53,7 +53,6 @@ export const DELETE_SEAT = 'DELETE_SEAT';
 export const DELETE_SEAT_SUCCESS = 'DELETE_SEAT_SUCCESS';
 export const DELETE_SEAT_FAILURE = 'DELETE_SEAT_FAILURE';
 
-
 //Action Creators
 
 //Get all pools
@@ -63,7 +62,7 @@ export const getPoolsLoading = () =>{
   }
 }
 export const getPools = (status) => {
-  const payload = Axios.get(`http://localhost:3001/pools?status=${status}`);
+  const payload = Axios.get(getPoolsApi(status));
   return {
     type: GET_POOLS,
     payload
@@ -89,7 +88,7 @@ export const getPoolLoading = () =>{
   }
 }
 export const getPool = (id) => {
-  const payload = Axios.get(`http://localhost:3001/pools/${id}`);
+  const payload = Axios.get(poolApi(id));
   return {
     type: GET_POOL,
     payload
@@ -115,7 +114,7 @@ export const addPoolLoading = () => {
   }
 }
 export const addPool = (pool) => {
-  const payload = Axios.post(`http://localhost:3001/pools/`, pool)
+  const payload = Axios.post(addPoolApi, pool)
   return {
     type: ADD_POOL,
     payload
@@ -142,7 +141,7 @@ export const editPoolLoading = (id) => {
   }
 }
 export const editPool = (id, edit) => {
-  const payload = Axios.patch(`http://localhost:3001/pools/${id}`, edit);
+  const payload = Axios.patch(poolApi(id), edit);
   return {
     type: EDIT_POOL,
     payload
@@ -169,7 +168,7 @@ export const deletePoolLoading = (id) => {
   }
 }
 export const deletePool = (id) => {
-  const payload = Axios.delete(`http://localhost:3001/pools/${id}`);
+  const payload = Axios.delete(poolApi(id));
   return {
     type: DELETE_POOL,
     payload
@@ -188,7 +187,7 @@ export const deletePoolFailure = (id) => {
   }
 }
 export const addSeat = (user) => {
-  const payload = Axios.post(`http://localhost:3001/users_pools`, user);
+  const payload = Axios.post(userPoolApi, user);
   return {
       type: ADD_SEAT,
       payload
@@ -207,7 +206,7 @@ export const addSeatFailure = (error) => {
   }
 }
 export const deleteSeat = (id) => {
-  const payload = Axios.delete(`http://localhost:3001/users_pools/${id}`);
+  const payload = Axios.delete(deleteUserPoolApi(id));
   return {
       type: DELETE_SEAT,
       payload

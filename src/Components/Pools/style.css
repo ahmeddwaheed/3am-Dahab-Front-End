@@ -1,3 +1,9 @@
 .content{
   margin: 15px 15px 100px 5px
 }
+.avatar{
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}

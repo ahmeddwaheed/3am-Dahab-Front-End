@@ -20,16 +20,16 @@ export default class Pools extends Component {
       }
     }
     render(){
-        const { pools, loading , currentUser, isUser , isAdmin } = this.props;
+      const { pools, loading , currentUser, isUser , isAdmin } = this.props;
         return (
           <div className = 'content'>
                 {
-                  isUser?
+                  isUser ?
                   <div>
                     <h1>HI {currentUser.name}</h1>
                     {
                       currentUser.avatar?
-                      <img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src={`http://localhost:3001${currentUser.avatar.url}`} />
+                      <img className="avatar" alt="picture" src={`http://localhost:3001${currentUser.avatar.url}`} />
                       :
                       null
                     }
@@ -39,13 +39,13 @@ export default class Pools extends Component {
                 }
                   <select name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
                     <option value = "" >All</option>
-                    <option value = "comming">coming</option>
+                    <option value = "comming">comming</option>
                     <option value = "running">running</option>
                   </select>
                   {
                       pools.map((pool) => {
                       return (
-                        <Pool isAdmin= {isAdmin} isUser= {isUser} pool={pool} onClick={this.props.deletePool.bind(this)} />
+                        <Pool isAdmin= {isAdmin} isUser= {isUser} pool={pool} onClick={this.props.deletePool.bind(this)} currentUser={currentUser} />
                       )
                       })
                   }

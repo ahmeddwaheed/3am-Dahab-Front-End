@@ -5,8 +5,7 @@ import {DropdownButton, ButtonToolbar, MenuItem} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './style.css';
 import notification from './notification.svg';
-// const Search = Input.Search;
-//
+
 export default class Notifications extends Component {
 
     componentWillMount() {
@@ -33,11 +32,8 @@ export default class Notifications extends Component {
               id="dropdown-no-caret"
             >
             {notifications.map((notification) => {
-              console.log("hellllooooo",notification.pool_id)
             return (
-              <Link to={`/pools/${notification.pool_id}`}><MenuItem>{notification.message}</MenuItem></Link>
-
-
+              <Link to={`/pools/${notification.pool_id}`}><MenuItem className="notification" >{notification.message}</MenuItem></Link>
            )
             })
            }

@@ -22,12 +22,8 @@ const mapDispatchToProps = (dispatch) => {
               dispatch(getNotifications()).then(response => {
                   if(response.payload.status < 400){
                       dispatch(getNotificationsSuccess(response.payload.data));
-                      console.log('hello from container');
-                      console.log(response.payload.data);
                   }else{
                       dispatch(getNotificationsFailure(response.payload.message));
-                      console.log('hello from failure container');
-                      console.log(response.payload);
                   }
               })
           }, 2000)

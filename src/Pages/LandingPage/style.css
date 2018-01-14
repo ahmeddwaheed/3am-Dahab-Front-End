@@ -28,8 +28,6 @@
   width: 25%;
   padding: 10px
 }
-
-
 .pic img {
   width: 30px;
   height: 30px
@@ -45,4 +43,7 @@
 
 .testimonials {
     margin-bottom: 160px;
+}
+.title {
+  margin-bottom: 50px;
 }

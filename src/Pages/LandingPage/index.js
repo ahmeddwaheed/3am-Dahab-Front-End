@@ -73,7 +73,7 @@ export default class LandingPage extends Component {
           </section>
           <section className = ' clearfix  testimonials'>
             <div className = 'section'>
-              <h1>What People Say About Dahab</h1>
+              <h1 className="title" >What People Say About Dahab</h1>
               <div className= 'start child'>
                 <p><img className = 'testimonial-img ' src = {joe}/></p>
                 <p>Joe</p>

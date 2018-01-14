@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(userSignInLoading());
             dispatch(userSignIn(user)).then(response => {
                 if(response.payload.status < 400){
-                    const token = response.payload.data.auth_token;  
+                    const token = response.payload.data.auth_token;
                     dispatch(userSignInSuccess(response.payload.data))
                     localStorage.setItem('jwtToken', token);
                     localStorage.setItem('isUser', true);
@@ -29,8 +29,8 @@ const mapDispatchToProps = (dispatch) => {
                 }
                 else {
                     // history.push('/login');
-                    // var payload = JSON.parse(response.payload.request.response);
-                    dispatch(userSignInFailure(response.payload.message))
+                    var payload = JSON.parse(response.payload.request.response);
+                    dispatch(userSignInFailure(payload))
                 }
             })
         }

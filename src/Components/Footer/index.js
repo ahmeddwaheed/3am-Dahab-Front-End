@@ -11,7 +11,6 @@ export default class Notification extends Component {
             <p className = 'end'>Contact Us</p>
             <p >&copy; CopyRights Almakinah fireup2 2017</p>
           </footer>
-
       )
   }
 }

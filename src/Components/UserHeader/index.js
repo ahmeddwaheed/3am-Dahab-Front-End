@@ -26,7 +26,6 @@ export default class UserHeader extends Component {
   }
   createSocket() {
 
-    console.count('createSocket');
     let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
     this.notifications = cable.subscriptions.create({
       channel: 'NotificationChannel'
@@ -36,7 +35,6 @@ export default class UserHeader extends Component {
       },
       received: (data) => {
         this.setState({notification_count: this.state.notification_count +1 })
-        alert(data);
       },
       create: (notificationContent) => {
         this.perform('create', {

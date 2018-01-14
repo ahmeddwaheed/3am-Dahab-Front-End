@@ -16,6 +16,7 @@ export default class Dashborad extends Component {
           <div className = 'clearfix'>
             <section className = 'start pools'>
               <Link to="/new_pool"><h2 className = 'add-pool'> <i class="fa fa-plus-square-o fa-5x" aria-hidden="true"></i> </h2></Link>
+              <h2>pools</h2>
               <Pools  status = {this.props.match.params.status} />
             </section>
 

@@ -96,22 +96,3 @@ export default class Form extends Component {
         )
     }
 }
-
-
-
-
-
-
-//
-// <label className = 'label'> Name </label>
-// <input className = 'input ' type = "text" name="name"  onChange={this._handleChange} value={this.state.name} />
-//
-//
-// <label className = 'label' > amount </label>
-// <input className = 'input' type = "text" name="amount" onChange={this._handleChange} value={this.state.amount} />
-// <label className = 'label' > monthly amount </label>
-// <input className = 'input' type = "text" name="monthly_amount" onChange={this._handleChange} value={this.state.monthly_amount} />
-// <label className = 'label' > seats number </label>
-// <input className = 'input' type = "text" name="seat_number" onChange={this._handleChange} value={this.state.seat_number} />
-//
-// <input className = 'input' type = "submit" value = "Edit Pool" />

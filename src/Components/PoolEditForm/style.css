@@ -150,6 +150,12 @@ html{
   /* border-bottom:1px solid #757575; */
 }
 
+.inputMaterial:focus ~ .label,
+.inputMaterial:valid ~ .label {
+  top: -20px;
+  font-size: 14px;
+}
+
 .inputMaterial:focus 		{ outline:none;}
 
 /* LABEL ======================================= */
@@ -167,11 +173,11 @@ html{
   -webkit-transition:0.2s ease all;
 }
 /* active state */
-.inputMaterial:focus ~ .label, .inputMaterial:valid ~ .label 		{
+/* .inputMaterial:focus ~ .label, .inputMaterial:valid ~ .label 		{
   top:-20px;
   font-size:14px;
   color: #009688;
-}
+} */
 
 /* BOTTOM BARS ================================= */
 .bar 	{ position:relative; display:block; width:315px; }

@@ -20,7 +20,7 @@ export default class UserSignIn extends Component {
             formErrors: {email: '', password: ''},
             emailValid: false,
             passwordValid: false,
-            formValid: false
+            formValid: false,
         }
     }
     SignIn = (e) => {
@@ -66,12 +66,6 @@ export default class UserSignIn extends Component {
 
     render(){
         const { loading , error, isUser} = this.props;
-        // console.log("ERRRRRRROR",error);
-        // if(loading){
-        //     return (
-        //         <Spin />
-        //     )
-        // }
         if(!isUser){
             return (
                 <div>
@@ -84,14 +78,12 @@ export default class UserSignIn extends Component {
                               <input type="email" required className="inputMaterial" name="email" placeholder="Email" value={this.state.email} onChange={this.handleUserInput}  />
                               <span className = 'highlight'></span>
                               <span className = 'bar'></span>
-                              <label className = 'label' htmlFor="email" >Email</label>
                           </div>
 
                           <div className={`group ${this.errorClass(this.state.formErrors.password)}`}>
                               <input type="password" className="inputMaterial" name="password"  placeholder="Password"  value={this.state.password} onChange={this.handleUserInput}  />
                               <span className = 'highlight'></span>
                               <span className = 'bar'></span>
-                              <label className = ' label' htmlFor="password">Password</label>
 
                           </div>
                           <div >
@@ -104,30 +96,22 @@ export default class UserSignIn extends Component {
                               </div>
                           }
 
+                    </form>
+                  </div>
 
-
-                      </form>
-
-                    </div>
-                    {
-                        this.props.error?
-                            <div>
-                                <br />
-                                <Alert message={this.props.error.message} type="error"/>
-                            </div>
-                            :
-                            null
-                    }
-
-                </div>
+                {
+                    this.props.error?
+                        <div>
+                            <Alert message={this.props.error.message} type="error"/>
+                        </div>
+                        :
+                        null
+                }
+            </div>
             )
         }
         else {
-            return (
-                <div>
-                    <h1> Invalid Request </h1>
-                </div>
-            )
+          return null
         }
-    }
+      }
 }

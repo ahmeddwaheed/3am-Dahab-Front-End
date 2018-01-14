@@ -40,19 +40,19 @@ export default class Form extends Component {
                      <input className = ' inputMaterial' type = "text" name="reason" placeholder = 'reason'  onChange={this._handleChange}  />
                      <span className = 'highlight'> </span>
                      <span className = 'bar'></span>
-                     <label className = 'label'> reason </label>
+                     <label className = 'label'> Reason </label>
                   </div>
                   <div className = 'group'>
                      <input className = ' inputMaterial' type = "text" name="background" placeholder = 'background' onChange={this._handleChange}  />
                      <span className = 'highlight'> </span>
                      <span className = 'bar'></span>
-                     <label className = 'label'> background </label>
+                     <label className = 'label'> Background </label>
                   </div>
                   <div className = 'group'>
                      <input className = ' inputMaterial' type = "text" name="program" placeholder = 'program' onChange={this._handleChange}  />
                      <span className = 'highlight'> </span>
                      <span className = 'bar'></span>
-                     <label className = 'label'> program</label>
+                     <label className = 'label'> Program</label>
                   </div>
 
                   <input  className = 'button' type = "submit" value = "Submit" />
@@ -62,92 +62,3 @@ export default class Form extends Component {
 
     }
 }
-
-
-
-
-
-// import React, { Component } from 'react';
-//
-// export default class Form extends Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             pool: '',
-//
-//         }
-//     }
-//     onNameChange = (e) => {
-//       const pool = e.target.value;
-//       this.setState({pool} );
-//     };
-//
-//
-//     add = (e) => {
-//       e.preventDefault();
-//       this.props.addPool(this.state.pool);
-//       this.setState({ pool: '' });
-//     };
-//
-//     render(){
-//         const { pools, loading} = this.props;
-//         return (
-//             <div>
-//                  <form onSubmit = {this.add}>
-//                      <input type = "text" value={this.state.pool} onChange={this.onNameChange} placeholder = "New Pool" />
-//                      <input type = "submit" value = "Add Pool" />
-//                   </form>
-//             </div>
-//         )
-//     }
-// }
-
-
-
-
-
-
-//
-//
-// import React, { Component } from 'react';
-//
-//
-// export default class Form extends Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             pool: '',
-//
-//         }
-//     }
-//     onNameChange = (e) => {
-//       const pool = e.target.value;
-//       console.log(e.target.value);
-//       console.log(pool);
-//       this.setState({pool} );
-//       console.log(this.state);
-//       console.log(pool);
-//     };
-//
-//     add = (e) => {
-//       e.preventDefault();
-//       this.props.addPool(this.state.pool);
-//       console.log('component add');
-//       console.log(this.state);
-//       this.setState({ pool: '' });
-//
-//     };
-//
-//     render(){
-//         const { pools, loading} = this.props;
-//         return (
-//             <div>
-//                  <form onSubmit = {this.add}>
-//                      <input type = "text" value={this.state.pool} onChange={this.onNameChange} placeholder = "New Pool" />
-//                      <input type = "submit" value = "Add Pool" />
-//                   </form>
-//             </div>
-//         )
-//     }
-// }
-//

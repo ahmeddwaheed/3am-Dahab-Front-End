@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
 import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
-
+import Login from '../../Containers/UserCardContainer/user_sigin_form';
 
 export default class UserSignUp extends Component {
     constructor(){
@@ -18,6 +18,9 @@ export default class UserSignUp extends Component {
             password: "",
             password_confirmation: "",
             avatar: ""
+        }
+        this.elements = {
+
         }
     }
     addNewUser = () => {
@@ -33,6 +36,7 @@ export default class UserSignUp extends Component {
     handleNameChange = (e) => {
         this.setState({name: e.target.value})
     }
+
     handleEmailChange = (e) => {
         this.setState({email: e.target.value})
     }
@@ -47,7 +51,6 @@ export default class UserSignUp extends Component {
     }
     render(){
         const { loading , error, message } = this.props;
-
         if(loading){
             return (
                 <Spin />
@@ -62,7 +65,6 @@ export default class UserSignUp extends Component {
 
                             <div className = 'group'>
                               <input type="text" required className="inputMaterial" name="name"
-                                  placeholder="Username"
                                   onChange={this.handleNameChange}  />
                               <span className = 'highlight'></span>
                               <span className = 'bar'></span>
@@ -72,7 +74,6 @@ export default class UserSignUp extends Component {
 
                         <div className = 'group'>
                             <input type="email" required className="inputMaterial" name="email"
-                                placeholder="Email"
                                 onChange={this.handleEmailChange}  />
 
                                 <span className = 'highlight'></span>
@@ -83,7 +84,6 @@ export default class UserSignUp extends Component {
 
                         <div className = 'group'>
                             <input type="password" required className="inputMaterial" name="password"
-                                placeholder="Password"
                                 onChange={this.handlePasswordChange}  />
                                 <span className = 'highlight'></span>
                                 <span className = 'bar'></span>
@@ -93,7 +93,6 @@ export default class UserSignUp extends Component {
 
                         <div className = 'group'>
                             <input type="password" required className="inputMaterial" name="confirm"
-                                placeholder="Confirm Password"
                                 onChange={this.handleConfirmChange}  />
                             <span className = 'highlight'></span>
                             <span className = 'bar'></span>
@@ -105,7 +104,6 @@ export default class UserSignUp extends Component {
 
                             <span className = 'highlight'></span>
                             <span className = 'bar'></span>
-                            <label className = 'label' htmlFor="ImageUpload">Upload Image</label>
                         </div>
 
                         <div >
@@ -120,20 +118,28 @@ export default class UserSignUp extends Component {
                     </form>
                   </div>
                     {
-                        this.props.error?
-                        <div>
-                            <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
-                        </div>
+                      this.props.error?
+                      <div>
+                          {
+                              this.props.error.errors.map(error => {
+                                  return (
+                                  <div>
+                                      <Alert message={error} type="error"/>
+                                  </div>
+                                  )
+                              })
+                          }
+                      </div>
                         :
                         this.props.message?
                         <div>
-
+                            {
                                 <Alert message={this.props.message} type="success"/>
+                            }
                         </div>
                         :
                         null
                     }
-
                 </div>
             )
     }

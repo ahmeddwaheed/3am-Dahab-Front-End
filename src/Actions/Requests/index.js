@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import {requestApi, getRequestApi} from '../../api';
 
 // Action Types
 
@@ -32,7 +33,7 @@ export const getRequestsLoading = () => {
     }
 }
 export const getRequests = () => {
-    const payload = Axios.get("http://localhost:3001/requests");
+    const payload = Axios.get(requestApi);
     return {
         type: GET_REQUESTS,
         payload
@@ -59,7 +60,7 @@ export const getRequestLoading = () => {
     }
 }
 export const getRequest = (id) => {
-    const payload = Axios.get(`http://localhost:3001/requests/${id}`);
+    const payload = Axios.get(getRequestApi(id));
     return {
         type: GET_REQUEST,
         payload
@@ -86,7 +87,7 @@ export const editRequestLoading = (id) => {
   }
 }
 export const editRequest = (id, value) => {
-  const payload = Axios.patch(`http://localhost:3001/requests/${id}`, value);
+  const payload = Axios.patch(getRequestApi(id), value);
   return {
     type: EDIT_REQUEST,
     payload

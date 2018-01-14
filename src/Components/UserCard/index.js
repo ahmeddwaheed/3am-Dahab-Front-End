@@ -3,18 +3,13 @@ import { Spin, Alert} from 'antd';
 import 'antd/lib/grid/style/index.css';
 import 'antd/lib/spin/style/index.css';
 import 'antd/lib/alert/style/index.css';
+import image from '../../download.png';
 import { Card } from 'antd';
 const { Meta } = Card;
 // import './style.css';
 
 
 export default class UserCard extends Component {
-    constructor(){
-        super()
-        this.state = {
-            hamada: 0,
-        }
-    }
     handleDeleteSeat(){
 
     }
@@ -64,7 +59,7 @@ export default class UserCard extends Component {
                     // Empty seats //
                     :
                     <Card className="user-card"
-                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture3" src={card.avatar}/>}
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture3" src={image}/>}
                     >
                     <h3>{card.position}</h3>
                       <Meta

@@ -65,12 +65,6 @@ export default class UserSignIn extends Component {
 
     render(){
         const { loading , error} = this.props;
-        // console.log("ERRRRRRROR",error);
-        // if(loading){
-        //     return (
-        //         <Spin />
-        //     )
-        // }
         return (
             <div>
             <AdminHeader />
@@ -91,7 +85,6 @@ export default class UserSignIn extends Component {
                                       onChange={this.handleUserInput}  />
                                   <span className = 'highlight'></span>
                                   <span className = 'bar'></span>
-                                  <label className = 'label'  htmlFor="email">Email</label>
                               </div>
 
 

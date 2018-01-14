@@ -20,7 +20,7 @@ export default  (currentState = INTIAL_STATE, action) => {
         case USER_LOG_OUT:
             return {...currentState, user:{}, isUser: false};
         case SET_CURRENT_USER_SUCCESS:
-            return {...currentState, user: action.user};
+            return {...currentState, user: action.user, isUser: true};
         case SET_CURRENT_USER_FAILURE:
             return {...currentState, error: action.error};
         case EDIT_USER_SUCCESS:

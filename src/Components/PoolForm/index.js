@@ -70,20 +70,3 @@ export default class Form extends Component {
         )
     }
 }
-
-
-
-
-                      //
-                      // <label> Pool Name </label>
-                      // <input type = "text" name="name"  onChange={this._handleChange} />
-                      // <label> amount </label>
-                      // <input type = "text" name="amount" onChange={this._handleChange} />
-                      // <label> monthly amount </label>
-                      // <input type = "text" name="monthly_amount" onChange={this._handleChange} />
-                      // <label> seats number </label>
-                      // <input type = "text" name="seat_number" onChange={this._handleChange} />
-                      // <label> status </label>
-                      // <input type = "text" name="status" onChange={this._handleChange} />
-                      //
-                      // <input type = "submit" value = "Create Pool" />

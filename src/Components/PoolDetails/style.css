@@ -29,10 +29,13 @@
   height: 100%;
 }
 .pool-parent{
-  height: 400px;
+  height: 600px;
   width: 80%;
   margin:auto;
 }
-.stripe{
+.btn-primary {
+    margin: auto;
+}
+.end {
   margin: auto;
 }
