@@ -1,0 +1,36 @@
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.clearfix::before,
+.clearfix::after{
+  display: table;
+  content: '';
+  clear: both;
+}
+.start{
+  float: left;
+}
+.end{
+  float: right;
+}
+.pools{
+  width: 70%
+}
+.requests{
+  width: 30%;
+
+}
+.add-pool{
+  height: 200px;
+  background: #fff;
+  border: 1px solid #009688;
+  border-radius: 15px;
+  margin: 64px 10px 10px 10px;
+  padding: 30px;
+  color: #009688
+}
+.dashboard{
+  width: 80%;
+  margin: auto;
+}

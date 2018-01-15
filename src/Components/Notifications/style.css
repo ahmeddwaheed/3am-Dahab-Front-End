@@ -1,0 +1,37 @@
+.notifications-header{
+  background-color: #eee;
+  border: none
+}
+.notifications-header .btn-default {
+  background-color: #eee;
+  border-color: #eee;
+}
+
+.btn-group > .btn:first-child {
+    margin-left: 0;
+    line-height: 0px;
+    margin-right: 0px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+.notification a {
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
+.notification {
+  padding: 20px;
+}
+.notifications-count {
+  display: inline-block;
+  color: #c9302c;
+  float: right;
+  margin: -4px 2px 10px;
+}
+.notifications {
+  width: 50px;
+}
+.dropdown-menu {
+  width: 318px;
+}

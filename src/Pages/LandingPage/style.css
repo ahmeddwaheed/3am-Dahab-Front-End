@@ -1,0 +1,49 @@
+.main {
+  width: 100%;
+  margin: auto;
+}
+
+/* .main .section :nth-child(odd){
+  background: #fff
+}
+
+.main .section :nth-child(even){
+  background: #ccc
+} */
+
+.child {
+  width: 33.33%;
+  padding: 10px
+}
+.section{
+  margin: 20px auto;
+  padding: 20px;
+  width: 65%
+}
+.text {
+  width: 75%
+}
+.pic{
+  line-height: 60px;
+  width: 25%;
+  padding: 10px
+}
+.pic img {
+  width: 30px;
+  height: 30px
+}
+.about, .testimonials{
+  width: 100%;
+  background: #EEE
+}
+.testimonial-img{
+  width: 100px;
+  border-radius: 15px;
+}
+
+.testimonials {
+    margin-bottom: 160px;
+}
+.title {
+  margin-bottom: 50px;
+}
