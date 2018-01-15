@@ -36,7 +36,7 @@ export default class LandingPage extends Component {
                     </p>
 
                     <div className = 'start text'>
-                      <h2>Join Easily</h2>
+                      <h2>Security</h2>
                       <p>
                           You can join a pool very easily and have your share, pay the monthly amount with just a click
                       </p>

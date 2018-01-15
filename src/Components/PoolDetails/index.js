@@ -47,10 +47,10 @@ export default class Details extends Component {
       }
       else if (this.props.pool !== undefined){
         const { name, amount, monthly_amount, seat_number, status} = this.props.pool;
-        var user_position;
+        var user_position_in_pool = 0;
         userCard.map(card => {
-          if(card.user_id== user.id){
-            user_position = card.position
+          if(card.user_id == user.id){
+            user_position_in_pool = card.position
           }
         })
         const userCards = this.props.userCard;
@@ -82,9 +82,9 @@ export default class Details extends Component {
                 this.props.pools.pool.current_user_in_pool && pool.status == 'comming'?
                 <Button className = 'end' onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
                 :
-                pool.status == 'running'?
+                pool.status == 'running' && this.props.pool.current_user_in_pool && user_position_in_pool === this.props.pool.data.turn?
                 <div className = 'end'>
-                <Checkout  name={name} description={"Online Payment"} amount={monthly_amount} user_id={user.id} pool_id={pool.id}/>
+                <Checkout name={name} description={"Online Payment"} amount={monthly_amount} user_id={user.id} pool_id={pool.id}/>
                 </div>
                 :
                 null

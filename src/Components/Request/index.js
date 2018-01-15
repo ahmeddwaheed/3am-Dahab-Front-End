@@ -20,10 +20,10 @@ export default class Request extends Component {
         if (this.props.request.is_accepted == "pending") {
           return (
               <div className = 'request'>
-                <p>name: {this.props.request.user_name}</p>
-                <p>reason: {this.props.request.reason}</p>
-                <p>background: {this.props.request.background}</p>
-                <p>program: {this.props.request.program}</p>
+                <p><span className="span">Name</span>: {this.props.request.user_name}</p>
+                <p><span className="span">Reason</span>: {this.props.request.reason}</p>
+                <p><span className="span">Background</span>: {this.props.request.background}</p>
+                <p><span className="span">Program</span>: {this.props.request.program}</p>
                 <Button onClick={this.accept} bsStyle="primary"> Accept</ Button>
                 <Button onClick={this.reject} bsStyle="danger"> Reject</ Button>
               </div>
