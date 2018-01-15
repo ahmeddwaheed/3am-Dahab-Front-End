@@ -168,7 +168,7 @@ export const deletePoolLoading = (id) => {
   }
 }
 export const deletePool = (id) => {
-  const payload = Axios.delete(poolApi);
+  const payload = Axios.delete(poolApi(id));
   return {
     type: DELETE_POOL,
     payload

@@ -26,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
                     history.push('/dashboard');
                 }
                 else {
+                  debugger
                     history.push('/admin/login');
                     var payload = JSON.parse(response.payload.request.response);
                     dispatch(AdminSignInFailure(payload))

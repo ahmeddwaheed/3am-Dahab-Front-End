@@ -6,7 +6,7 @@ import 'antd/lib/alert/style/index.css';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import { Link, Route } from 'react-router-dom';
-
+import './style.css';
 
 export default class UserEdit extends Component {
     constructor(props){
@@ -36,67 +36,50 @@ export default class UserEdit extends Component {
     }
     render(){
         const { loading , error, message, user } = this.props;
-       
+
         return (
-            <div>
-                <h1> Edit Profile </h1>
+            <div className = ' parent' >
+
                 <form className="demoForm" >
-                    <div>
-                        <div className="panel panel-default">
-                        </div>
-                        <label htmlFor="name">Name</label>
-                        <input type="text" required className="form-control" name="name"
+                    <div className = 'group'>
+                        <label className = 'label' htmlFor="name">Name</label>
+                        <input type="text" required className="inputMaterial" name="name"
                             value={this.state.name}
                             placeholder="Username"
                             onChange={this.handleNameChange.bind(this)}  />
-                    </div><br />
-                    <div>
-                        <label htmlFor="ImageUpload">Upload Image</label>
-                        <input type="file" required className="form-control" name="image"
+                            <span className = 'highlight'></span>
+                            <span className = 'bar'></span>
+                    </div>
+                    <div className = 'group'>
+                        <label className = 'label' htmlFor="ImageUpload">Image</label>
+                        <input type="file" required className="inputMaterial" name="image"
                         value={this.state.avatar.url}
                         onChange={this.handleAvatarChange}/>
-                    </div><br />
+                        <span className = 'highlight'></span>
+                        <span className = 'bar'></span>
+                    </div>
                     {
                         <div>
-                            <button type="button" onClick={()=> this.editUser()} className="btn btn-primary" >Submit</button>
+                            <button  className = 'button' type="button" onClick={()=> this.editUser()}  >Edit Profile</button>
                         </div>
                     }
                 </form>
                 {
                     this.props.error?
                     <div>
-                            <br />
-                            {
-                                // this.props.error.erros.map(error => {
-                                //    { console.log(error)}
-                                // })
-                            }
                         <Alert message={"ghalat ily enta 3mlto da ya 7bibi"} type="error"/>
                     </div>
                     :
                     this.props.message?
                     <div>
-                            <br />
                             <Alert message={this.props.message} type="success"/>
                     </div>
-                    :
-                    this.state.redirect?
-                    setTimeout(() => {
-                        <Redirect to= "/pools"/>
-                    }, 1000)
                     :
                     null
                 }
 
             </div>
         )
-        // }
-        // else {
-        //     return (
-        //         <div>
-        //             <h1> Invalid Request </h1>
-        //         </div>
-        //     )
-        // }
+
     }
 }

@@ -4,6 +4,7 @@ import 'antd/lib/grid/style/index.css';
 import 'antd/lib/spin/style/index.css';
 import 'antd/lib/alert/style/index.css';
 import image from '../../download.png';
+import {rootApi} from '../../api';
 import { Card } from 'antd';
 const { Meta } = Card;
 // import './style.css';
@@ -36,7 +37,7 @@ export default class UserCard extends Component {
                     card.id?
 
                     <Card className="user-card"
-                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture1" src={`http://localhost:3001${card.avatar}`} />}
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture1" src={`${rootApi}${card.avatar}`} />}
                     >
                     <h3>{card.position}</h3>
                       <Meta
@@ -48,13 +49,13 @@ export default class UserCard extends Component {
                     this.props.in_pool == card.position?
 
                     <Card className="user-card"
-                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture2" src={`http://localhost:3001${this.props.user.avatar.url}`} />}
+                      cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture2" src={`${rootApi}${this.props.user.avatar.url}`} />}
                     >
                     <h3>{card.position}</h3>
                       <Meta
                         title={card.name}
                         />
-                        <button onClick= {this.handleDeleteSeat.bind(this)}> x </button>
+                        <button className = 'button ' onClick= {this.handleDeleteSeat.bind(this)}> x </button>
                     </Card>
                     // Empty seats //
                     :
@@ -66,13 +67,13 @@ export default class UserCard extends Component {
                       />
                       {
                           !this.props.user.in_pool?
-                          <button onClick= {() => {this.props.addSeat(this.props.card.position, this.props.user.id)}}> + </button>
+                          <button className = 'button ' onClick= {() => {this.props.addSeat(this.props.card.position, this.props.user.id)}}> + </button>
                           :
                           null
-                          
+
                       }
                     </Card>
-                    
+
                 }
                 </div>
               )

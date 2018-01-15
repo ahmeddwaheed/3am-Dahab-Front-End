@@ -9,6 +9,7 @@ import { Link, Route } from 'react-router-dom';
 import {FormErrors} from '../FormErrors';
 import history from '../../history';
 import {AdminHeader} from '../../Containers/UserCardContainer/nav_bar';
+import './style.css'
 
 export default class UserSignIn extends Component {
     constructor(){
@@ -37,7 +38,7 @@ export default class UserSignIn extends Component {
             let fieldValidationErrors = this.state.formErrors;
             let emailValid = this.state.emailValid;
             let passwordValid = this.state.passwordValid;
-            
+
             switch(fieldName) {
                 case 'email':
                 emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
@@ -49,7 +50,7 @@ export default class UserSignIn extends Component {
                 break;
                 default: break;
             }
-            
+
             this.setState({formErrors: fieldValidationErrors,
                 emailValid: emailValid,
                 passwordValid: passwordValid
@@ -58,48 +59,58 @@ export default class UserSignIn extends Component {
         validateForm() {
             this.setState({formValid: this.state.emailValid && this.state.passwordValid});
         }
-        
+
         errorClass(error) {
             return(error.length === 0 ? '' : 'has-error');
         }
-    
+
     render(){
         const { loading , error} = this.props;
-        // console.log("ERRRRRRROR",error);
-        // if(loading){
-        //     return (
-        //         <Spin />
-        //     )
-        // }
         return (
             <div>
             <AdminHeader />
                 <h1> Admin Login </h1>
-                <form  onSubmit = {this.SignIn} className="demoForm" >
-                    <div className="panel panel-default">
-                        <FormErrors formErrors={this.state.formErrors} />
+
+
+
+
+                    <div className = 'parent'>
+                          <form  onSubmit = {this.SignIn} className="demoForm" >
+                              <div className="panel panel-default">
+                                  <FormErrors formErrors={this.state.formErrors} />
+                              </div>
+                            <div className ="container">
+                                <div className={`group ${this.errorClass(this.state.formErrors.email)}`}>
+                                    <input type="email" required className="form-control" name="email"
+                                        placeholder="Email" className="inputMaterial"
+                                        value={this.state.email}
+                                        onChange={this.handleUserInput}  />
+                                    <span className = 'highlight'></span>
+                                    <span className = 'bar'></span>
+                                    <label className = 'label' htmlFor="email">Email</label>
+                                </div>
+
+
+                                <div className={`group ${this.errorClass(this.state.formErrors.password)}`}>
+                                    <input type="password" className="inputMaterial" name="password"
+                                        placeholder="Password"
+                                        value={this.state.password}
+                                        onChange={this.handleUserInput}  />
+                                    <span className = 'highlight'></span>
+                                    <span className = 'bar'></span>
+                                    <label className = 'label' htmlFor="password">Password</label>
+
+                                </div>
+                                {
+                                    <div>
+                                        <button className="button" >Sign In</button>
+                                        <Link to="/register" > Register</Link>
+                                    </div>
+                                }
+                              </div>
+                        </form>
                     </div>
-                    <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" required className="form-control" name="email"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={this.handleUserInput}  />
-                    </div>
-                    <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.handleUserInput}  />
-                    </div>
-                    {
-                        <div>
-                            <button className="btn btn-primary" >Sign In</button>
-                            <Link to="/register" > Register</Link>
-                        </div>
-                    }
-                </form>
+
                 {
                     this.props.error?
                         <div>
@@ -109,7 +120,7 @@ export default class UserSignIn extends Component {
                         :
                         null
                 }
-                
+
             </div>
         )
     }

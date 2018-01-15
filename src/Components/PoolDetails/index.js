@@ -47,19 +47,23 @@ export default class Details extends Component {
       }
       else if (this.props.pool !== undefined){
         const { name, amount, monthly_amount, seat_number, status} = this.props.pool;
-        var user_position;
+        var user_position_in_pool = 0;
         userCard.map(card => {
-          if(card.user_id== user.id){
-            user_position = card.position
+          if(card.user_id == user.id){
+            user_position_in_pool = card.position
           }
         })
         const userCards = this.props.userCard;
         return (
-          <div>
+          <div className = 'clearfix pool-parent'>
             <h2>{name}</h2>
-            <div className = 'pool-details'>
-
-
+            <aside className = 'start pool-info'>
+              <p>Amount: {amount}</p>
+              <p>Monthly amount: {monthly_amount}</p>
+              <p>Seats: {seat_number}</p>
+              <p>Status: {status}</p>
+            </aside>
+            <div className = 'pool-details start'>
               {
                 userCards.map(card => {
                   return (
@@ -71,26 +75,22 @@ export default class Details extends Component {
                   )
                 })
               }
-              <br/><br/><br/>
               {
                 this.state.addedSeat && !this.props.pools.pool.current_user_in_pool?
-                <Button onClick={() => this.props.addSeat(this.state.user_details)} bsStyle="primary" > Confirm Join </Button>
+                <Button className = 'end' onClick={() => this.props.addSeat(this.state.user_details)} bsStyle="primary" > Confirm Join </Button>
                 :
-                this.props.pools.pool.current_user_in_pool && pool.status == 'comming'?
-                <Button onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
+                this.props.pools.pool.current_user_in_pool && pool.status === 'comming'?
+                <Button className = 'end' onClick={this.handleDeleteSeat.bind(this)} bsStyle="danger" > Leave </Button>
                 :
-                pool.status == 'running' && this.props.pools.pool.data.turn == user_position?
+                pool.status === 'running' && this.props.pool.current_user_in_pool && user_position_in_pool === this.props.pool.data.turn?
+                <div className = 'end'>
                 <Checkout name={name} description={"Online Payment"} amount={monthly_amount} user_id={user.id} pool_id={pool.id}/>
+                </div>
                 :
                 null
               }
-
-
               </div>
-              <p>amount: {amount}</p>
-              <p>monthly amount: {monthly_amount}</p>
-              <p>seats: {seat_number}</p>
-              <p>status: {status}</p>
+
           </div>
         )
       }

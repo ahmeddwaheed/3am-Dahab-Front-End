@@ -9,7 +9,7 @@ import { Link, Route } from 'react-router-dom';
 import {FormErrors} from '../FormErrors';
 import history from '../../history';
 import {UserHeader} from '../../Containers/UserCardContainer/nav_bar';
-import './Form.css';
+import './style.css';
 
 export default class UserSignIn extends Component {
     constructor(){
@@ -34,70 +34,76 @@ export default class UserSignIn extends Component {
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
         }
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-        
-        switch(fieldName) {
-            case 'email':
-            emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-            fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-            break;
-            case 'password':
-            passwordValid = value.length >= 6;
-            fieldValidationErrors.password = passwordValid ? '': ' is too short';
-            break;
-            default: break;
-        }
-        
-        this.setState({formErrors: fieldValidationErrors,
-            emailValid: emailValid,
-            passwordValid: passwordValid
-        }, this.validateForm);
-    }
-    validateForm() {
-        this.setState({formValid: this.state.emailValid && this.state.passwordValid});
-    }
+        validateField(fieldName, value) {
+            let fieldValidationErrors = this.state.formErrors;
+            let emailValid = this.state.emailValid;
+            let passwordValid = this.state.passwordValid;
 
-    errorClass(error) {
-        return(error.length === 0 ? '' : 'has-error');
-    }
+            switch(fieldName) {
+                case 'email':
+                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+                break;
+                case 'password':
+                passwordValid = value.length >= 6;
+                fieldValidationErrors.password = passwordValid ? '': ' is too short';
+                break;
+                default: break;
+            }
+
+            this.setState({formErrors: fieldValidationErrors,
+                emailValid: emailValid,
+                passwordValid: passwordValid
+            }, this.validateForm);
+        }
+        validateForm() {
+            this.setState({formValid: this.state.emailValid && this.state.passwordValid});
+        }
+
+        errorClass(error) {
+            return(error.length === 0 ? '' : 'has-error');
+        }
+
     render(){
         const { loading , error, isUser} = this.props;
-        return (
-            <div>
-            <UserHeader />
-                <h1> Sign In </h1>
-                <form  onSubmit = {this.SignIn} className="demoForm" >
-                    <div className="panel panel-default">
-                        <FormErrors formErrors={this.state.formErrors} />
-                    </div>
-                    <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" required className="form-control" name="email"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={this.handleUserInput}  />
-                    </div>
-                    <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.handleUserInput}  />
-                    </div>
-                    {
-                        <div>
-                            <button className="btn btn-primary" >Sign In</button>
-                            <Link to="/register" > Register</Link>
-                        </div>
-                    }
-                </form>
+        if(!isUser){
+            return (
+                <div>
+                <UserHeader />
+                    <div className = ' parent login' >
+                      <form  onSubmit = {this.SignIn} >
+
+
+                          <div className={`group ${this.errorClass(this.state.formErrors.email)}`}>
+                              <input type="email" required className="inputMaterial" name="email" placeholder="Email" value={this.state.email} onChange={this.handleUserInput}  />
+                              <span className = 'highlight'></span>
+                              <span className = 'bar'></span>
+                              <label className = 'label' htmlFor="email" >Email</label>
+                          </div>
+
+                          <div className={`group ${this.errorClass(this.state.formErrors.password)}`}>
+                              <input type="password" className="inputMaterial" name="password"  placeholder="Password"  value={this.state.password} onChange={this.handleUserInput}  />
+                              <span className = 'highlight'></span>
+                              <span className = 'bar'></span>
+                              <label className = 'label' htmlFor="password" >Password</label>
+
+                          </div>
+                          <div >
+                              <FormErrors formErrors={this.state.formErrors} />
+                          </div>
+                          {
+                              <div>
+                                  <button className="button" >Sign In</button>
+                                  <Link to="/register" > Register</Link>
+                              </div>
+                          }
+
+                    </form>
+                  </div>
+
                 {
                     this.props.error?
                         <div>
-                            <br />
                             <Alert message={this.props.error.message} type="error"/>
                         </div>
                         :
@@ -106,4 +112,8 @@ export default class UserSignIn extends Component {
             </div>
             )
         }
+        else {
+          return null
+        }
+      }
 }

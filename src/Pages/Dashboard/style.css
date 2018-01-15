@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  font-family: Arial tahoma
+  font-family: sans-serif;
 }
 .clearfix::before,
 .clearfix::after{
@@ -19,13 +19,18 @@
 }
 .requests{
   width: 30%;
-  border: 1px solid #ccc;
+
 }
 .add-pool{
   height: 200px;
-  background: #eee;
-  border: 1px solid #ccc;
+  background: #fff;
+  border: 1px solid #009688;
   border-radius: 15px;
-  margin: 10px;
-  padding: 10px
+  margin: 64px 10px 10px 10px;
+  padding: 30px;
+  color: #009688
+}
+.dashboard{
+  width: 80%;
+  margin: auto;
 }

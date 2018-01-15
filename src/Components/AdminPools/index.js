@@ -23,7 +23,7 @@ export default class Pools extends Component {
             <div>
                   <select name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
                     <option value = "" >All</option>
-                    <option value = "comming">comming</option>
+                    <option value = "comming">coming</option>
                     <option value = "running">running</option>
                   </select>
                   {pools.map((pool) => {

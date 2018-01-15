@@ -1,0 +1,32 @@
+.button{
+  background-color: #009688;
+  width: 40%;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 22px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+
+}
+
+.button:active{
+	background: #009688;
+  color: #fff;
+}
+
+.button:hover{
+   background: #fff;
+   border: 1px solid #009688;
+   color: #009688;
+   transition: all  ease-out .4s;
+}
+.input{
+  margin: 30px
+}
+.date-label{
+  color: #009688;
+  font-size: 22px;
+  font-family: tahoma;
+  position: static;
+}

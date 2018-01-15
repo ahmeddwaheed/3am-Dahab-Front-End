@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  font-family: Arial tahoma
+  font-family: sans-serif;
 }
 .clearfix::before,
 .clearfix::after{
@@ -24,7 +24,7 @@
   padding: 10px;
   border-radius: 15px;
   height: 200px;
-
+  width: 100%
 }
 .pool-name{
   font-weight: bold;
@@ -33,5 +33,69 @@
 .amount{
   font-weight: bold;
   font-size: 20px;
-  color:#2196f3;
+  color:#009688;
+}
+.circle{
+  margin: 1px
+}
+.launch {
+  background-color: #009688;
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin:10px
+}
+
+.launch:hover{
+  text-decoration: none;
+	background: #fff;
+  border: 1px solid #009688;
+  color: #009688;
+	transition: all 0.4s;
+}
+
+
+.edit {
+  background-color: #333;
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin:10px 10px 10px 0
+}
+
+.edit:hover{
+  text-decoration: none;
+	background: #fff;
+  border: 1px solid #333;
+  color: #333;
+	transition: all 0.4s;
+}
+.delete {
+  background-color: #e5413c;
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 8px;
+  margin:10px 10px 10px 0
+}
+
+.delete:hover{
+  text-decoration: none;
+	background: #fff;
+  border: 1px solid #e5413c;
+  color: #e5413c;
+	transition: all 0.4s;
+}
+
+.pool-card {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pool-card p:nth-child(2) {
+  margin-right: 3%;
 }

@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 export default class Details extends Component {
   render (){
     return (
-      <div>
+      <div className="over-flow">
       {
         <PoolDetails id = {this.props.match.params.id} />
       }

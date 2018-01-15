@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Pool from '../Pool';
 import history from '../../history';
+import {rootApi} from '../../api';
+import './style.css';
 
 export default class Pools extends Component {
     constructor(props){
@@ -21,14 +23,14 @@ export default class Pools extends Component {
     render(){
       const { pools, loading , currentUser, isUser , isAdmin } = this.props;
         return (
-          <div>
+          <div className = 'content'>
                 {
-                  isUser?
+                  isUser ?
                   <div>
                     <h1>HI {currentUser.name}</h1>
                     {
                       currentUser.avatar?
-                      <img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture" src={`http://localhost:3001${currentUser.avatar.url}`} />
+                      <img className="avatar" alt="picture" src={`${rootApi}/${currentUser.avatar.url}`} />
                       :
                       null
                     }
@@ -36,8 +38,8 @@ export default class Pools extends Component {
                   :
                   null
                 }
-                  <select name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
-                    <option value = "" >All</option>
+                  <select className= "choice" name = "pools" id = "pools" onChange = {this.change} value ={this.state.value}>
+                    <option value = "" >All Pools</option>
                     <option value = "comming">comming</option>
                     <option value = "running">running</option>
                   </select>

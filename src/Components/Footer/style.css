@@ -11,6 +11,14 @@
   float: right;
 }
 .footer{
-  background: #4496EC;
+  color: #fff;
+  background: #333;
   padding: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  margin-top: -50px;
+
 }

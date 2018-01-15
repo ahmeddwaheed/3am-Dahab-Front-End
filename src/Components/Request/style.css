@@ -1,4 +1,14 @@
 .request{
-  background-color: #eee;
+  background-color: #333;
+  border: 1px solid #333;
+  color: #fff;
   padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.span {
+  font-family: cursive;
+  font-size: 16px;
+  font-weight: 700;
+  opacity: 0.7;
 }

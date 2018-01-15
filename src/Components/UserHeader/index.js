@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Notifications from '../../Containers/NotificationsContainer';
 import Cable from 'actioncable';
-
-
-
-
+import './style.css';
+import Logo from './logo.svg';
+import user from './user-male-black-shape.svg';
+import {actionCableUrl} from '../../api';
 export default class UserHeader extends Component {
 
   constructor(){
@@ -26,7 +26,7 @@ export default class UserHeader extends Component {
   }
   createSocket() {
 
-    let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
+    let cable = Cable.createConsumer(`${actionCableUrl}/cable?token=${localStorage.jwtToken}`);
     this.notifications = cable.subscriptions.create({
       channel: 'NotificationChannel'
     }, {
@@ -35,7 +35,6 @@ export default class UserHeader extends Component {
       },
       received: (data) => {
         this.setState({notification_count: this.state.notification_count +1 })
-        alert(data);
       },
       create: (notificationContent) => {
         this.perform('create', {
@@ -48,36 +47,40 @@ export default class UserHeader extends Component {
   render() {
     const {isUser} = this.props;
     const userLinks = (
-      <div>
-      {
-        this.props.user.avatar?
-        <Link to="/profile/edit">
-          <img style={{'borderRadius': '50px', 'width': '35px', 'height': '40px'}} alt="picture" src={`http://localhost:3001${this.props.user.avatar.url}`} />
-        </Link>
-        :
-        null
-      }
+      <div >
         <ul className="nav navbar-nav navbar-right">
-        <li><Notifications /><p style={{"color": "red"}}>{this.state.notification_count}</p></li>
-          <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
+
+
+          <li>
+          <Link to = "/profile/edit">
+          {
+            this.props.user.avatar?
+            <img className='user-image' src = {user}/>
+            :
+            null
+          }
+          </Link>
+          </li>
+          <li><Notifications count={this.state.notification_count} /></li>
+          <li><a href="#" onClick={this.logout.bind(this)}><span className = 'nav-text'>Logout</span></a></li>
         </ul>
       </div>
     );
     const guestLinks = (
             <ul className="nav navbar-nav navbar-right">
-                <li><Link to="/register">Sign up</Link></li>
-                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register"><span className = 'nav-text'>Sign up</span></Link></li>
+                <li><Link to="/login"><span className = 'nav-text'>Login</span></Link></li>
             </ul>
     );
     return (
         <nav className="navbar navbar-default">
-          <div className="container-fluid">
+          <div className="container-fluid header">
             <div className="navbar-header">
               {
                 isUser?
-                <Link to="/pools" className="navbar-brand">Dahab</Link>
+                <Link to="/pools" ><span className = 'logo' ><img src = {Logo} alt = 'logo'/><span className = 'slideInLeft'>Dahab</span></span></Link>
                 :
-                <Link to="/" className="navbar-brand">Dahab</Link>
+                <Link to="/" ><span className = 'logo' ><img src = {Logo} alt = 'logo'/><span className = 'slideInLeft'>Dahab</span></span></Link>
               }
             </div>
 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import PoolForm from '../../Containers/PoolsContainers/pool_form_container';
-
+import Logo from './logo.svg';
+import './style.css';
 
 
 export default class UserHeader extends Component {
@@ -19,7 +20,6 @@ export default class UserHeader extends Component {
     const {isAdmin} = this.props;
     const userLinks = (
         <div>
-        <Link to="/new_pool"><button> Create Pool </button></Link>
         <ul className="nav navbar-nav navbar-right">
             <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </ul>
@@ -32,13 +32,13 @@ export default class UserHeader extends Component {
     );
     return (
         <nav className="navbar navbar-default">
-          <div className="container-fluid">
+          <div className=" header container-fluid">
             <div className="navbar-header">
               {
                 isAdmin?
-                <Link to="/dashboard" className="navbar-brand">3am Dahab</Link>
+                <Link to="/dashboard" className="navbar-brand"> <span className = 'logo' ><img src = {Logo} alt = 'logo'/><span className = 'slideInLeft'>Dahab</span></span></Link>
                 :
-                <Link to="/" className="navbar-brand">3am Dahab</Link>
+                <Link to="/" className="navbar-brand"><span className = 'logo' ><img src = {Logo} alt = 'logo'/><span className = 'slideInLeft'>Dahab</span></span></Link>
               }
             </div>
 
