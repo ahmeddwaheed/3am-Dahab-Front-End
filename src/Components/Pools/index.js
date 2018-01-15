@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pool from '../Pool';
 import history from '../../history';
+import {rootApi} from '../../api';
 import './style.css';
 
 export default class Pools extends Component {
@@ -29,7 +30,7 @@ export default class Pools extends Component {
                     <h1>HI {currentUser.name}</h1>
                     {
                       currentUser.avatar?
-                      <img className="avatar" alt="picture" src={`http://localhost:3001${currentUser.avatar.url}`} />
+                      <img className="avatar" alt="picture" src={`${rootApi}/${currentUser.avatar.url}`} />
                       :
                       null
                     }

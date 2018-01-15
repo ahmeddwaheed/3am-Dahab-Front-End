@@ -5,7 +5,7 @@ import Cable from 'actioncable';
 import './style.css';
 import Logo from './logo.svg';
 import user from './user-male-black-shape.svg';
-
+import {actionCableUrl} from '../../api';
 export default class UserHeader extends Component {
 
   constructor(){
@@ -26,7 +26,7 @@ export default class UserHeader extends Component {
   }
   createSocket() {
 
-    let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
+    let cable = Cable.createConsumer(`${actionCableUrl}/cable?token=${localStorage.jwtToken}`);
     this.notifications = cable.subscriptions.create({
       channel: 'NotificationChannel'
     }, {

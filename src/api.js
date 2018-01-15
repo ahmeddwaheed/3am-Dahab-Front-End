@@ -1,4 +1,6 @@
-export const rootApi = `http://localhost:3001`;
+export const rootApi = process.env.NODE_ENV === 'production' 
+? `https://dahab-backend.herokuapp.com` 
+: `http://localhost:3001`;
 
 // Users
 export const userSignInAPi = `${rootApi}/users/login`;
@@ -6,7 +8,9 @@ export const currentUserApi = `${rootApi}/current_user`;
 export const userApi = (id) => `${rootApi}/users/${id}`;
 export const userRegisterApi = `${rootApi}/users/register`;
 
-
+export const actionCableUrl = process.env.NODE_ENV === 'production'
+? `wss://dahab-backend.herokuapp.com` 
+: `ws://localhost:3001`;
 
 // Admins
 export const adminLoginApi = `${rootApi}/admins/login`;
