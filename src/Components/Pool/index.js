@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import PoolDetails from '../../Pages/PoolDetails';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import Form from '../../Containers/PoolsContainers/pool_edit_container';
 import './style.css';
 
 export default class Pool extends Component {
@@ -55,10 +53,10 @@ export default class Pool extends Component {
               }
             </p>
 
-            {!currentUser.in_pool && isUser && this.props.pool.status == "comming" ? <Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</Button> </Link>:null}
-            {isAdmin == true && this.props.pool.number_of_users == this.props.pool.seat_number && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/launch`}><Button bsStyle="success"> Launch</Button></Link>: null}
-            {isAdmin && this.props.pool.number_of_users == null && this.props.pool.status == "comming" ?<Link to={`/pools/${this.props.pool.id}/edit`}><Button bsStyle="primary"> Edit </Button></Link>: null}
-            {isAdmin && this.props.pool.status == "comming" ?<Button onClick = {this.delete} bsStyle="danger"> Delete</Button> : null}
+            {!currentUser.in_pool && isUser && this.props.pool.status === "comming" ? <Link to={`/pools/${this.props.pool.id}/request`}><Button bsStyle="primary"> join</Button> </Link>:null}
+            {isAdmin === true && this.props.pool.number_of_users === this.props.pool.seat_number && this.props.pool.status === "comming" ?<Link to={`/pools/${this.props.pool.id}/launch`}><Button bsStyle="success"> Launch</Button></Link>: null}
+            {isAdmin && this.props.pool.number_of_users === null && this.props.pool.status === "comming" ?<Link to={`/pools/${this.props.pool.id}/edit`}><Button bsStyle="primary"> Edit </Button></Link>: null}
+            {isAdmin && this.props.pool.status === "comming" ?<Button onClick = {this.delete} bsStyle="danger"> Delete</Button> : null}
           </div>
         )
     }

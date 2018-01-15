@@ -4,7 +4,7 @@ import './style.css';
 
 export default class Form extends Component {
   componentWillMount(){
-      const {pool, getPool, match: {params: {id}}} = this.props;
+      const {match: {params: {id}}} = this.props;
   }
     constructor(props){
       super(props);
@@ -31,7 +31,6 @@ export default class Form extends Component {
     };
 
     render(){
-        const { requests, loading, user} = this.props;
         return (
             <div className = 'parent' >
                   <form onSubmit = {this.add}>

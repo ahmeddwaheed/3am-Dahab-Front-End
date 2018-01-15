@@ -3,7 +3,6 @@ import User from '../../Components/UserHeader';
 import Admin from '../../Components/AdminHeader';
 import history from '../../history';
 import setAutherizationToken from './utils/setAuthrizationToken';
-import jwt from 'jsonwebtoken';
 import {userLogout, setCurrentUser , setCurrentUserSuccess, setCurrentUserFailure,
     setCurrentAdmin, setCurrentAdminSuccess, setCurrentAdminFailure} from '../../Actions/Authentication';
 

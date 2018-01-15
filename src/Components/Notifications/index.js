@@ -24,7 +24,7 @@ export default class Notifications extends Component {
         const { notifications, loading } = this.props;
         return (
           <ButtonToolbar className = 'notifications-header'>
-          {this.props.count != 0 ? this.props.count:null}
+          <p className="notifications-count">{this.props.count > 0 ? this.props.count:null}</p>
             <DropdownButton
               className = 'notifications-header'
               title= {<img className = 'nav-img' src = {notification} />}

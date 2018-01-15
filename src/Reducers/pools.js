@@ -51,7 +51,7 @@ export default (currentState = INITIAL_STATE, action) => {
     // Edit pool
     case EDIT_POOL_LOADING:
       var newPools = currentState.pools.map(pool => {
-        if (pool.id == action.id) pool.loading = true;
+        if (pool.id === action.id) pool.loading = true;
         return pool;
       })
       return {...currentState, pools: newPools}
@@ -63,7 +63,7 @@ export default (currentState = INITIAL_STATE, action) => {
       return {...currentState, pools: newPools, loading: false}
     case EDIT_POOL_FAILURE:
       var newPools = currentState.pools.map(pool => {
-        if(pool.id == action.id) {pool.loading = false; pool.error = action.error}
+        if(pool.id === action.id) {pool.loading = false; pool.error = action.error}
         return pool;
       })
       return {...currentState, pools: newPools}
@@ -71,7 +71,7 @@ export default (currentState = INITIAL_STATE, action) => {
     // Delete pool
     case DELETE_POOL_LOADING:
       var newPools = currentState.pools.map(pool => {
-        if (pool.id == action.id) pool.loading = true;
+        if (pool.id === action.id) pool.loading = true;
         return pool;
       })
       return {...currentState, pools: newPools}
@@ -82,7 +82,7 @@ export default (currentState = INITIAL_STATE, action) => {
       return {...currentState, pools: newPools}
     case DELETE_POOL_FAILURE:
       var newPools = currentState.pools.map(pool => {
-        if (pool.id == action.id) {pool.loading = false; pool.error = action.error}
+        if (pool.id === action.id) {pool.loading = false; pool.error = action.error}
         return pool;
       })
       return {...currentState, pools: newPools};
@@ -90,7 +90,7 @@ export default (currentState = INITIAL_STATE, action) => {
       case ADD_SEAT_SUCCESS:
       var newSeat = action.user
       var seats = currentState.pool.userCard.map(card => {
-        if(card.position == newSeat.position){
+        if(card.position === newSeat.position){
           card = newSeat
         }
         return card
@@ -103,7 +103,7 @@ export default (currentState = INITIAL_STATE, action) => {
 
       case DELETE_SEAT_SUCCESS:
         var seat = currentState.pool.userCard.map(card => {
-          if(card.id == action.id){
+          if(card.id === action.id){
             card = {
               id: null,
               user_id: null,

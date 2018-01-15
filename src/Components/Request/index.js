@@ -24,8 +24,8 @@ export default class Request extends Component {
                 <p><span className="span">Reason</span>: {this.props.request.reason}</p>
                 <p><span className="span">Background</span>: {this.props.request.background}</p>
                 <p><span className="span">Program</span>: {this.props.request.program}</p>
-                <Button onClick={this.accept} bsStyle="primary"> Accept</ Button>
-                <Button onClick={this.reject} bsStyle="danger"> Reject</ Button>
+                <Button onClick={this.accept} bsStyle="primary"> Accept</Button>
+                <Button onClick={this.reject} bsStyle="danger"> Reject</Button>
               </div>
           )
         } else {
