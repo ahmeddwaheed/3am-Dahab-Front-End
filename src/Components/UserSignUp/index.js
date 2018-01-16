@@ -19,9 +19,6 @@ export default class UserSignUp extends Component {
             password_confirmation: "",
             avatar: ""
         }
-        this.elements = {
-
-        }
     }
     addNewUser = () => {
         let user = new FormData();
@@ -56,6 +53,15 @@ export default class UserSignUp extends Component {
                 <Spin />
             )
         }
+        else if(error){
+            return (
+                <Alert
+                message={error}
+                type="error"
+                />
+              )
+        }
+        else {
             return (
                 <div>
                 <UserHeader />
@@ -142,5 +148,6 @@ export default class UserSignUp extends Component {
                     }
                 </div>
             )
+        }
     }
 }

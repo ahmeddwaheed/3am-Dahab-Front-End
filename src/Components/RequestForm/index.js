@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spin, Alert} from 'antd';
 import './style.css';
 
 
@@ -31,6 +32,21 @@ export default class Form extends Component {
     };
 
     render(){
+      const {loading, error} = this.props
+      if(loading){
+        return (
+            <Spin />
+        )
+      }
+      else if(error){
+        return (
+          <Alert
+          message={error}
+          type="error"
+          />
+        )
+      }
+      else {
         return (
             <div className = 'parent' >
                   <form onSubmit = {this.add}>
@@ -58,6 +74,6 @@ export default class Form extends Component {
                   </form>
             </div>
         )
-
+      }
     }
 }

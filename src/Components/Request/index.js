@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spin, Alert} from 'antd';
 import { Link, Route } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import './style.css';
@@ -17,6 +18,21 @@ export default class Request extends Component {
       this.props.editRequest(this.props.request.id, {is_accepted: "rejected"});
     }
     render(){
+      const {loading, error} = this.props
+      if(loading){
+        return (
+            <Spin />
+        )
+      }
+      else if(error){
+        return (
+          <Alert
+          message={error}
+          type="error"
+          />
+        )
+      }
+      else {
         if (this.props.request.is_accepted == "pending") {
           return (
               <div className = 'request'>
@@ -28,9 +44,10 @@ export default class Request extends Component {
                 <Button onClick={this.reject} bsStyle="danger"> Reject</Button>
               </div>
           )
-        } else {
+        }
+        else {
           return null
         }
-
+      }
     }
 }

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import UserCard from '../../Containers/UserCardContainer/user_card';
 import { Button } from 'react-bootstrap';
-import { Row, Spin, Alert } from 'antd';
 import Checkout from '../../Checkout';
 import './style.css';
+import {rootApi} from '../../api';
+import { Row, Spin, Alert, Card } from 'antd';
+const { Meta } = Card;
 
 
 export default class Details extends Component {
@@ -38,19 +40,25 @@ export default class Details extends Component {
         )
       }
       else if(error){
-          return (
-            <Alert
-                    message={error}
-                    type="error"
-                />
-          )
+        return (
+          <Alert
+          message={error}
+          type="error"
+          />
+        )
       }
       else if (this.props.pool !== undefined){
         const { name, amount, monthly_amount, seat_number, status} = this.props.pool;
-        var user_position_in_pool = 0;
+        var user_position_in_pool = 0, turn, userName = null;
         userCard.map(card => {
-          if(card.user_id == user.id){
+          if(card.user_id === user.id){
             user_position_in_pool = card.position
+          }
+          if(card.position === pool.turn){
+            turn = card.avatar;
+            if(card.name){
+              userName = card.name
+            }
           }
         })
         const userCards = this.props.userCard;
@@ -62,6 +70,25 @@ export default class Details extends Component {
               <p>Monthly amount: {monthly_amount}</p>
               <p>Seats: {seat_number}</p>
               <p>Status: {status}</p>
+              <p style={{"margin-top": "100px", "font-size": "26px"}}> Turn </p>
+              {
+                userName === null?
+                <Card className="user-card"
+                    cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture1" src={turn} />}
+                  >
+                    <Meta
+                      title="Pool Not Launched Yet"
+                      />
+                </Card>
+                :
+                <Card className="user-card"
+                    cover={<img style={{'borderRadius': '50px', 'width': '100px', 'height': '100px'}} alt="picture2" src={`${rootApi}${turn}`} />}
+                  >
+                    <Meta
+                      title={userName}
+                      />
+                </Card>
+              }
             </aside>
             <div className = 'pool-details start'>
               {

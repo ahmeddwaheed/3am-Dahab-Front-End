@@ -7,9 +7,11 @@ import requestForm from './request_form';
 import requests from './request';
 import authUser from './user';
 import authAdmin from './admin';
+import { loadingBarReducer } from 'react-redux-loading-bar'
 
 
 const rootReducer = combineReducers({
+  loadingBar: loadingBarReducer,
   pools,
   userCard,
   requestForm,

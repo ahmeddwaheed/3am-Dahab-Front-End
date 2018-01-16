@@ -44,6 +44,7 @@ export default class UserEdit extends Component {
                     <div className = 'group'>
                         <label className = 'label' htmlFor="name">Name</label>
                         <input type="text" required className="inputMaterial" name="name"
+                            id="name"
                             value={this.state.name}
                             placeholder="Username"
                             onChange={this.handleNameChange.bind(this)}  />
@@ -53,6 +54,7 @@ export default class UserEdit extends Component {
                     <div className = 'group'>
                         <label className = 'label' htmlFor="ImageUpload">Image</label>
                         <input type="file" required className="inputMaterial" name="image"
+                        id="ImageUpload"
                         value={this.state.avatar.url}
                         onChange={this.handleAvatarChange}/>
                         <span className = 'highlight'></span>

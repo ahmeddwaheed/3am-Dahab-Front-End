@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
+import LoadingBar from 'react-redux-loading-bar'
 import PoolsPage from './Pages/PoolsPage';
 import PoolForm from './Containers/PoolsContainers/pool_form_container';
 import PoolDetails from './Pages/PoolDetails';
@@ -18,8 +19,6 @@ import Notifications from './Containers/NotificationsContainer';
 import LandingPage from './Pages/LandingPage';
 import Footer from './Components/Footer';
 import {Redirect} from 'react-router-dom';
-
-
 import {AdminHeader, UserHeader} from './Containers/UserCardContainer/nav_bar'
 
 
@@ -29,6 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <LoadingBar style={{ backgroundColor: 'blue', height: '5px' }} />
         {
           localStorage.isAdmin?
           <div>

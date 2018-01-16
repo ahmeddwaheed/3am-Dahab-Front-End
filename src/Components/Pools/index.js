@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spin, Alert} from 'antd';
 import Pool from '../Pool';
 import history from '../../history';
 import {rootApi} from '../../api';
@@ -21,13 +22,27 @@ export default class Pools extends Component {
       }
     }
     render(){
-      const { pools, loading , currentUser, isUser , isAdmin } = this.props;
+      const { pools, loading, error, currentUser, isUser , isAdmin } = this.props;
+      if(loading){
+        return (
+            <Spin />
+        )
+      }
+      else if(error){
+        return (
+            <Alert
+            message={error}
+            type="error"
+            />
+        )
+      }
+      else {
         return (
           <div className = 'content'>
                 {
                   isUser ?
                   <div>
-                    <h1>HI {currentUser.name}</h1>
+                    <h1>Welcome {currentUser.name}</h1>
                     {
                       currentUser.avatar?
                       <img className="avatar" alt="picture" src={`${rootApi}/${currentUser.avatar.url}`} />
@@ -53,5 +68,6 @@ export default class Pools extends Component {
 
             </div>
         )
+      }
     }
 }

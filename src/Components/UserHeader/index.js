@@ -48,32 +48,30 @@ export default class UserHeader extends Component {
     const {isUser} = this.props;
     const userLinks = (
       <div >
-        <ul className="nav navbar-nav navbar-right">
-
-
-          <li>
-          <Link to = "/profile/edit">
-          {
-            this.props.user.avatar?
-            <img className='user-image' src = {user}/>
-            :
-            null
-          }
-          </Link>
-          </li>
-          <li><Notifications count={this.state.notification_count} /></li>
-          <li><a href="#" onClick={this.logout.bind(this)}><span className = 'nav-text'>Logout</span></a></li>
-        </ul>
+      <ul className="nav navbar-nav navbar-right">
+      <li>
+      <Link to = "/profile/edit">
+      {
+        this.props.user.avatar?
+        <img className='user-image' src = {user}/>
+        :
+        null
+      }
+      </Link>
+      </li>
+      <li><Notifications count={this.state.notification_count} /></li>
+      <li><a href="#" onClick={this.logout.bind(this)}><span className = 'nav-text'>Logout</span></a></li>
+      </ul>
       </div>
     );
     const guestLinks = (
-            <ul className="nav navbar-nav navbar-right">
-                <li><Link to="/register"><span className = 'nav-text'>Sign up</span></Link></li>
-                <li><Link to="/login"><span className = 'nav-text'>Login</span></Link></li>
-            </ul>
+      <ul className="nav navbar-nav navbar-right">
+      <li><Link to="/register"><span className = 'nav-text'>Sign up</span></Link></li>
+      <li><Link to="/login"><span className = 'nav-text'>Login</span></Link></li>
+      </ul>
     );
     return (
-        <nav className="navbar navbar-default">
+      <nav className="navbar navbar-default">
           <div className="container-fluid header">
             <div className="navbar-header">
               {
